@@ -9692,7 +9692,26 @@ exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader
 
 
 // module
-exports.push([module.i, ".header .row {\n  width: 100%;\n}\n\n.header--facebook:hover path {\n  stroke: #3b5998;\n}\n\n.header--twitter:hover path {\n  fill: #1da1f2;\n}\n\n.header--instagram:hover path {\n  stroke: url(#insta-gradient);\n}\n\n.header .nav-link {\n  position: relative;\n  color: #000000 !important;\n  font-weight: 500;\n  text-align: center;\n}\n\n.header .nav-link::after {\n  content: \"\";\n  position: absolute;\n  bottom: 0;\n  left: 0;\n  width: 100%;\n  height: 0px;\n  background-color: #264de4;\n  transition: height 0.3s ease-in-out;\n  -webkit-transition: height 0.3s ease-in-out;\n  -moz-transition: height 0.3s ease-in-out;\n  -ms-transition: height 0.3s ease-in-out;\n  -o-transition: height 0.3s ease-in-out;\n}\n\n.header .nav-link:hover {\n  color: #264de4 !important;\n}\n\n.header .nav-link:hover::after {\n  height: 3px;\n}", ""]);
+exports.push([module.i, ".navbar {\n  background-color: #fbf9fa;\n  box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.3);\n}\n\n.header .row {\n  width: 100%;\n}\n\n.header--facebook:hover path {\n  stroke: #3b5998;\n}\n\n.header--twitter:hover path {\n  fill: #1da1f2;\n}\n\n.header--instagram:hover path {\n  stroke: url(#insta-gradient);\n}\n\n.header .nav-link {\n  position: relative;\n  color: #000000 !important;\n  font-weight: 500;\n  text-align: center;\n}\n\n.header .nav-link::after {\n  content: \"\";\n  position: absolute;\n  bottom: 0;\n  left: 0;\n  width: 100%;\n  height: 0px;\n  background-color: #264de4;\n  transition: height 0.3s ease-in-out;\n  -webkit-transition: height 0.3s ease-in-out;\n  -moz-transition: height 0.3s ease-in-out;\n  -ms-transition: height 0.3s ease-in-out;\n  -o-transition: height 0.3s ease-in-out;\n}\n\n.header .nav-link:hover {\n  color: #264de4 !important;\n}\n\n.header .nav-link:hover::after {\n  height: 3px;\n}", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/index.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./resources/sass/Hero.scss":
+/*!*********************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader!./node_modules/postcss-loader/src??ref--7-2!./node_modules/sass-loader/dist/cjs.js??ref--7-3!./resources/sass/Hero.scss ***!
+  \*********************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, ".hero .container {\n  margin-top: 8rem;\n}\n\n.hero__info--title,\n.hero__info--subtitle,\n.hero__info--text {\n  margin-bottom: 1.5rem;\n}\n\n.hero__info--subtitle {\n  color: rgba(0, 0, 0, 0.87);\n  font-size: 1.75rem;\n  font-weight: 500;\n}\n\n.hero__info--btn {\n  margin-top: 3rem;\n}\n\n.hero__img img {\n  width: 100%;\n  max-width: 540px;\n}\n\n@media screen and (max-width: 991px) {\n  .hero__info--title {\n    text-align: center;\n  }\n}", ""]);
 
 // exports
 
@@ -85975,7 +85994,8 @@ var Header = function Header() {
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("header", {
     className: "header"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Navbar"], {
-    expand: "lg"
+    expand: "lg",
+    fixed: "top"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Navbar"].Brand, {
     href: "/"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("svg", {
@@ -86070,6 +86090,62 @@ var Header = function Header() {
 
 /***/ }),
 
+/***/ "./resources/js/components/Hero.jsx":
+/*!******************************************!*\
+  !*** ./resources/js/components/Hero.jsx ***!
+  \******************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/index.js");
+/* harmony import */ var _svg_hero_illustration_svg__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../svg/hero-illustration.svg */ "./resources/svg/hero-illustration.svg");
+/* harmony import */ var _svg_hero_illustration_svg__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_svg_hero_illustration_svg__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _sass_Hero_scss__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../sass/Hero.scss */ "./resources/sass/Hero.scss");
+/* harmony import */ var _sass_Hero_scss__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_sass_Hero_scss__WEBPACK_IMPORTED_MODULE_3__);
+/* eslint-disable react/jsx-one-expression-per-line */
+
+
+
+
+
+var Hero = function Hero() {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
+    id: "hero",
+    className: "hero"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Container"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Row"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+    lg: 6,
+    xs: 12,
+    className: "hero__info d-flex flex-column justify-content-center"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
+    className: "hero__info--title h1"
+  }, "Juan Daniel Mart\xEDnez"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+    className: "hero__info--subtitle"
+  }, "Apasionado Desarrollador Web"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+    className: "hero__info--desc text"
+  }, "Hola ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: "emoji"
+  }, "\uD83D\uDC4B"), ", me gusta programar p\xE1ginas web, pero tambi\xE9n me importa que mis usuarios tengan una buena experiencia, \xBFEmpezamos ya?"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Button"], {
+    type: "primary",
+    href: "http://bit.ly/wp-juanda",
+    className: "hero__info--btn align-self-center"
+  }, "\xA1Hablemos!")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+    lg: 6,
+    xs: 12,
+    className: "hero__img d-flex align-items-center justify-content-center"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    src: _svg_hero_illustration_svg__WEBPACK_IMPORTED_MODULE_2___default.a,
+    alt: "Hero illustration"
+  })))));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Hero);
+
+/***/ }),
+
 /***/ "./resources/js/containers/App.jsx":
 /*!*****************************************!*\
   !*** ./resources/js/containers/App.jsx ***!
@@ -86114,6 +86190,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_gtm_module__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-gtm-module */ "./node_modules/react-gtm-module/dist/index.js");
 /* harmony import */ var react_gtm_module__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_gtm_module__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _components_Header__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/Header */ "./resources/js/components/Header.jsx");
+/* harmony import */ var _components_Hero__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/Hero */ "./resources/js/components/Hero.jsx");
+
 
 
 
@@ -86123,7 +86201,7 @@ var TagManagerArgs = {
 react_gtm_module__WEBPACK_IMPORTED_MODULE_1___default.a.initialize(TagManagerArgs);
 
 var Home = function Home() {
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Header__WEBPACK_IMPORTED_MODULE_2__["default"], null));
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Header__WEBPACK_IMPORTED_MODULE_2__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Hero__WEBPACK_IMPORTED_MODULE_3__["default"], null));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Home);
@@ -86189,6 +86267,36 @@ if(false) {}
 
 /***/ }),
 
+/***/ "./resources/sass/Hero.scss":
+/*!**********************************!*\
+  !*** ./resources/sass/Hero.scss ***!
+  \**********************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../node_modules/css-loader!../../node_modules/postcss-loader/src??ref--7-2!../../node_modules/sass-loader/dist/cjs.js??ref--7-3!./Hero.scss */ "./node_modules/css-loader/index.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./resources/sass/Hero.scss");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
 /***/ "./resources/sass/app.scss":
 /*!*********************************!*\
   !*** ./resources/sass/app.scss ***!
@@ -86197,6 +86305,17 @@ if(false) {}
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+
+/***/ "./resources/svg/hero-illustration.svg":
+/*!*********************************************!*\
+  !*** ./resources/svg/hero-illustration.svg ***!
+  \*********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/hero-illustration.svg?3e680a35af53503de8eeebdc3f438d50";
 
 /***/ }),
 

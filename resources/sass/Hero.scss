@@ -1,0 +1,33 @@
+// Variables
+@import 'variables';
+
+.hero .container {
+  margin-top: 8rem;
+}
+
+.hero__info--title,
+.hero__info--subtitle,
+.hero__info--text {
+  margin-bottom: 1.5rem;
+}
+
+.hero__info--subtitle {
+  color: $primary-text;
+  font-size: 1.75rem;
+  font-weight: 500;
+}
+
+.hero__info--btn {
+  margin-top: 3rem;
+}
+
+.hero__img img {
+  width: 100%;
+  max-width: 540px;
+}
+
+@media screen and (max-width: 991px) {
+  .hero__info--title {
+    text-align: center;
+  }
+}

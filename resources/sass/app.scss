@@ -1,8 +1,64 @@
-// Fonts
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap');
-
 // Variables
 @import 'variables';
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
+
+* {
+  font-family: $font-family-sans-serif;
+}
+
+body {
+  background-color: $body-bg;
+}
+
+.h1 {
+  color: $primary-text;
+  font-size: 4rem;
+  font-weight: 700;
+}
+
+.text {
+  color: $secondary-text;
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+.emoji {
+  color: #000000;
+}
+
+.btn {
+  padding: 0.75rem 1.62rem;
+  font-size: 1.4rem;
+  border-radius: 15px;
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  -ms-border-radius: 15px;
+  -o-border-radius: 15px;
+}
+
+.btn:focus {
+  box-shadow: 0 0 0 0.2rem rgba(38, 143, 255, 0) !important;
+}
+
+.btn-primary {
+  color: #ffffff !important;
+  background-color: $blue-darker !important;
+  border: none !important;
+  box-shadow: 3px 3px 25px 0px rgba(0, 0, 0, 0.5);
+  transition: all 0.3s ease-in-out;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -ms-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+}
+
+.btn-primary:hover {
+  box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.5);
+  transform: translateY(5px);
+  -webkit-transform: translateY(5px);
+  -moz-transform: translateY(5px);
+  -ms-transform: translateY(5px);
+  -o-transform: translateY(5px);
+}

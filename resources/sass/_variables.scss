@@ -1,5 +1,5 @@
 // Body
-$body-bg: #f8fafc;
+$body-bg: #fbf9fa;
 
 // Typography
 $font-family-sans-serif: 'Poppins', sans-serif;
@@ -7,11 +7,10 @@ $font-size-base: 1rem;
 $line-height-base: 1.6;
 
 // Colors
-$blue: #3490dc;
-$indigo: #6574cd;
-$purple: #9561e2;
-$pink: #f66d9b;
-$red: #e3342f;
+$primary-text: rgba(0, 0, 0, 0.87);
+$secondary-text: rgba(0, 0, 0, 0.6);
+$disabled-text: rgba(0, 0, 0, 0.2);
+$blue-darker: #000e2a;
 $orange: #f6993f;
 $yellow: #ffed4a;
 $green: #38c172;
