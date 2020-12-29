@@ -6,7 +6,7 @@ import '../../sass/Header.scss';
 
 const Header = () => (
   <header className="header">
-    <Navbar expand="lg">
+    <Navbar expand="lg" fixed="top">
       <Navbar.Brand href="/">
         <svg
           width={46}
