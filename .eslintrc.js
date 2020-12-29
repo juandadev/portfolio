@@ -20,5 +20,6 @@ module.exports = {
     'global-require': ['off'],
     'no-multi-assign': ['warn'],
     'no-empty': ['warn'],
+    'react/no-danger': ['off'],
   },
 };

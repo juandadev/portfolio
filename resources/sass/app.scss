@@ -6,16 +6,33 @@
 
 * {
   font-family: $font-family-sans-serif;
+  box-sizing: border-box !important;
 }
 
 body {
-  background-color: $body-bg;
+  background-color: $body-bg !important;
 }
 
 .h1 {
   color: $primary-text;
   font-size: 4rem;
   font-weight: 700;
+}
+
+.h2 {
+  color: $primary-text;
+  font-size: 3rem;
+  font-weight: 700;
+}
+
+.h3 {
+  color: $primary-text;
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+p {
+  margin-bottom: 0;
 }
 
 .text {
@@ -26,6 +43,10 @@ body {
 
 .emoji {
   color: #000000;
+}
+
+.accent-text {
+  font-weight: 600;
 }
 
 .btn {
@@ -44,7 +65,7 @@ body {
 
 .btn-primary {
   color: #ffffff !important;
-  background-color: $blue-darker !important;
+  background-color: $btn-color !important;
   border: none !important;
   box-shadow: 3px 3px 25px 0px rgba(0, 0, 0, 0.5);
   transition: all 0.3s ease-in-out;
@@ -61,4 +82,8 @@ body {
   -moz-transform: translateY(5px);
   -ms-transform: translateY(5px);
   -o-transform: translateY(5px);
+}
+
+.container {
+  margin-top: 7rem;
 }

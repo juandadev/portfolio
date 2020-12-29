@@ -1,3 +1,7 @@
+:root {
+  --transparency: 1;
+}
+
 // Body
 $body-bg: #fbf9fa;
 
@@ -10,9 +14,14 @@ $line-height-base: 1.6;
 $primary-text: rgba(0, 0, 0, 0.87);
 $secondary-text: rgba(0, 0, 0, 0.6);
 $disabled-text: rgba(0, 0, 0, 0.2);
-$blue-darker: #000e2a;
-$orange: #f6993f;
-$yellow: #ffed4a;
-$green: #38c172;
-$teal: #4dc0b5;
-$cyan: #6cb2eb;
+$btn-color: rgba(0, 56, 168, var(--transparency));
+$css: rgba(38, 77, 228, var(--transparency));
+$javascript: rgba(247, 223, 30, var(--transparency));
+$laravel: rgba(245, 82, 71, var(--transparency));
+$react: rgba(0, 216, 255, var(--transparency));
+$git: rgba(222, 76, 54, var(--transparency));
+$photoshop: rgba(49, 168, 255, var(--transparency));
+$illustrator: rgba(255, 154, 0, var(--transparency));
+$figma: rgba(162, 89, 255, var(--transparency));
+$github: rgba(51, 51, 51, var(--transparency));
+$linkedin: rgba(0, 119, 181, var(--transparency));

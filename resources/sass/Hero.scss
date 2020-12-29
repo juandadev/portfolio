@@ -6,8 +6,7 @@
 }
 
 .hero__info--title,
-.hero__info--subtitle,
-.hero__info--text {
+.hero__info--subtitle {
   margin-bottom: 1.5rem;
 }
 
@@ -27,7 +26,9 @@
 }
 
 @media screen and (max-width: 991px) {
-  .hero__info--title {
+  .hero__info--title,
+  .hero__info--subtitle,
+  .hero__info--desc {
     text-align: center;
   }
 }

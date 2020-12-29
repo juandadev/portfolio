@@ -1,0 +1,66 @@
+// Variables
+@import 'variables';
+
+.skills__core .col-12 {
+  margin-bottom: 4rem;
+}
+
+.skills__core__card {
+  --transparency: 0.07;
+  width: 100%;
+  max-width: 1000px;
+  padding: 4rem 7rem;
+  border-radius: 20px;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  -ms-border-radius: 20px;
+  -o-border-radius: 20px;
+}
+
+.skills__core__card.css {
+  background-color: $css;
+}
+
+.skills__core__card.css .skills__core__card--icon {
+  --transparency: 0.5;
+  background-color: $css;
+}
+
+.skills__core__card.javascript {
+  background-color: $javascript;
+}
+
+.skills__core__card.javascript .skills__core__card--icon {
+  --transparency: 0.5;
+  background-color: $javascript;
+}
+
+.skills__core__card.laravel {
+  background-color: $laravel;
+}
+
+.skills__core__card.laravel .skills__core__card--icon {
+  --transparency: 0.5;
+  background-color: $laravel;
+}
+
+.skills__core__card--icon {
+  margin-bottom: 1.3rem;
+  width: 2.4rem;
+  height: 2.4rem;
+  border-radius: 100%;
+  -webkit-border-radius: 100%;
+  -moz-border-radius: 100%;
+  -ms-border-radius: 100%;
+  -o-border-radius: 100%;
+}
+
+.skills__core__card--title {
+  margin-bottom: 1.3rem;
+}
+
+@media screen and (max-width: 991px) {
+  .skills__core__card {
+    padding: 1rem;
+  }
+}
