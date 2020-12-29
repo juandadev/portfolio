@@ -9730,7 +9730,7 @@ exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader
 
 
 // module
-exports.push([module.i, ":root {\n  --transparency: 1;\n}\n\n.skills__core .col-12 {\n  margin-bottom: 4rem;\n}\n\n.skills__core__card {\n  --transparency: 0.07;\n  width: 100%;\n  max-width: 1000px;\n  padding: 4rem 7rem;\n  border-radius: 20px;\n  -webkit-border-radius: 20px;\n  -moz-border-radius: 20px;\n  -ms-border-radius: 20px;\n  -o-border-radius: 20px;\n}\n\n.skills__core__card.css {\n  background-color: rgba(38, 77, 228, var(--transparency));\n}\n\n.skills__core__card.css .skills__core__card--icon {\n  --transparency: 0.5;\n  background-color: rgba(38, 77, 228, var(--transparency));\n}\n\n.skills__core__card.javascript {\n  background-color: rgba(247, 223, 30, var(--transparency));\n}\n\n.skills__core__card.javascript .skills__core__card--icon {\n  --transparency: 0.5;\n  background-color: rgba(247, 223, 30, var(--transparency));\n}\n\n.skills__core__card.laravel {\n  background-color: rgba(245, 82, 71, var(--transparency));\n}\n\n.skills__core__card.laravel .skills__core__card--icon {\n  --transparency: 0.5;\n  background-color: rgba(245, 82, 71, var(--transparency));\n}\n\n.skills__core__card--icon {\n  margin-bottom: 1.3rem;\n  width: 2.4rem;\n  height: 2.4rem;\n  border-radius: 100%;\n  -webkit-border-radius: 100%;\n  -moz-border-radius: 100%;\n  -ms-border-radius: 100%;\n  -o-border-radius: 100%;\n}\n\n.skills__core__card--title {\n  margin-bottom: 1.3rem;\n}\n\n@media screen and (max-width: 991px) {\n  .skills__core__card {\n    padding: 1rem;\n  }\n}", ""]);
+exports.push([module.i, ":root {\n  --transparency: 1;\n}\n\n.skillsCore .col-12 {\n  margin-bottom: 4rem;\n}\n\n.skillsCore__card {\n  --transparency: 0.07;\n  width: 100%;\n  max-width: 1000px;\n  padding: 4rem 7rem;\n  border-radius: 20px;\n  -webkit-border-radius: 20px;\n  -moz-border-radius: 20px;\n  -ms-border-radius: 20px;\n  -o-border-radius: 20px;\n}\n\n.skillsCore__card.css {\n  background-color: rgba(38, 77, 228, var(--transparency));\n}\n\n.skillsCore__card.css .skillsCore__card--icon {\n  --transparency: 0.5;\n  background-color: rgba(38, 77, 228, var(--transparency));\n}\n\n.skillsCore__card.javascript {\n  background-color: rgba(247, 223, 30, var(--transparency));\n}\n\n.skillsCore__card.javascript .skillsCore__card--icon {\n  --transparency: 0.5;\n  background-color: rgba(247, 223, 30, var(--transparency));\n}\n\n.skillsCore__card.laravel {\n  background-color: rgba(245, 82, 71, var(--transparency));\n}\n\n.skillsCore__card.laravel .skillsCore__card--icon {\n  --transparency: 0.5;\n  background-color: rgba(245, 82, 71, var(--transparency));\n}\n\n.skillsCore__card--icon {\n  margin-bottom: 1.3rem;\n  width: 2.4rem;\n  height: 2.4rem;\n  border-radius: 100%;\n  -webkit-border-radius: 100%;\n  -moz-border-radius: 100%;\n  -ms-border-radius: 100%;\n  -o-border-radius: 100%;\n}\n\n.skillsCore__card--title {\n  margin-bottom: 1.3rem;\n}\n\n.skillsSecond .row {\n  margin-bottom: 4rem;\n}\n\n.skillsSecond--title {\n  margin-bottom: 1.5rem;\n}\n\n.skillsSecond__container__item {\n  --transparency: 0.07;\n  margin-bottom: 2rem;\n  padding: 1.5rem;\n  border-radius: 15px;\n  -webkit-border-radius: 15px;\n  -moz-border-radius: 15px;\n  -ms-border-radius: 15px;\n  -o-border-radius: 15px;\n}\n\n.skillsSecond__container__item.git {\n  background-color: rgba(222, 76, 54, var(--transparency));\n}\n\n.skillsSecond__container__item.photoshop {\n  background-color: rgba(49, 168, 255, var(--transparency));\n}\n\n.skillsSecond__container__item.illustrator {\n  background-color: rgba(255, 154, 0, var(--transparency));\n}\n\n.skillsSecond__container__item.figma {\n  background-color: rgba(162, 89, 255, var(--transparency));\n}\n\n.skillsSecond__container .col-12 img {\n  margin-bottom: 2rem;\n}\n\n.skillsSecond__container__item--name {\n  font-weight: 700;\n  text-align: center;\n  text-transform: capitalize;\n}\n\n.skillSecond__counter {\n  margin-bottom: 2rem;\n}\n\n.skillSecond__counter--count {\n  margin-right: 1rem;\n  margin-bottom: 0;\n}\n\n@media screen and (max-width: 991px) {\n  .skillsCore__card {\n    padding: 1rem;\n  }\n}", ""]);
 
 // exports
 
@@ -85922,6 +85922,50 @@ module.exports = function(module) {
 
 /***/ }),
 
+/***/ "./resources/img/figma.png":
+/*!*********************************!*\
+  !*** ./resources/img/figma.png ***!
+  \*********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/figma.png?841cefc789c9af64a7a9472ca5772049";
+
+/***/ }),
+
+/***/ "./resources/img/git.png":
+/*!*******************************!*\
+  !*** ./resources/img/git.png ***!
+  \*******************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/git.png?9106c111210b44fea77dcb156f828c9a";
+
+/***/ }),
+
+/***/ "./resources/img/illustrator.png":
+/*!***************************************!*\
+  !*** ./resources/img/illustrator.png ***!
+  \***************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/illustrator.png?b44c8530da8b2907acd7e5c697b28c71";
+
+/***/ }),
+
+/***/ "./resources/img/photoshop.png":
+/*!*************************************!*\
+  !*** ./resources/img/photoshop.png ***!
+  \*************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/photoshop.png?a98b904ffde556576e891cd9dd8b7bd1";
+
+/***/ }),
+
 /***/ "./resources/js/app.js":
 /*!*****************************!*\
   !*** ./resources/js/app.js ***!
@@ -86179,18 +86223,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/index.js");
 /* harmony import */ var _svg_css_icon_svg__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../svg/css-icon.svg */ "./resources/svg/css-icon.svg");
 /* harmony import */ var _svg_css_icon_svg__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_svg_css_icon_svg__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _svg_css_illustration_svg__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../svg/css-illustration.svg */ "./resources/svg/css-illustration.svg");
-/* harmony import */ var _svg_css_illustration_svg__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_svg_css_illustration_svg__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _svg_javascript_icon_svg__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../svg/javascript-icon.svg */ "./resources/svg/javascript-icon.svg");
-/* harmony import */ var _svg_javascript_icon_svg__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_svg_javascript_icon_svg__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var _svg_javascript_illustration_svg__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../svg/javascript-illustration.svg */ "./resources/svg/javascript-illustration.svg");
-/* harmony import */ var _svg_javascript_illustration_svg__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_svg_javascript_illustration_svg__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var _svg_laravel_icon_svg__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../svg/laravel-icon.svg */ "./resources/svg/laravel-icon.svg");
-/* harmony import */ var _svg_laravel_icon_svg__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_svg_laravel_icon_svg__WEBPACK_IMPORTED_MODULE_6__);
-/* harmony import */ var _svg_laravel_illustration_svg__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../svg/laravel-illustration.svg */ "./resources/svg/laravel-illustration.svg");
-/* harmony import */ var _svg_laravel_illustration_svg__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_svg_laravel_illustration_svg__WEBPACK_IMPORTED_MODULE_7__);
-/* harmony import */ var _sass_Skills_scss__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../sass/Skills.scss */ "./resources/sass/Skills.scss");
-/* harmony import */ var _sass_Skills_scss__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(_sass_Skills_scss__WEBPACK_IMPORTED_MODULE_8__);
+/* harmony import */ var _svg_javascript_icon_svg__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../svg/javascript-icon.svg */ "./resources/svg/javascript-icon.svg");
+/* harmony import */ var _svg_javascript_icon_svg__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_svg_javascript_icon_svg__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _svg_laravel_icon_svg__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../svg/laravel-icon.svg */ "./resources/svg/laravel-icon.svg");
+/* harmony import */ var _svg_laravel_icon_svg__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_svg_laravel_icon_svg__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _img_git_png__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../img/git.png */ "./resources/img/git.png");
+/* harmony import */ var _img_git_png__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_img_git_png__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _img_photoshop_png__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../img/photoshop.png */ "./resources/img/photoshop.png");
+/* harmony import */ var _img_photoshop_png__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_img_photoshop_png__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var _img_illustrator_png__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../img/illustrator.png */ "./resources/img/illustrator.png");
+/* harmony import */ var _img_illustrator_png__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_img_illustrator_png__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var _img_figma_png__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../img/figma.png */ "./resources/img/figma.png");
+/* harmony import */ var _img_figma_png__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(_img_figma_png__WEBPACK_IMPORTED_MODULE_8__);
+/* harmony import */ var _sass_Skills_scss__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../sass/Skills.scss */ "./resources/sass/Skills.scss");
+/* harmony import */ var _sass_Skills_scss__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(_sass_Skills_scss__WEBPACK_IMPORTED_MODULE_9__);
+/* eslint-disable react/jsx-one-expression-per-line */
+
 
 
 
@@ -86206,24 +86254,38 @@ var coreSkills = [{
   icon: _svg_css_icon_svg__WEBPACK_IMPORTED_MODULE_2___default.a,
   title: 'CSS + Bootstrap 4',
   text: "Anteriormente todos mis proyetos habían sido diseñados con CSS puro, hasta que entré a proyectos más demandantes con los cuales tuve la necesidad de acudir a un framework como <span class='accent-text'>Bootstrap</span> para agilizar el trabajo y tener menos problemas en diseños responsivos.",
-  image: _svg_css_illustration_svg__WEBPACK_IMPORTED_MODULE_3___default.a,
   position: 'center'
 }, {
   id: 2,
-  icon: _svg_javascript_icon_svg__WEBPACK_IMPORTED_MODULE_4___default.a,
+  icon: _svg_javascript_icon_svg__WEBPACK_IMPORTED_MODULE_3___default.a,
   keyName: 'javascript',
   title: 'Javascript + React',
   text: "Después de haber aprendido las bases de Javascript, me di a la tarea de empezar a crear todos mis proyectos con <span class='accent-text'>React</span>, una de las librerías más populares del momento para el diseño de interfaces.",
-  image: _svg_javascript_illustration_svg__WEBPACK_IMPORTED_MODULE_5___default.a,
   position: 'start'
 }, {
   id: 3,
-  icon: _svg_laravel_icon_svg__WEBPACK_IMPORTED_MODULE_6___default.a,
+  icon: _svg_laravel_icon_svg__WEBPACK_IMPORTED_MODULE_4___default.a,
   keyName: 'laravel',
   title: 'PHP + Laravel',
-  text: "Desde que empecé en la programación backend lo hice con PHP, y posteriormente descubrí que en conjunto con el framework <span class='accent-text'>Laravel</span> se pueden llegar a hacer sistemas demasiado complejos y de manera más fácil.",
-  image: _svg_laravel_illustration_svg__WEBPACK_IMPORTED_MODULE_7___default.a,
+  text: "Desde que empecé en la programación Back-end lo hice con PHP, y posteriormente descubrí que en conjunto con el framework <span class='accent-text'>Laravel</span> se pueden llegar a hacer sistemas demasiado complejos y de manera más fácil.",
   position: 'end'
+}];
+var secondSkills = [{
+  id: 1,
+  name: 'git',
+  icon: _img_git_png__WEBPACK_IMPORTED_MODULE_5___default.a
+}, {
+  id: 2,
+  name: 'photoshop',
+  icon: _img_photoshop_png__WEBPACK_IMPORTED_MODULE_6___default.a
+}, {
+  id: 3,
+  name: 'illustrator',
+  icon: _img_illustrator_png__WEBPACK_IMPORTED_MODULE_7___default.a
+}, {
+  id: 4,
+  name: 'figma',
+  icon: _img_figma_png__WEBPACK_IMPORTED_MODULE_8___default.a
 }];
 
 var Skills = function Skills() {
@@ -86231,28 +86293,81 @@ var Skills = function Skills() {
     id: "skills",
     className: "skills"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Container"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Row"], {
-    className: "skills__core"
+    className: "skillsCore"
   }, coreSkills.map(function (item) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
       xs: 12,
       key: "core-skill-".concat(item.id),
       className: "d-flex justify-content-".concat(item.position)
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-      className: "skills__core__card ".concat(item.keyName)
+      className: "skillsCore__card ".concat(item.keyName)
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-      className: "skills__core__card--icon d-flex justify-content-center align-items-center"
+      className: "skillsCore__card--icon d-flex justify-content-center align-items-center"
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
       src: item.icon,
       alt: "Skill icon"
     })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
-      className: "skills__core__card--title h3"
+      className: "skillsCore__card--title h3"
     }, item.title), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-      className: "skills__core__card--text text",
+      className: "skillsCore__card--text text",
       dangerouslySetInnerHTML: {
         __html: item.text
       }
     })));
-  }))));
+  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Container"], {
+    className: "skillsSecond"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Row"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+    className: "skillsSecond--title h2"
+  }, "\xA1Eso no es todo!"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+    className: "skillsSecond--text text"
+  }, "Al ser programador Full-stack me importa como lucen mis aplicaciones, por ello soy capaz de manejar herramientas que me permiten complementar el dise\xF1o de las mismas as\xED como su control e implementaci\xF3n."))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Row"], {
+    className: "skillsSecond__container"
+  }, secondSkills.map(function (item) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+      lg: 3,
+      md: 6,
+      xs: 12,
+      key: "second-skill-".concat(item.id),
+      className: "d-flex flex-column justify-content-center align-items-center"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "skillsSecond__container__item ".concat(item.name)
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+      src: item.icon,
+      alt: "Secondary skill icon"
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+      className: "skillsSecond__container__item--name"
+    }, item.name)));
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Row"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+    lg: 4,
+    xs: 12,
+    className: "skillSecond__counter d-flex align-items-center justify-content-center"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+    className: "skillSecond__counter--count h2"
+  }, "338"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+    className: "skillSecond__counter--desc text"
+  }, "Tazas de caf\xE9 ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: "emoji"
+  }, "\u2615"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+    lg: 4,
+    xs: 12,
+    className: "skillSecond__counter d-flex align-items-center justify-content-center"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+    className: "skillSecond__counter--count h2"
+  }, "190.4k+"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+    className: "skillSecond__counter--desc text"
+  }, "L\xEDneas de c\xF3digo ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: "emoji"
+  }, "\uD83D\uDCBB"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+    lg: 4,
+    xs: 12,
+    className: "skillSecond__counter d-flex align-items-center justify-content-center"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+    className: "skillSecond__counter--count h2"
+  }, "4+"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+    className: "skillSecond__counter--desc text"
+  }, "A\xF1os de experiencia ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: "emoji"
+  }, "\u2705"))))));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Skills);
@@ -86508,17 +86623,6 @@ module.exports = "/images/css-icon.svg?f46840d794a3eeffe0abd330400ea655";
 
 /***/ }),
 
-/***/ "./resources/svg/css-illustration.svg":
-/*!********************************************!*\
-  !*** ./resources/svg/css-illustration.svg ***!
-  \********************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "/images/css-illustration.svg?6abd29d41f8e49dd987619f0da35af1f";
-
-/***/ }),
-
 /***/ "./resources/svg/hero-illustration.svg":
 /*!*********************************************!*\
   !*** ./resources/svg/hero-illustration.svg ***!
@@ -86541,17 +86645,6 @@ module.exports = "/images/javascript-icon.svg?69bcacc1467ea36d468f3a7b4760129e";
 
 /***/ }),
 
-/***/ "./resources/svg/javascript-illustration.svg":
-/*!***************************************************!*\
-  !*** ./resources/svg/javascript-illustration.svg ***!
-  \***************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "/images/javascript-illustration.svg?b47831d8e92947ccccfc6bc4d3788ec3";
-
-/***/ }),
-
 /***/ "./resources/svg/laravel-icon.svg":
 /*!****************************************!*\
   !*** ./resources/svg/laravel-icon.svg ***!
@@ -86560,17 +86653,6 @@ module.exports = "/images/javascript-illustration.svg?b47831d8e92947ccccfc6bc4d3
 /***/ (function(module, exports) {
 
 module.exports = "/images/laravel-icon.svg?4dea369569debe51f651adea403ed2bc";
-
-/***/ }),
-
-/***/ "./resources/svg/laravel-illustration.svg":
-/*!************************************************!*\
-  !*** ./resources/svg/laravel-illustration.svg ***!
-  \************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "/images/laravel-illustration.svg?2fb32d07c0ef0e30b819cfa98a651fbd";
 
 /***/ }),
 
