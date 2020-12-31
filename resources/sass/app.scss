@@ -9,6 +9,10 @@
   box-sizing: border-box !important;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   background-color: $body-bg !important;
 }

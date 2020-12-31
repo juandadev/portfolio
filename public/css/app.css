@@ -10912,6 +10912,10 @@ a.text-dark:focus {
   box-sizing: border-box !important;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   background-color: #fbf9fa !important;
 }

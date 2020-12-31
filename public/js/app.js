@@ -76529,185 +76529,6 @@ if (false) {} else {
 
 /***/ }),
 
-/***/ "./node_modules/react-gtm-module/dist/Snippets.js":
-/*!********************************************************!*\
-  !*** ./node_modules/react-gtm-module/dist/Snippets.js ***!
-  \********************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _warn = __webpack_require__(/*! ./utils/warn */ "./node_modules/react-gtm-module/dist/utils/warn.js");
-
-var _warn2 = _interopRequireDefault(_warn);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-// https://developers.google.com/tag-manager/quickstart
-
-var Snippets = {
-  tags: function tags(_ref) {
-    var id = _ref.id,
-        events = _ref.events,
-        dataLayer = _ref.dataLayer,
-        dataLayerName = _ref.dataLayerName,
-        preview = _ref.preview,
-        auth = _ref.auth;
-
-    var gtm_auth = '&gtm_auth=' + auth;
-    var gtm_preview = '&gtm_preview=' + preview;
-
-    if (!id) (0, _warn2.default)('GTM Id is required');
-
-    var iframe = '\n      <iframe src="https://www.googletagmanager.com/ns.html?id=' + id + gtm_auth + gtm_preview + '&gtm_cookies_win=x"\n        height="0" width="0" style="display:none;visibility:hidden" id="tag-manager"></iframe>';
-
-    var script = '\n      (function(w,d,s,l,i){w[l]=w[l]||[];\n        w[l].push({\'gtm.start\': new Date().getTime(),event:\'gtm.js\', ' + JSON.stringify(events).slice(1, -1) + '});\n        var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!=\'dataLayer\'?\'&l=\'+l:\'\';\n        j.async=true;j.src=\'https://www.googletagmanager.com/gtm.js?id=\'+i+dl+\'' + gtm_auth + gtm_preview + '&gtm_cookies_win=x\';\n        f.parentNode.insertBefore(j,f);\n      })(window,document,\'script\',\'' + dataLayerName + '\',\'' + id + '\');';
-
-    var dataLayerVar = this.dataLayer(dataLayer, dataLayerName);
-
-    return {
-      iframe: iframe,
-      script: script,
-      dataLayerVar: dataLayerVar
-    };
-  },
-  dataLayer: function dataLayer(_dataLayer, dataLayerName) {
-    return '\n      window.' + dataLayerName + ' = window.' + dataLayerName + ' || [];\n      window.' + dataLayerName + '.push(' + JSON.stringify(_dataLayer) + ')';
-  }
-};
-
-module.exports = Snippets;
-
-/***/ }),
-
-/***/ "./node_modules/react-gtm-module/dist/TagManager.js":
-/*!**********************************************************!*\
-  !*** ./node_modules/react-gtm-module/dist/TagManager.js ***!
-  \**********************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _Snippets = __webpack_require__(/*! ./Snippets */ "./node_modules/react-gtm-module/dist/Snippets.js");
-
-var _Snippets2 = _interopRequireDefault(_Snippets);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var TagManager = {
-  dataScript: function dataScript(dataLayer) {
-    var script = document.createElement('script');
-    script.innerHTML = dataLayer;
-    return script;
-  },
-  gtm: function gtm(args) {
-    var snippets = _Snippets2.default.tags(args);
-
-    var noScript = function noScript() {
-      var noscript = document.createElement('noscript');
-      noscript.innerHTML = snippets.iframe;
-      return noscript;
-    };
-
-    var script = function script() {
-      var script = document.createElement('script');
-      script.innerHTML = snippets.script;
-      return script;
-    };
-
-    var dataScript = this.dataScript(snippets.dataLayerVar);
-
-    return {
-      noScript: noScript,
-      script: script,
-      dataScript: dataScript
-    };
-  },
-  initialize: function initialize(_ref) {
-    var gtmId = _ref.gtmId,
-        _ref$events = _ref.events,
-        events = _ref$events === undefined ? {} : _ref$events,
-        dataLayer = _ref.dataLayer,
-        _ref$dataLayerName = _ref.dataLayerName,
-        dataLayerName = _ref$dataLayerName === undefined ? 'dataLayer' : _ref$dataLayerName,
-        _ref$auth = _ref.auth,
-        auth = _ref$auth === undefined ? '' : _ref$auth,
-        _ref$preview = _ref.preview,
-        preview = _ref$preview === undefined ? '' : _ref$preview;
-
-    var gtm = this.gtm({
-      id: gtmId,
-      events: events,
-      dataLayer: dataLayer || undefined,
-      dataLayerName: dataLayerName,
-      auth: auth,
-      preview: preview
-    });
-    if (dataLayer) document.head.appendChild(gtm.dataScript);
-    document.head.insertBefore(gtm.script(), document.head.childNodes[0]);
-    document.body.insertBefore(gtm.noScript(), document.body.childNodes[0]);
-  },
-  dataLayer: function dataLayer(_ref2) {
-    var _dataLayer = _ref2.dataLayer,
-        _ref2$dataLayerName = _ref2.dataLayerName,
-        dataLayerName = _ref2$dataLayerName === undefined ? 'dataLayer' : _ref2$dataLayerName;
-
-    if (window[dataLayerName]) return window[dataLayerName].push(_dataLayer);
-    var snippets = _Snippets2.default.dataLayer(_dataLayer, dataLayerName);
-    var dataScript = this.dataScript(snippets);
-    document.head.insertBefore(dataScript, document.head.childNodes[0]);
-  }
-};
-
-module.exports = TagManager;
-
-/***/ }),
-
-/***/ "./node_modules/react-gtm-module/dist/index.js":
-/*!*****************************************************!*\
-  !*** ./node_modules/react-gtm-module/dist/index.js ***!
-  \*****************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _TagManager = __webpack_require__(/*! ./TagManager */ "./node_modules/react-gtm-module/dist/TagManager.js");
-
-var _TagManager2 = _interopRequireDefault(_TagManager);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-module.exports = _TagManager2.default;
-
-/***/ }),
-
-/***/ "./node_modules/react-gtm-module/dist/utils/warn.js":
-/*!**********************************************************!*\
-  !*** ./node_modules/react-gtm-module/dist/utils/warn.js ***!
-  \**********************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-var warn = function warn(s) {
-  console.warn('[react-gtm]', s);
-};
-
-exports.default = warn;
-
-/***/ }),
-
 /***/ "./node_modules/react-is/cjs/react-is.development.js":
 /*!***********************************************************!*\
   !*** ./node_modules/react-is/cjs/react-is.development.js ***!
@@ -86345,11 +86166,11 @@ var Header = function Header() {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Nav"].Link, {
     href: "/"
   }, "Inicio"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Nav"].Link, {
-    href: "/projects"
+    href: "#projects"
   }, "Proyectos"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Nav"].Link, {
     href: "/blog"
   }, "Blog"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Nav"].Link, {
-    href: "/contact"
+    href: "#contact"
   }, "Contacto")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Nav"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Nav"].Link, {
     href: "http://bit.ly/face-juandadev"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("svg", {
@@ -86822,14 +86643,12 @@ if (document.getElementById('app')) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_gtm_module__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-gtm-module */ "./node_modules/react-gtm-module/dist/index.js");
-/* harmony import */ var react_gtm_module__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_gtm_module__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _components_Header__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/Header */ "./resources/js/components/Header.jsx");
-/* harmony import */ var _components_Hero__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/Hero */ "./resources/js/components/Hero.jsx");
-/* harmony import */ var _components_Skills__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/Skills */ "./resources/js/components/Skills.jsx");
-/* harmony import */ var _components_Projects__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../components/Projects */ "./resources/js/components/Projects.jsx");
-/* harmony import */ var _components_Contact__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../components/Contact */ "./resources/js/components/Contact.jsx");
-/* harmony import */ var _components_Footer__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../components/Footer */ "./resources/js/components/Footer.jsx");
+/* harmony import */ var _components_Header__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/Header */ "./resources/js/components/Header.jsx");
+/* harmony import */ var _components_Hero__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/Hero */ "./resources/js/components/Hero.jsx");
+/* harmony import */ var _components_Skills__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/Skills */ "./resources/js/components/Skills.jsx");
+/* harmony import */ var _components_Projects__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/Projects */ "./resources/js/components/Projects.jsx");
+/* harmony import */ var _components_Contact__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../components/Contact */ "./resources/js/components/Contact.jsx");
+/* harmony import */ var _components_Footer__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../components/Footer */ "./resources/js/components/Footer.jsx");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -86860,10 +86679,6 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
 
 
-var TagManagerArgs = {
-  gtmId: 'GTM-P9B2VRQ'
-};
-
 var Home = /*#__PURE__*/function (_Component) {
   _inherits(Home, _Component);
 
@@ -86879,12 +86694,11 @@ var Home = /*#__PURE__*/function (_Component) {
     key: "componentDidMount",
     value: function componentDidMount() {
       document.title = 'Juan Daniel Martínez, Desarrollador Web';
-      react_gtm_module__WEBPACK_IMPORTED_MODULE_1___default.a.initialize(TagManagerArgs);
     }
   }, {
     key: "render",
     value: function render() {
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Header__WEBPACK_IMPORTED_MODULE_2__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Hero__WEBPACK_IMPORTED_MODULE_3__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Skills__WEBPACK_IMPORTED_MODULE_4__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Projects__WEBPACK_IMPORTED_MODULE_5__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Contact__WEBPACK_IMPORTED_MODULE_6__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Footer__WEBPACK_IMPORTED_MODULE_7__["default"], null));
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Header__WEBPACK_IMPORTED_MODULE_1__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Hero__WEBPACK_IMPORTED_MODULE_2__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Skills__WEBPACK_IMPORTED_MODULE_3__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Projects__WEBPACK_IMPORTED_MODULE_4__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Contact__WEBPACK_IMPORTED_MODULE_5__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Footer__WEBPACK_IMPORTED_MODULE_6__["default"], null));
     }
   }]);
 
