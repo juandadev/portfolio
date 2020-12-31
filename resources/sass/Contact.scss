@@ -1,0 +1,99 @@
+// Variables
+@import 'variables';
+
+.contact__card {
+  margin-bottom: 4rem;
+  padding: 3rem 7rem;
+  background-color: rgba(0, 56, 168, 0.07);
+  border-radius: 20px;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  -ms-border-radius: 20px;
+  -o-border-radius: 20px;
+}
+
+.contact__card__info--title {
+  margin-bottom: 1rem;
+}
+
+.contact__card__info--text {
+  text-align: center;
+}
+
+.contact__card__social--title,
+.contact__card__social--phone {
+  margin-bottom: 2rem;
+}
+
+.contact__card__social--email {
+  color: #000000;
+  font-size: 1.5rem;
+  font-weight: 500;
+  text-decoration: underline;
+  transition: opacity 0.3s ease-in-out;
+  -webkit-transition: opacity 0.3s ease-in-out;
+  -moz-transition: opacity 0.3s ease-in-out;
+  -ms-transition: opacity 0.3s ease-in-out;
+  -o-transition: opacity 0.3s ease-in-out;
+}
+
+.contact__card__social--email:hover {
+  color: #000000;
+  opacity: 0.5;
+}
+
+.contact__card__social--phone {
+  margin-top: 0.5rem;
+  font-weight: 500;
+}
+
+.contact__card__prof--github,
+.contact__card__prof--linkedin {
+  --transparency: 0.07;
+  width: 56px;
+  height: 56px;
+  border-radius: 100%;
+  -webkit-border-radius: 100%;
+  -moz-border-radius: 100%;
+  -ms-border-radius: 100%;
+  -o-border-radius: 100%;
+  transition: all 0.3s ease-in-out;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -ms-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+.contact__card__prof--github .contact--github path {
+  transition: all 0.3s ease-in-out;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -ms-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+}
+
+.contact__card__prof--github {
+  margin-right: 2rem;
+  background-color: $github;
+}
+
+.contact__card__prof--linkedin {
+  background-color: $linkedin;
+}
+
+.contact__card__prof--github:hover,
+.contact__card__prof--linkedin:hover {
+  --transparency: 1;
+}
+
+.contact__card__prof--github:hover .contact--github path,
+.contact__card__prof--linkedin:hover .contact--linkedin path {
+  fill: $body-bg;
+}
+
+@media screen and (max-width: 991px) {
+  .contact__card__info {
+    margin-bottom: 2rem;
+  }
+}
