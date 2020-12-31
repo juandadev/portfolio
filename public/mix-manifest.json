@@ -1,4 +1,10 @@
 {
     "/js/app.js": "/js/app.js",
-    "/css/app.css": "/css/app.css"
+    "/css/app.css": "/css/app.css",
+    "/favicon/apple-touch-icon.png": "/favicon/apple-touch-icon.png",
+    "/favicon/favicon-16x16.png": "/favicon/favicon-16x16.png",
+    "/favicon/favicon-32x32.png": "/favicon/favicon-32x32.png",
+    "/favicon/site.webmanifest": "/favicon/site.webmanifest",
+    "/favicon/android-chrome-192x192.png": "/favicon/android-chrome-192x192.png",
+    "/favicon/android-chrome-512x512.png": "/favicon/android-chrome-512x512.png"
 }

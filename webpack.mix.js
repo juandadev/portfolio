@@ -11,5 +11,12 @@ const mix = require('laravel-mix');
  |
  */
 
-mix.react('resources/js/app.js', 'public/js')
-    .sass('resources/sass/app.scss', 'public/css');
+mix
+  .react('resources/js/app.js', 'public/js')
+  .sass('resources/sass/app.scss', 'public/css')
+  .copy('resources/favicon/apple-touch-icon.png', 'public/favicon')
+  .copy('resources/favicon/favicon-16x16.png', 'public/favicon')
+  .copy('resources/favicon/favicon-32x32.png', 'public/favicon')
+  .copy('resources/favicon/site.webmanifest', 'public/favicon')
+  .copy('resources/favicon/android-chrome-192x192.png', 'public/favicon')
+  .copy('resources/favicon/android-chrome-512x512.png', 'public/favicon');
