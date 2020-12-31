@@ -1,0 +1,39 @@
+.projects__info {
+  margin-bottom: 4rem;
+}
+
+.carousel-item {
+  border-radius: 20px;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  -ms-border-radius: 20px;
+  -o-border-radius: 20px;
+}
+
+.projects__container--img {
+  border-radius: 20px;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  -ms-border-radius: 20px;
+  -o-border-radius: 20px;
+}
+
+.carousel-caption {
+  top: 3rem;
+  bottom: unset;
+}
+
+@media screen and (max-width: 991px) {
+  .projects__container--img {
+    height: 500px;
+    object-fit: cover;
+    object-position: center bottom;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .projects__container--img {
+    height: 350px;
+    object-fit: contain;
+  }
+}

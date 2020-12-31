@@ -137,7 +137,7 @@ const Skills = () => (
           xs={12}
           className="skillSecond__counter d-flex align-items-center justify-content-center"
         >
-          <p className="skillSecond__counter--count h2">4+</p>
+          <p className="skillSecond__counter--count h2">3+</p>
 
           <p className="skillSecond__counter--desc text">
             Años de experiencia <span className="emoji">✅</span>

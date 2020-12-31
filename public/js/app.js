@@ -9718,6 +9718,25 @@ exports.push([module.i, ":root {\n  --transparency: 1;\n}\n\n.hero .container {\
 
 /***/ }),
 
+/***/ "./node_modules/css-loader/index.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./resources/sass/Projects.scss":
+/*!*************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader!./node_modules/postcss-loader/src??ref--7-2!./node_modules/sass-loader/dist/cjs.js??ref--7-3!./resources/sass/Projects.scss ***!
+  \*************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, ".projects__info {\n  margin-bottom: 4rem;\n}\n\n.carousel-item {\n  border-radius: 20px;\n  -webkit-border-radius: 20px;\n  -moz-border-radius: 20px;\n  -ms-border-radius: 20px;\n  -o-border-radius: 20px;\n}\n\n.projects__container--img {\n  border-radius: 20px;\n  -webkit-border-radius: 20px;\n  -moz-border-radius: 20px;\n  -ms-border-radius: 20px;\n  -o-border-radius: 20px;\n}\n\n.carousel-caption {\n  top: 3rem;\n  bottom: unset;\n}\n\n@media screen and (max-width: 991px) {\n  .projects__container--img {\n    height: 500px;\n    -o-object-fit: cover;\n       object-fit: cover;\n    -o-object-position: center bottom;\n       object-position: center bottom;\n  }\n}\n@media screen and (max-width: 767px) {\n  .projects__container--img {\n    height: 350px;\n    -o-object-fit: contain;\n       object-fit: contain;\n  }\n}", ""]);
+
+// exports
+
+
+/***/ }),
+
 /***/ "./node_modules/css-loader/index.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./resources/sass/Skills.scss":
 /*!***********************************************************************************************************************************************************!*\
   !*** ./node_modules/css-loader!./node_modules/postcss-loader/src??ref--7-2!./node_modules/sass-loader/dist/cjs.js??ref--7-3!./resources/sass/Skills.scss ***!
@@ -85966,6 +85985,72 @@ module.exports = "/images/photoshop.png?a98b904ffde556576e891cd9dd8b7bd1";
 
 /***/ }),
 
+/***/ "./resources/img/projects/compudram.png":
+/*!**********************************************!*\
+  !*** ./resources/img/projects/compudram.png ***!
+  \**********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/compudram.png?5f1e669f6020cbe0867ec74e2c89f035";
+
+/***/ }),
+
+/***/ "./resources/img/projects/countries.png":
+/*!**********************************************!*\
+  !*** ./resources/img/projects/countries.png ***!
+  \**********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/countries.png?59a04eb5509ba2876de20ae15b830bcc";
+
+/***/ }),
+
+/***/ "./resources/img/projects/cuervonutrition.png":
+/*!****************************************************!*\
+  !*** ./resources/img/projects/cuervonutrition.png ***!
+  \****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/cuervonutrition.png?c2644e6bd11075134baa7ab901aa31d2";
+
+/***/ }),
+
+/***/ "./resources/img/projects/inad.png":
+/*!*****************************************!*\
+  !*** ./resources/img/projects/inad.png ***!
+  \*****************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/inad.png?d5ba5bda2daa33487e89fa5743315b7f";
+
+/***/ }),
+
+/***/ "./resources/img/projects/jobs.png":
+/*!*****************************************!*\
+  !*** ./resources/img/projects/jobs.png ***!
+  \*****************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/jobs.png?4864e5d0f74ca71caf9fa5dc2a732268";
+
+/***/ }),
+
+/***/ "./resources/img/projects/portfolio.png":
+/*!**********************************************!*\
+  !*** ./resources/img/projects/portfolio.png ***!
+  \**********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/portfolio.png?72befc46d8768ac811ece9f392420f20";
+
+/***/ }),
+
 /***/ "./resources/js/app.js":
 /*!*****************************!*\
   !*** ./resources/js/app.js ***!
@@ -86209,6 +86294,158 @@ var Hero = function Hero() {
 
 /***/ }),
 
+/***/ "./resources/js/components/Projects.jsx":
+/*!**********************************************!*\
+  !*** ./resources/js/components/Projects.jsx ***!
+  \**********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/index.js");
+/* harmony import */ var _img_projects_compudram_png__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../img/projects/compudram.png */ "./resources/img/projects/compudram.png");
+/* harmony import */ var _img_projects_compudram_png__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_img_projects_compudram_png__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _img_projects_cuervonutrition_png__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../img/projects/cuervonutrition.png */ "./resources/img/projects/cuervonutrition.png");
+/* harmony import */ var _img_projects_cuervonutrition_png__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_img_projects_cuervonutrition_png__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _img_projects_inad_png__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../img/projects/inad.png */ "./resources/img/projects/inad.png");
+/* harmony import */ var _img_projects_inad_png__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_img_projects_inad_png__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _img_projects_portfolio_png__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../img/projects/portfolio.png */ "./resources/img/projects/portfolio.png");
+/* harmony import */ var _img_projects_portfolio_png__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_img_projects_portfolio_png__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _img_projects_countries_png__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../img/projects/countries.png */ "./resources/img/projects/countries.png");
+/* harmony import */ var _img_projects_countries_png__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_img_projects_countries_png__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var _img_projects_jobs_png__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../img/projects/jobs.png */ "./resources/img/projects/jobs.png");
+/* harmony import */ var _img_projects_jobs_png__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_img_projects_jobs_png__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var _sass_Projects_scss__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../sass/Projects.scss */ "./resources/sass/Projects.scss");
+/* harmony import */ var _sass_Projects_scss__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(_sass_Projects_scss__WEBPACK_IMPORTED_MODULE_8__);
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+
+
+
+
+
+
+
+
+
+var Projects = function Projects() {
+  var projects = [{
+    id: 1,
+    title: 'Compudram',
+    langs: ['CSS', 'javascript', 'laravel'],
+    desc: '',
+    image: _img_projects_compudram_png__WEBPACK_IMPORTED_MODULE_2___default.a,
+    webLink: 'https://juandamartinez.com/compudram/',
+    repoLink: 'https://github.com/Juandamartn/compudram-system',
+    color: 'rgba(0,146,230,0.07)'
+  }, {
+    id: 2,
+    title: 'Cuervo Nutrition',
+    langs: ['CSS', 'javascript', 'PHP'],
+    desc: '',
+    image: _img_projects_cuervonutrition_png__WEBPACK_IMPORTED_MODULE_3___default.a,
+    webLink: 'https://cuervonutrition.com/',
+    repoLink: 'https://github.com/Juandamartn/cuervo.mx',
+    color: 'rgba(166,60,60,0.07)'
+  }, {
+    id: 3,
+    title: 'INAD',
+    langs: ['bootstrap', 'react', 'laravel'],
+    desc: '',
+    image: _img_projects_inad_png__WEBPACK_IMPORTED_MODULE_4___default.a,
+    webLink: 'https://inadac.com/',
+    repoLink: '',
+    color: 'rgba(64, 61, 207, 0.07)'
+  }, {
+    id: 4,
+    title: 'Portafolio personal',
+    langs: ['bootstrap', 'react', 'laravel'],
+    desc: '',
+    image: _img_projects_portfolio_png__WEBPACK_IMPORTED_MODULE_5___default.a,
+    webLink: 'https://juandamartinez.com/',
+    repoLink: 'https://github.com/Juandamartn/portfolio',
+    color: 'rgba(0,56,168,0.07)'
+  }, {
+    id: 5,
+    title: 'Where in the world?',
+    langs: ['CSS', 'javascript', 'API'],
+    desc: '',
+    image: _img_projects_countries_png__WEBPACK_IMPORTED_MODULE_6___default.a,
+    webLink: 'https://juandamartn.github.io/rest-countries-webpage/',
+    repoLink: 'https://github.com/Juandamartn/rest-countries-webpage',
+    color: '#f2f2f2'
+  }, {
+    id: 6,
+    title: 'Job listing',
+    langs: ['CSS', 'javascript'],
+    desc: '',
+    image: _img_projects_jobs_png__WEBPACK_IMPORTED_MODULE_7___default.a,
+    webLink: 'https://juandamartn.github.io/static-job-listing/',
+    repoLink: 'https://github.com/Juandamartn/static-job-listing',
+    color: 'rgba(239,250,250,0.7)'
+  }];
+
+  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(0),
+      _useState2 = _slicedToArray(_useState, 2),
+      index = _useState2[0],
+      setIndex = _useState2[1];
+
+  var handleSelect = function handleSelect(selectedIndex) {
+    setIndex(selectedIndex);
+  };
+
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
+    id: "projects",
+    className: "projects"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Container"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Row"], {
+    className: "projects__info"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+    className: "projects__info--title h2"
+  }, "Trabajos"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+    className: "projects__info--text text"
+  }, "Esta es una selecci\xF3n de los proyectos m\xE1s destacados que he creado"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Row"], {
+    className: "projects__container"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Carousel"], {
+    activeIndex: index,
+    onSelect: handleSelect
+  }, projects.map(function (item) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Carousel"].Item, {
+      key: item.id,
+      style: {
+        background: item.color
+      }
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+      src: item.image,
+      alt: "Project mockup",
+      className: "projects__container--img d-block w-100"
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Carousel"].Caption, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
+      className: "projects__container--title h3"
+    }, item.title), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+      className: "projects__container--text text text-capitalize"
+    }, item.langs.map(function (langs) {
+      return "".concat(langs.toString(), ", ");
+    }))));
+  }))))));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Projects);
+
+/***/ }),
+
 /***/ "./resources/js/components/Skills.jsx":
 /*!********************************************!*\
   !*** ./resources/js/components/Skills.jsx ***!
@@ -86363,7 +86600,7 @@ var Skills = function Skills() {
     className: "skillSecond__counter d-flex align-items-center justify-content-center"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
     className: "skillSecond__counter--count h2"
-  }, "4+"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+  }, "3+"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
     className: "skillSecond__counter--desc text"
   }, "A\xF1os de experiencia ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
     className: "emoji"
@@ -86420,6 +86657,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_Header__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/Header */ "./resources/js/components/Header.jsx");
 /* harmony import */ var _components_Hero__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/Hero */ "./resources/js/components/Hero.jsx");
 /* harmony import */ var _components_Skills__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/Skills */ "./resources/js/components/Skills.jsx");
+/* harmony import */ var _components_Projects__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../components/Projects */ "./resources/js/components/Projects.jsx");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -86441,6 +86679,7 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
 
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
 
 
 
@@ -86471,7 +86710,7 @@ var Home = /*#__PURE__*/function (_Component) {
   }, {
     key: "render",
     value: function render() {
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Header__WEBPACK_IMPORTED_MODULE_2__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Hero__WEBPACK_IMPORTED_MODULE_3__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Skills__WEBPACK_IMPORTED_MODULE_4__["default"], null));
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Header__WEBPACK_IMPORTED_MODULE_2__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Hero__WEBPACK_IMPORTED_MODULE_3__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Skills__WEBPACK_IMPORTED_MODULE_4__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Projects__WEBPACK_IMPORTED_MODULE_5__["default"], null));
     }
   }]);
 
@@ -86550,6 +86789,36 @@ if(false) {}
 
 
 var content = __webpack_require__(/*! !../../node_modules/css-loader!../../node_modules/postcss-loader/src??ref--7-2!../../node_modules/sass-loader/dist/cjs.js??ref--7-3!./Hero.scss */ "./node_modules/css-loader/index.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./resources/sass/Hero.scss");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
+/***/ "./resources/sass/Projects.scss":
+/*!**************************************!*\
+  !*** ./resources/sass/Projects.scss ***!
+  \**************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../node_modules/css-loader!../../node_modules/postcss-loader/src??ref--7-2!../../node_modules/sass-loader/dist/cjs.js??ref--7-3!./Projects.scss */ "./node_modules/css-loader/index.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./resources/sass/Projects.scss");
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
