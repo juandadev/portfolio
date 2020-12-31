@@ -97,3 +97,13 @@
     margin-bottom: 2rem;
   }
 }
+
+@media screen and (max-width: 575px) {
+  .contact__card {
+    padding: 1rem;
+  }
+
+  .contact__card__social--email {
+    font-size: 1rem;
+  }
+}
