@@ -9768,7 +9768,7 @@ exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader
 
 
 // module
-exports.push([module.i, ".projects__info {\n  margin-bottom: 4rem;\n}\n\n.carousel-item {\n  border-radius: 20px;\n  -webkit-border-radius: 20px;\n  -moz-border-radius: 20px;\n  -ms-border-radius: 20px;\n  -o-border-radius: 20px;\n}\n\n.projects__container--img {\n  border-radius: 20px;\n  -webkit-border-radius: 20px;\n  -moz-border-radius: 20px;\n  -ms-border-radius: 20px;\n  -o-border-radius: 20px;\n}\n\n.carousel-caption {\n  top: 3rem;\n  bottom: unset;\n}\n\n@media screen and (max-width: 991px) {\n  .projects__container--img {\n    height: 500px;\n    -o-object-fit: cover;\n       object-fit: cover;\n    -o-object-position: center bottom;\n       object-position: center bottom;\n  }\n}\n@media screen and (max-width: 767px) {\n  .projects__container--img {\n    height: 350px;\n    -o-object-fit: contain;\n       object-fit: contain;\n  }\n}", ""]);
+exports.push([module.i, ".projects__info {\n  margin-bottom: 4rem;\n}\n\n.carousel-item {\n  border-radius: 20px;\n  -webkit-border-radius: 20px;\n  -moz-border-radius: 20px;\n  -ms-border-radius: 20px;\n  -o-border-radius: 20px;\n  cursor: pointer;\n}\n\n.projects__container--img {\n  border-radius: 20px;\n  -webkit-border-radius: 20px;\n  -moz-border-radius: 20px;\n  -ms-border-radius: 20px;\n  -o-border-radius: 20px;\n}\n\n.carousel-caption {\n  top: 3rem;\n  bottom: unset;\n}\n\n@media screen and (max-width: 991px) {\n  .projects__container--img {\n    height: 500px;\n    -o-object-fit: cover;\n       object-fit: cover;\n    -o-object-position: center bottom;\n       object-position: center bottom;\n  }\n}\n@media screen and (max-width: 767px) {\n  .projects__container--img {\n    height: 350px;\n    -o-object-fit: contain;\n       object-fit: contain;\n  }\n}", ""]);
 
 // exports
 
@@ -86516,7 +86516,7 @@ var Projects = function Projects() {
     langs: ['CSS', 'javascript', 'laravel'],
     desc: '',
     image: _img_projects_compudram_png__WEBPACK_IMPORTED_MODULE_2___default.a,
-    webLink: 'https://juandamartinez.com/compudram/',
+    webLink: 'http://bit.ly/project-compudram',
     repoLink: 'https://github.com/Juandamartn/compudram-system',
     color: 'rgba(0,146,230,0.07)'
   }, {
@@ -86525,7 +86525,7 @@ var Projects = function Projects() {
     langs: ['CSS', 'javascript', 'PHP'],
     desc: '',
     image: _img_projects_cuervonutrition_png__WEBPACK_IMPORTED_MODULE_3___default.a,
-    webLink: 'https://cuervonutrition.com/',
+    webLink: 'http://bit.ly/project-cuervonut',
     repoLink: 'https://github.com/Juandamartn/cuervo.mx',
     color: 'rgba(166,60,60,0.07)'
   }, {
@@ -86534,7 +86534,7 @@ var Projects = function Projects() {
     langs: ['bootstrap', 'react', 'laravel'],
     desc: '',
     image: _img_projects_inad_png__WEBPACK_IMPORTED_MODULE_4___default.a,
-    webLink: 'https://inadac.com/',
+    webLink: 'http://bit.ly/project-inad',
     repoLink: '',
     color: 'rgba(64, 61, 207, 0.07)'
   }, {
@@ -86552,7 +86552,7 @@ var Projects = function Projects() {
     langs: ['CSS', 'javascript', 'API'],
     desc: '',
     image: _img_projects_countries_png__WEBPACK_IMPORTED_MODULE_6___default.a,
-    webLink: 'https://juandamartn.github.io/rest-countries-webpage/',
+    webLink: 'http://bit.ly/project-countries',
     repoLink: 'https://github.com/Juandamartn/rest-countries-webpage',
     color: '#f2f2f2'
   }, {
@@ -86561,7 +86561,7 @@ var Projects = function Projects() {
     langs: ['CSS', 'javascript'],
     desc: '',
     image: _img_projects_jobs_png__WEBPACK_IMPORTED_MODULE_7___default.a,
-    webLink: 'https://juandamartn.github.io/static-job-listing/',
+    webLink: 'http://bit.ly/project-job-listing',
     repoLink: 'https://github.com/Juandamartn/static-job-listing',
     color: 'rgba(239,250,250,0.7)'
   }];
@@ -86594,6 +86594,9 @@ var Projects = function Projects() {
       key: item.id,
       style: {
         background: item.color
+      },
+      onClick: function onClick() {
+        return window.location.href = item.webLink;
       }
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
       src: item.image,

@@ -19,7 +19,7 @@ const Projects = () => {
       langs: ['CSS', 'javascript', 'laravel'],
       desc: '',
       image: compudramImg,
-      webLink: 'https://juandamartinez.com/compudram/',
+      webLink: 'http://bit.ly/project-compudram',
       repoLink: 'https://github.com/Juandamartn/compudram-system',
       color: 'rgba(0,146,230,0.07)',
     },
@@ -29,7 +29,7 @@ const Projects = () => {
       langs: ['CSS', 'javascript', 'PHP'],
       desc: '',
       image: cuervoImg,
-      webLink: 'https://cuervonutrition.com/',
+      webLink: 'http://bit.ly/project-cuervonut',
       repoLink: 'https://github.com/Juandamartn/cuervo.mx',
       color: 'rgba(166,60,60,0.07)',
     },
@@ -39,7 +39,7 @@ const Projects = () => {
       langs: ['bootstrap', 'react', 'laravel'],
       desc: '',
       image: inadImg,
-      webLink: 'https://inadac.com/',
+      webLink: 'http://bit.ly/project-inad',
       repoLink: '',
       color: 'rgba(64, 61, 207, 0.07)',
     },
@@ -59,7 +59,7 @@ const Projects = () => {
       langs: ['CSS', 'javascript', 'API'],
       desc: '',
       image: countriesImg,
-      webLink: 'https://juandamartn.github.io/rest-countries-webpage/',
+      webLink: 'http://bit.ly/project-countries',
       repoLink: 'https://github.com/Juandamartn/rest-countries-webpage',
       color: '#f2f2f2',
     },
@@ -69,7 +69,7 @@ const Projects = () => {
       langs: ['CSS', 'javascript'],
       desc: '',
       image: jobsImg,
-      webLink: 'https://juandamartn.github.io/static-job-listing/',
+      webLink: 'http://bit.ly/project-job-listing',
       repoLink: 'https://github.com/Juandamartn/static-job-listing',
       color: 'rgba(239,250,250,0.7)',
     },
@@ -98,7 +98,11 @@ const Projects = () => {
           <Col>
             <Carousel activeIndex={index} onSelect={handleSelect}>
               {projects.map((item) => (
-                <Carousel.Item key={item.id} style={{ background: item.color }}>
+                <Carousel.Item
+                  key={item.id}
+                  style={{ background: item.color }}
+                  onClick={() => (window.location.href = item.webLink)}
+                >
                   <img
                     src={item.image}
                     alt="Project mockup"
