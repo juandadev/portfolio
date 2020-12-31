@@ -1,0 +1,15 @@
+// Variables
+@import 'variables';
+
+.footer .container {
+  padding-bottom: 2rem;
+}
+
+.footer--logo {
+  width: 30px;
+}
+
+.footer--copy {
+  color: $secondary-text;
+  font-size: 0.8rem;
+}
