@@ -10,7 +10,7 @@ class UserController extends Controller
 {
     private $status_code = 200;
 
-    public function userSignUp(Request $request)
+    public function userRegister(Request $request)
     {
         $validator = Validator::make($request->all(), [
             "name" => "required",
@@ -36,9 +36,12 @@ class UserController extends Controller
 
         $user = User::create($userDataArray);
 
-        if (!is_null($user)) {
-            return response()->json(["status" => "failed", "success" => false, "message" => "Error al registrar al usuario"]);
-        }
+        if (!is_null($user))
+            if (!is_null($user)) {
+                return response()->json(["status" => $this->status_code, "success" => true, "message" => "¡Usuario creado con éxito!", "data" => $user]);
+            } else {
+                return response()->json(["status" => "failed", "success" => false, "message" => "Error al registrar al usuario"]);
+            }
     }
 
     public function userLogin(Request $request)
