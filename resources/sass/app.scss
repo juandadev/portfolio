@@ -121,6 +121,24 @@ p {
   -o-border-radius: 0.25rem;
 }
 
+.input-success {
+  border: 1px solid #28a745;
+}
+
+.input-success:focus {
+  border: 1px solid #28a745;
+  box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25);
+}
+
+.input-danger {
+  border: 1px solid #dc3545;
+}
+
+.input-danger:focus {
+  border: 1px solid #dc3545;
+  box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25);
+}
+
 .container {
   margin-top: 7rem;
 }

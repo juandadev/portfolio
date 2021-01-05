@@ -18,6 +18,10 @@ Route::get('/', function () {
     return view('app');
 });
 
+Route::get('/admin', function () {
+    return view('app');
+});
+
 
 Route::get('/home', 'HomeController@index')->name('home');
 

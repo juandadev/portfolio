@@ -43,11 +43,11 @@ const Header = () => (
           <Nav className="ml-auto mr-auto">
             <Nav.Link href="/">Inicio</Nav.Link>
 
-            <Nav.Link href="#projects">Proyectos</Nav.Link>
+            <Nav.Link href="/#projects">Proyectos</Nav.Link>
 
             <Nav.Link href="/blog">Blog</Nav.Link>
 
-            <Nav.Link href="#contact">Contacto</Nav.Link>
+            <Nav.Link href="/#contact">Contacto</Nav.Link>
           </Nav>
 
           <Nav>
