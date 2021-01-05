@@ -88,6 +88,39 @@ p {
   -o-transform: translateY(5px);
 }
 
+.btn-form {
+  color: #ffffff !important;
+  font-size: 1rem;
+  background-color: $btn-color !important;
+  border: none !important;
+  border-radius: 0.25rem;
+  box-shadow: none;
+  transition: opacity 0.3s ease-in-out;
+  -webkit-transition: opacity 0.3s ease-in-out;
+  -moz-transition: opacity 0.3s ease-in-out;
+  -ms-transition: opacity 0.3s ease-in-out;
+  -o-transition: opacity 0.3s ease-in-out;
+  -webkit-border-radius: 0.25rem;
+  -moz-border-radius: 0.25rem;
+  -ms-border-radius: 0.25rem;
+  -o-border-radius: 0.25rem;
+}
+
+.btn-form:hover {
+  opacity: 0.9;
+}
+
+.btn-outline-success,
+.btn-outline-danger {
+  padding: 0.37rem 0.75rem;
+  font-size: 1rem;
+  border-radius: 0.25rem;
+  -webkit-border-radius: 0.25rem;
+  -moz-border-radius: 0.25rem;
+  -ms-border-radius: 0.25rem;
+  -o-border-radius: 0.25rem;
+}
+
 .container {
   margin-top: 7rem;
 }
