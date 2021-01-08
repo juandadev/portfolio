@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import axios from 'axios';
@@ -19,9 +20,6 @@ class Login extends Component {
       message: '',
       status: '',
       isLoading: false,
-      redirect: false,
-      msgEmail: false,
-      msgPass: false,
       show: false,
       alert: 0,
     };
@@ -69,7 +67,6 @@ class Login extends Component {
             status: '¡Inicio de sesión exitoso!',
             alert: 0,
             show: true,
-            redirect: true,
           });
         } else if (status === 'failed' && success === undefined) {
           this.setState({
@@ -95,17 +92,7 @@ class Login extends Component {
   }
 
   render() {
-    const { show, alert, status, message, redirect, isLoading } = this.state;
-
-    if (redirect) {
-      return <Redirect to="/admin" />;
-    }
-
-    const login = localStorage.getItem('isLoggedIn');
-
-    if (login) {
-      return <Redirect to="/admin" />;
-    }
+    const { show, alert, status, message, isLoading } = this.state;
 
     return (
       <>

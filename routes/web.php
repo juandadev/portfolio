@@ -22,9 +22,6 @@ Route::get('/admin', function () {
     return view('app');
 });
 
-
-Route::get('/home', 'HomeController@index')->name('home');
-
 // Auth
 // Auth::routes();
 Route::get('/login', function () {
