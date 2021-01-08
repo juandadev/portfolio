@@ -1,4 +1,5 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 
 import { Container, Navbar, Nav } from 'react-bootstrap';
 
@@ -41,13 +42,13 @@ const Header = () => (
 
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ml-auto mr-auto">
-            <Nav.Link href="/">Inicio</Nav.Link>
+            <NavLink to="/" activeClassName="active" className="nav-link">
+              Inicio
+            </NavLink>
 
-            <Nav.Link href="/#projects">Proyectos</Nav.Link>
-
-            <Nav.Link href="/blog">Blog</Nav.Link>
-
-            <Nav.Link href="/#contact">Contacto</Nav.Link>
+            <NavLink to="/blog" activeClassName="active" className="nav-link">
+              Blog
+            </NavLink>
           </Nav>
 
           <Nav>

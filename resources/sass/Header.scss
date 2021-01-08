@@ -52,6 +52,7 @@
   color: #264de4 !important;
 }
 
-.header .nav-link:hover::after {
+.header .nav-link:hover::after,
+.header .nav-link.active::after {
   height: 3px;
 }
