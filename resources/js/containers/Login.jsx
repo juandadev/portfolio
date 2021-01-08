@@ -68,6 +68,8 @@ class Login extends Component {
             alert: 0,
             show: true,
           });
+
+          window.location.href = '/';
         } else if (status === 'failed' && success === undefined) {
           this.setState({
             message: validation_error.email ? validation_error.email : validation_error.password,

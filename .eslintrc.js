@@ -21,5 +21,7 @@ module.exports = {
     'no-multi-assign': ['warn'],
     'no-empty': ['warn'],
     'react/no-danger': ['off'],
+    'no-shadow': ['off'],
+    'react/forbid-prop-types': ['off'],
   },
 };

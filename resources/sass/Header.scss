@@ -48,6 +48,14 @@
   -o-transition: height 0.3s ease-in-out;
 }
 
+.header .dropdown-toggle.nav-link::after {
+  content: '';
+  position: relative;
+  width: unset;
+  height: unset;
+  background-color: transparent;
+}
+
 .header .nav-link:hover {
   color: #264de4 !important;
 }
@@ -55,4 +63,23 @@
 .header .nav-link:hover::after,
 .header .nav-link.active::after {
   height: 3px;
+}
+
+@media screen and (max-width: 991px) {
+  .header-social {
+    flex-direction: row;
+    justify-content: space-around;
+  }
+
+  .header .nav-link:hover::after,
+  .header .nav-link.active::after {
+    right: 0;
+    margin: auto;
+    width: 100px;
+  }
+
+  .header .dropdown-toggle.nav-link:hover::after {
+    width: unset;
+    margin: 0.255em;
+  }
 }

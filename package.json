@@ -28,11 +28,12 @@
     "sass-loader": "^8.0.0"
   },
   "dependencies": {
-    "axios": "^0.19",
+    "axios": "^0.21.1",
     "bootstrap": "^4.5.3",
     "jquery": "^3.2",
     "lodash": "^4.17.19",
     "popper.js": "^1.12",
+    "prop-types": "^15.7.2",
     "react": "^16.2.0",
     "react-bootstrap": "^1.4.0",
     "react-dom": "^16.2.0",
