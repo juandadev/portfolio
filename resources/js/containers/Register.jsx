@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { connect } from 'react-redux';
+import { PropTypes } from 'prop-types';
 
 import { Container, Row, Col, Card, Form, Button, Alert } from 'react-bootstrap';
 import Header from '../components/Header';
 
 import loading from '../../svg/loading.svg';
+import { Redirect } from 'react-router-dom';
 
 class Register extends Component {
   constructor(props) {
@@ -89,110 +92,123 @@ class Register extends Component {
   }
 
   render() {
+    const { isLoggedIn } = this.props;
     const { isLoading, confirm, show, alert, message } = this.state;
 
-    return (
-      <>
-        <Header />
+    if (isLoggedIn) {
+      return (
+        <>
+          <Header />
 
-        <main className="auth register">
-          <Container>
-            <Row>
-              <Col>
-                <Card>
-                  <Card.Header>Registrar usuario</Card.Header>
+          <main className="auth register">
+            <Container>
+              <Row>
+                <Col>
+                  <Card>
+                    <Card.Header>Registrar usuario</Card.Header>
 
-                  <Card.Body>
-                    <Form onSubmit={this.handleSubmit}>
-                      <Form.Group controlId="name">
-                        <Form.Label>Nombre</Form.Label>
+                    <Card.Body>
+                      <Form onSubmit={this.handleSubmit}>
+                        <Form.Group controlId="name">
+                          <Form.Label>Nombre</Form.Label>
 
-                        <Form.Control
-                          name="name"
-                          type="text"
-                          placeholder="Ingresa tu nombre"
-                          onChange={this.handleChange}
-                          required
-                        />
-                      </Form.Group>
+                          <Form.Control
+                            name="name"
+                            type="text"
+                            placeholder="Ingresa tu nombre"
+                            onChange={this.handleChange}
+                            required
+                          />
+                        </Form.Group>
 
-                      <Form.Group controlId="email">
-                        <Form.Label>Correo</Form.Label>
+                        <Form.Group controlId="email">
+                          <Form.Label>Correo</Form.Label>
 
-                        <Form.Control
-                          name="email"
-                          type="email"
-                          placeholder="Ingresa tu correo"
-                          onChange={this.handleChange}
-                          required
-                        />
-                      </Form.Group>
+                          <Form.Control
+                            name="email"
+                            type="email"
+                            placeholder="Ingresa tu correo"
+                            onChange={this.handleChange}
+                            required
+                          />
+                        </Form.Group>
 
-                      <Form.Group controlId="password">
-                        <Form.Label>Contraseña</Form.Label>
+                        <Form.Group controlId="password">
+                          <Form.Label>Contraseña</Form.Label>
 
-                        <Form.Control
-                          className={`input-${confirm ? 'success' : 'danger'}`}
-                          name="password"
-                          type="password"
-                          placeholder="Ingresa tu contraseña"
-                          onChange={this.handleChange}
-                          required
-                        />
-                      </Form.Group>
+                          <Form.Control
+                            className={`input-${confirm ? 'success' : 'danger'}`}
+                            name="password"
+                            type="password"
+                            placeholder="Ingresa tu contraseña"
+                            onChange={this.handleChange}
+                            required
+                          />
+                        </Form.Group>
 
-                      <Form.Group controlId="confirm">
-                        <Form.Label>Confirmar contraseña</Form.Label>
+                        <Form.Group controlId="confirm">
+                          <Form.Label>Confirmar contraseña</Form.Label>
 
-                        <Form.Control
-                          className={`input-${confirm ? 'success' : 'danger'}`}
-                          name="confirm"
-                          type="password"
-                          placeholder="Vuelve a introducir la contraseña"
-                          onChange={this.handleValidation}
-                          required
-                        />
+                          <Form.Control
+                            className={`input-${confirm ? 'success' : 'danger'}`}
+                            name="confirm"
+                            type="password"
+                            placeholder="Vuelve a introducir la contraseña"
+                            onChange={this.handleValidation}
+                            required
+                          />
 
-                        <Form.Text className={`text-${confirm ? 'success' : 'danger'}`}>
-                          {confirm ? '' : '¡Las contraseñas no coinciden!'}
-                        </Form.Text>
-                      </Form.Group>
+                          <Form.Text className={`text-${confirm ? 'success' : 'danger'}`}>
+                            {confirm ? '' : '¡Las contraseñas no coinciden!'}
+                          </Form.Text>
+                        </Form.Group>
 
-                      <Alert show={show} variant={`${alert === 0 ? 'success' : 'danger'}`}>
-                        <Alert.Heading>
-                          {alert === 0
-                            ? '¡Usuario registrado correctamente!'
-                            : '¡Hubo un error al registrar al usuario!'}
-                        </Alert.Heading>
+                        <Alert show={show} variant={`${alert === 0 ? 'success' : 'danger'}`}>
+                          <Alert.Heading>
+                            {alert === 0
+                              ? '¡Usuario registrado correctamente!'
+                              : '¡Hubo un error al registrar al usuario!'}
+                          </Alert.Heading>
 
-                        <p>{message}</p>
+                          <p>{message}</p>
 
-                        <hr />
+                          <hr />
 
-                        <div className="d-flex justify-content-end">
-                          <Button
-                            onClick={() => this.setShow(false)}
-                            variant={`outline-${alert === 0 ? 'success' : 'danger'}`}
-                          >
-                            Cerrar
-                          </Button>
-                        </div>
-                      </Alert>
+                          <div className="d-flex justify-content-end">
+                            <Button
+                              onClick={() => this.setShow(false)}
+                              variant={`outline-${alert === 0 ? 'success' : 'danger'}`}
+                            >
+                              Cerrar
+                            </Button>
+                          </div>
+                        </Alert>
 
-                      <Button variant="form" type="submit">
-                        {isLoading ? <img src={loading} alt="Lodaing spinner" /> : ''}
-                        Registrar usuario
-                      </Button>
-                    </Form>
-                  </Card.Body>
-                </Card>
-              </Col>
-            </Row>
-          </Container>
-        </main>
-      </>
-    );
+                        <Button variant="form" type="submit">
+                          {isLoading ? <img src={loading} alt="Lodaing spinner" /> : ''}
+                          Registrar usuario
+                        </Button>
+                      </Form>
+                    </Card.Body>
+                  </Card>
+                </Col>
+              </Row>
+            </Container>
+          </main>
+        </>
+      );
+    }
+
+    return <Redirect to="/" />;
   }
 }
 
-export default Register;
+Register.propTypes = {
+  isLoggedIn: PropTypes.bool.isRequired,
+};
+
+const mapStateToProps = (state) => ({
+  isLoggedIn: state.isLoggedIn,
+});
+
+export default connect(mapStateToProps, null)(Register);

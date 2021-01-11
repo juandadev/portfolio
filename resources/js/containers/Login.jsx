@@ -1,5 +1,7 @@
 /* eslint-disable camelcase */
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { PropTypes } from 'prop-types';
 import { Redirect } from 'react-router-dom';
 import axios from 'axios';
 
@@ -94,7 +96,12 @@ class Login extends Component {
   }
 
   render() {
+    const { isLoggedIn } = this.props;
     const { show, alert, status, message, isLoading } = this.state;
+
+    if (isLoggedIn) {
+      return <Redirect to="/" />;
+    }
 
     return (
       <>
@@ -164,4 +171,12 @@ class Login extends Component {
   }
 }
 
-export default Login;
+Login.propTypes = {
+  isLoggedIn: PropTypes.bool.isRequired,
+};
+
+const mapStateToProps = (state) => ({
+  isLoggedIn: state.isLoggedIn,
+});
+
+export default connect(mapStateToProps, null)(Login);
