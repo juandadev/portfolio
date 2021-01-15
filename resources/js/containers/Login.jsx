@@ -8,6 +8,8 @@ import axios from 'axios';
 import { Container, Row, Col, Card, Form, Button, Alert } from 'react-bootstrap';
 import Header from '../components/Header';
 
+import CookieService from '../services/CookieService';
+
 import loading from '../../svg/loading.svg';
 
 import '../../sass/Auth.scss';
@@ -19,6 +21,7 @@ class Login extends Component {
     this.state = {
       username: '',
       password: '',
+      remember: false,
       message: '',
       status: '',
       isLoading: false,
@@ -37,16 +40,22 @@ class Login extends Component {
 
   handleChange(e) {
     const { name, value } = e.target;
+    const { remember } = this.state;
     const data = {};
 
-    data[name] = value;
+    if (name === 'remember') {
+      data[name] = !remember;
+    } else {
+      data[name] = value;
+    }
+
     this.setState(data);
   }
 
   handleSubmit(e) {
     e.preventDefault();
 
-    const { username, password } = this.state;
+    const { username, password, remember } = this.state;
 
     this.setState({ isLoading: true });
 
@@ -56,12 +65,11 @@ class Login extends Component {
         password,
       })
       .then((response) => {
-        this.setState({ isLoading: false });
-
-        // localStorage.setItem('isLoggedIn', true);
         // localStorage.setItem('userData', JSON.stringify(data));
 
-        console.log(response);
+        const { access_token } = response.data;
+
+        console.log(response.data);
 
         this.setState({
           isLoading: false,
@@ -70,17 +78,33 @@ class Login extends Component {
           show: true,
           alert: 0,
         });
+
+        if (!remember) {
+          CookieService.set('access_token', access_token, { path: '/' });
+        } else {
+          const date = new Date();
+          date.setTime(date.getTime() + 60 * 24 * 60 * 1000);
+
+          CookieService.set('access_token', access_token, { path: '/', expires: date });
+        }
+
+        localStorage.setItem('isLoggedIn', true);
+        window.location.href = '/admin';
       })
       .catch((error) => {
-        const { data } = error.response;
+        console.error(error);
 
-        this.setState({
-          isLoading: false,
-          status: data.error,
-          message: data.error_description,
-          show: true,
-          alert: 1,
-        });
+        if (error.response) {
+          const { data } = error.response;
+
+          this.setState({
+            isLoading: false,
+            status: data.error,
+            message: data.error_description,
+            show: true,
+            alert: 1,
+          });
+        }
       });
   }
 
@@ -128,6 +152,15 @@ class Login extends Component {
                           type="password"
                           placeholder="Ingresa tu contraseña"
                           onChange={this.handleChange}
+                        />
+                      </Form.Group>
+
+                      <Form.Group controlId="remember">
+                        <Form.Check
+                          type="checkbox"
+                          name="remember"
+                          label="Mantener sesión iniciada"
+                          onClick={this.handleChange}
                         />
                       </Form.Group>
 

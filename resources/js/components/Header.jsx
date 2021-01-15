@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 
 import { Container, Navbar, Nav, NavDropdown } from 'react-bootstrap';
 import { logOut } from '../actions';
+import CookieService from '../services/CookieService';
 
 import '../../sass/Header.scss';
 
@@ -12,9 +13,6 @@ const Header = (props) => {
   const { isLoggedIn, logOut } = props;
 
   const handleLogout = () => {
-    localStorage.setItem('isLoggedIn', false);
-    localStorage.removeItem('userData');
-
     logOut({
       isLoggedIn: false,
       userData: {
@@ -27,6 +25,9 @@ const Header = (props) => {
         updated_at: '',
       },
     });
+
+    localStorage.setItem('isLoggedIn', false);
+    CookieService.remove('access_token');
 
     window.location.href = '/';
   };
