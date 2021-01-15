@@ -17,7 +17,7 @@ class Login extends Component {
     super(props);
 
     this.state = {
-      email: '',
+      username: '',
       password: '',
       message: '',
       status: '',
@@ -46,13 +46,13 @@ class Login extends Component {
   handleSubmit(e) {
     e.preventDefault();
 
-    const { email, password } = this.state;
+    const { username, password } = this.state;
 
     this.setState({ isLoading: true });
 
     axios
       .post('/api/login', {
-        email,
+        username,
         password,
       })
       .then((response) => {
@@ -116,11 +116,11 @@ class Login extends Component {
 
                   <Card.Body>
                     <Form onSubmit={this.handleSubmit}>
-                      <Form.Group controlId="email">
+                      <Form.Group controlId="username">
                         <Form.Label>Correo</Form.Label>
 
                         <Form.Control
-                          name="email"
+                          name="username"
                           type="email"
                           placeholder="Ingresa tu correo"
                           onChange={this.handleChange}
