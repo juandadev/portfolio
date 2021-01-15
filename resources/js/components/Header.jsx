@@ -45,7 +45,7 @@ const Header = () => (
 
             <Nav.Link href="#projects">Proyectos</Nav.Link>
 
-            <Nav.Link href="/blog">Blog</Nav.Link>
+            {/* <Nav.Link href="/blog">Blog</Nav.Link> */}
 
             <Nav.Link href="#contact">Contacto</Nav.Link>
           </Nav>
