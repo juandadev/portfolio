@@ -16,7 +16,7 @@ class DatabaseSeeder extends Seeder
         User::create([
             'name' => 'Juan Daniel',
             'email' => 'jdmartinez@itparral.edu.mx',
-            'password' => md5('15410596'),
+            'password' => bcrypt('15410596'),
         ]);
     }
 }

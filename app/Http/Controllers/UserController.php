@@ -25,7 +25,7 @@ class UserController extends Controller
         $userDataArray = array(
             "name" => $request->name,
             "email" => $request->email,
-            "password" => md5($request->password)
+            "password" => bcrypt($request->password)
         );
 
         $user_status = User::where("email", $request->email)->first();
@@ -65,7 +65,7 @@ class UserController extends Controller
 
         // if email exists then we will check password for the same email
         if (!is_null($email_status)) {
-            $password_status = User::where("email", $request->email)->where("password", md5($request->password))->first();
+            $password_status = User::where("email", $request->email)->where("password", bcrypt($request->password))->first();
 
             // if password is correct
             if (!is_null($password_status)) {

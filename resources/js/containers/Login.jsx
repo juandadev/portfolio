@@ -58,37 +58,30 @@ class Login extends Component {
       .then((response) => {
         this.setState({ isLoading: false });
 
-        const { status, data, message, success, validation_error } = response.data;
+        // localStorage.setItem('isLoggedIn', true);
+        // localStorage.setItem('userData', JSON.stringify(data));
 
-        if (status === 200) {
-          localStorage.setItem('isLoggedIn', true);
-          localStorage.setItem('userData', JSON.stringify(data));
+        console.log(response);
 
-          this.setState({
-            message,
-            status: '¡Inicio de sesión exitoso!',
-            alert: 0,
-            show: true,
-          });
-
-          window.location.href = '/';
-        } else if (status === 'failed' && success === undefined) {
-          this.setState({
-            message: validation_error.email ? validation_error.email : validation_error.password,
-            status: '¡Error al iniciar sesión!',
-            alert: 1,
-            show: true,
-          });
-        } else if (status === 'failed' && success === false) {
-          this.setState({
-            message,
-            status: '¡Error al iniciar sesión!',
-            alert: 1,
-            show: true,
-          });
-        }
+        this.setState({
+          isLoading: false,
+          status: '¡Inicio de sesión exitoso!',
+          message: 'Ahora puedes acceder al panel de administrador',
+          show: true,
+          alert: 0,
+        });
       })
-      .catch((error) => console.error(error));
+      .catch((error) => {
+        const { data } = error.response;
+
+        this.setState({
+          isLoading: false,
+          status: data.error,
+          message: data.error_description,
+          show: true,
+          alert: 1,
+        });
+      });
   }
 
   setShow(value) {
