@@ -11,6 +11,7 @@ import {
   Badge,
   Navbar,
   Container,
+  Alert,
 } from 'react-bootstrap';
 import { Remarkable } from 'remarkable';
 
@@ -27,6 +28,10 @@ class Editor extends Component {
       tagValue: '',
       tagHover: 0,
       tagStatus: true,
+      alert: false,
+      status: 'success',
+      message: '',
+      preview: { disabled: 'disabled' },
       author: 'Juan Daniel Martínez',
     };
 
@@ -36,6 +41,7 @@ class Editor extends Component {
     // this.handleSubmit = this.handleSubmit.bind(this);
     this.handleTags = this.handleTags.bind(this);
     this.deleteTags = this.deleteTags.bind(this);
+    this.handleValidation = this.handleValidation.bind(this);
   }
 
   handleChange(e) {
@@ -45,6 +51,10 @@ class Editor extends Component {
     data[name] = value;
 
     this.setState(data);
+
+    setTimeout(() => {
+      this.handleValidation();
+    }, 100);
   }
 
   handleTags(e) {
@@ -73,6 +83,16 @@ class Editor extends Component {
     }
   }
 
+  handleValidation() {
+    const { title, body } = this.state;
+
+    if (title === '' || body === '') {
+      this.setState({ preview: { disabled: 'disabled' } });
+    } else {
+      this.setState({ preview: { disabled: '' } });
+    }
+  }
+
   getRawMarkup() {
     const { body } = this.state;
 
@@ -90,13 +110,41 @@ class Editor extends Component {
   }
 
   render() {
-    const { body, title, tags, author, tagValue, tagHover, tagStatus } = this.state;
+    const {
+      body,
+      title,
+      tags,
+      author,
+      tagValue,
+      tagHover,
+      tagStatus,
+      alert,
+      status,
+      message,
+      preview,
+    } = this.state;
 
     return (
       <Card className="editor">
         <Card.Header>Nuevo post</Card.Header>
 
         <Card.Body>
+          <Alert show={alert} variant={status}>
+            <Alert.Heading>
+              {status === 'success' ? '¡Post subido con éxito!' : '¡Error al subir el post!'}
+            </Alert.Heading>
+
+            <p>{message}</p>
+
+            <hr />
+
+            <div className="d-flex justify-content-end">
+              <Button onClick={() => this.setState({ alert: false })} variant={`outline-${status}`}>
+                Cerrar
+              </Button>
+            </div>
+          </Alert>
+
           <Tabs defaultActiveKey="post" id="uncontrolled-tab-example">
             <Tab eventKey="post" title="Editor">
               <Form onSubmit={(e) => e.preventDefault()}>
@@ -113,7 +161,7 @@ class Editor extends Component {
 
                 <InputGroup className="mb-3">
                   <InputGroup.Prepend>
-                    <InputGroup.Text id="basic-addon1">#</InputGroup.Text>
+                    <InputGroup.Text id="basic-addon1">Etiquetas</InputGroup.Text>
                   </InputGroup.Prepend>
 
                   <Form.Control
@@ -179,7 +227,7 @@ class Editor extends Component {
               </Form>
             </Tab>
 
-            <Tab eventKey="preview" title="Vista previa">
+            <Tab eventKey="preview" title="Vista previa" {...preview}>
               <div className="post">
                 <h1 className="post-title">{title}</h1>
 
@@ -190,9 +238,6 @@ class Editor extends Component {
                     <Badge
                       variant={tagHover === item.id ? 'danger' : 'secondary'}
                       key={`prevTag-${item.id}`}
-                      onClick={() => this.deleteTags(item.id)}
-                      onMouseEnter={() => this.setState({ tagHover: item.id })}
-                      onMouseLeave={() => this.setState({ tagHover: 0 })}
                     >
                       #{item.name}
                     </Badge>

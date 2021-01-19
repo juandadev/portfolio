@@ -23,5 +23,6 @@ module.exports = {
     'react/no-danger': ['off'],
     'no-shadow': ['off'],
     'react/forbid-prop-types': ['off'],
+    'react/jsx-props-no-spreading': ['off'],
   },
 };
