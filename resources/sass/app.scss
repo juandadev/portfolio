@@ -142,3 +142,38 @@ p {
 .container {
   margin-top: 7rem;
 }
+
+.post .post-title {
+  margin-bottom: 0.5rem;
+  font-size: 3rem;
+  font-weight: 700;
+}
+
+.post p {
+  margin-bottom: 1rem;
+  color: $primary-text;
+  line-height: 1.5rem;
+}
+
+.post img {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  box-shadow: 0px 0px 25px 3px rgba(0, 0, 0, 0.2);
+}
+
+.post .author {
+  margin-bottom: 0;
+  color: $secondary-text;
+  font-size: 0.8rem;
+}
+
+.post .tags {
+  margin-bottom: 2rem;
+}
+
+.editor-txt {
+  font-family: 'Roboto Mono', monospace;
+}
