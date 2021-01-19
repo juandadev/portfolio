@@ -19,6 +19,7 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
+        // TODO: Check if we can store posts without tags and the restrictions on update and delete
         $tags = $request->tags;
 
         if ($tags) {
@@ -32,10 +33,6 @@ class PostController extends Controller
                     Tag::create($tag);
                 }
             }
-            // return response()->json([
-            //     "status" => 200,
-            //     "data" => $tags[0]['name']
-            // ]);
         } else {
             return response()->json([
                 "status" => 400,
