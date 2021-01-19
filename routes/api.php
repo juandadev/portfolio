@@ -10,3 +10,10 @@ Route::post('login', [AccessTokenController::class, 'issueToken'])
     ->middleware(['api-login', 'throttle']);
 
 Route::get('user/{email}', 'UserController@userDetail');
+
+// Posts
+Route::post('post', 'PostController@store');
+
+Route::put('post/{post}', 'PostController@update');
+
+Route::delete('post/{post}', 'PostController@destroy');
