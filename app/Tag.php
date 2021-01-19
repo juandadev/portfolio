@@ -16,11 +16,10 @@ class Tag extends Model
     ];
 
     /**
-     * The posts that belong to the role.
-     * You may access the post's tags using $tag->posts
+     * The posts that belong to the tag
      */
-    public function posts()
+    public function post()
     {
-        return $this->belongsToMany('App\Post');
+        return $this->hasMany(PostsTags::class, 'tag_id');
     }
 }

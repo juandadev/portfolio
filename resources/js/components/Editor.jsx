@@ -1,5 +1,6 @@
 /* eslint-disable react/jsx-one-expression-per-line */
 import React, { Component } from 'react';
+import axios from 'axios';
 
 import {
   Card,
@@ -12,6 +13,9 @@ import {
   Navbar,
   Container,
   Alert,
+  ProgressBar,
+  Row,
+  Col,
 } from 'react-bootstrap';
 import { Remarkable } from 'remarkable';
 
@@ -33,12 +37,14 @@ class Editor extends Component {
       message: '',
       preview: { disabled: 'disabled' },
       author: 'Juan Daniel Martínez',
+      uploadProgress: 0,
+      isLoading: false,
     };
 
     this.md = new Remarkable();
 
     this.handleChange = this.handleChange.bind(this);
-    // this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
     this.handleTags = this.handleTags.bind(this);
     this.deleteTags = this.deleteTags.bind(this);
     this.handleValidation = this.handleValidation.bind(this);
@@ -93,6 +99,59 @@ class Editor extends Component {
     }
   }
 
+  handleSubmit() {
+    const { title, body, author, tags } = this.state;
+
+    const data = {
+      title,
+      body,
+      status: 'active',
+      author: author.toLowerCase(),
+      tags,
+    };
+
+    axios
+      .post('/api/post', data, {
+        onUploadProgress: (e) => {
+          const progress = Math.round((e.loaded / e.total) * 100);
+
+          this.setState({
+            uploadProgress: progress,
+            isLoading: true,
+          });
+        },
+      })
+      .then((response) => {
+        const { status, message, data } = response;
+
+        if (status === 200) {
+          this.setState({
+            alert: true,
+            status: 'success',
+            message,
+            isLoading: false,
+          });
+        } else {
+          this.setState({
+            alert: true,
+            status: 'warning',
+            message: message.toString(),
+            isLoading: false,
+          });
+        }
+      })
+      .catch((error) => {
+        console.error(error);
+
+        this.setState({
+          alert: true,
+          status: 'danger',
+          message: error.message,
+          isLoading: false,
+        });
+      });
+  }
+
   getRawMarkup() {
     const { body } = this.state;
 
@@ -122,6 +181,8 @@ class Editor extends Component {
       status,
       message,
       preview,
+      uploadProgress,
+      isLoading,
     } = this.state;
 
     return (
@@ -129,22 +190,6 @@ class Editor extends Component {
         <Card.Header>Nuevo post</Card.Header>
 
         <Card.Body>
-          <Alert show={alert} variant={status}>
-            <Alert.Heading>
-              {status === 'success' ? '¡Post subido con éxito!' : '¡Error al subir el post!'}
-            </Alert.Heading>
-
-            <p>{message}</p>
-
-            <hr />
-
-            <div className="d-flex justify-content-end">
-              <Button onClick={() => this.setState({ alert: false })} variant={`outline-${status}`}>
-                Cerrar
-              </Button>
-            </div>
-          </Alert>
-
           <Tabs defaultActiveKey="post" id="uncontrolled-tab-example">
             <Tab eventKey="post" title="Editor">
               <Form onSubmit={(e) => e.preventDefault()}>
@@ -248,11 +293,39 @@ class Editor extends Component {
               </div>
             </Tab>
           </Tabs>
+
+          <Alert show={alert} variant={status}>
+            <Alert.Heading>
+              {status === 'success' ? '¡Post subido con éxito!' : '¡Error al subir el post!'}
+            </Alert.Heading>
+
+            <p>{message}</p>
+
+            <hr />
+
+            <div className="d-flex justify-content-end">
+              <Button onClick={() => this.setState({ alert: false })} variant={`outline-${status}`}>
+                Cerrar
+              </Button>
+            </div>
+          </Alert>
         </Card.Body>
 
         <Navbar fixed="bottom">
           <Container>
-            <Button>Subir post</Button>
+            <Row>
+              <Col xs={2}>
+                <Button onClick={this.handleSubmit}>Subir post</Button>
+              </Col>
+
+              <Col xs={10}>
+                {isLoading ? (
+                  <ProgressBar animated label={`%${uploadProgress}`} now={uploadProgress} />
+                ) : (
+                  ''
+                )}
+              </Col>
+            </Row>
           </Container>
         </Navbar>
       </Card>

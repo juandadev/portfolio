@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Post;
+use App\PostsTags;
 use App\Tag;
 use Illuminate\Http\Request;
 
@@ -24,22 +25,55 @@ class PostController extends Controller
             for ($i = 0; $i < count($tags); $i++) {
                 $tag = $tags[$i];
 
-                $isCreated = Tag::where('name', $tag->name)
+                $isCreated = Tag::where('name', $tag['name'])
                     ->first();
 
                 if (!$isCreated) {
                     Tag::create($tag);
                 }
             }
+            // return response()->json([
+            //     "status" => 200,
+            //     "data" => $tags[0]['name']
+            // ]);
+        } else {
+            return response()->json([
+                "status" => 400,
+                "success" => false,
+                "message" => "Hubo un error con las etiquetas, revísalo antes de continuar",
+            ]);
         }
 
-        $post = Post::create($request->all());
+        Post::create([
+            'title' => $request->title,
+            'body' => $request->body,
+            'status' => $request->status,
+            'author' => $request->author
+        ]);
+
+        $postCreated = Post::orderBy('created_at', 'desc')
+            ->pluck('id')
+            ->first();
+
+        for ($i = 0; $i < count($tags); $i++) {
+            $tag = $tags[$i];
+
+            $searchTag = Tag::where('name', $tag['name'])
+                ->pluck('id')
+                ->first();
+
+            PostsTags::create([
+                'post_id' => $postCreated,
+                'tag_id' => $searchTag
+            ]);
+        }
+
 
         return response()->json([
             "status" => $this->status_code,
             "success" => true,
             "message" => "En un momento te redirigiremos al post",
-            "data" => $post
+            "data" => $postCreated
         ]);
     }
 

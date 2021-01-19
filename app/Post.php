@@ -16,11 +16,10 @@ class Post extends Model
     ];
 
     /**
-     * The tags that belong to the post.
-     * You may access the post's tags using $post->tags
+     * The tags that belong to the post
      */
-    public function tags()
+    public function tag()
     {
-        return $this->belongsToMany('App\Tag');
+        return $this->hasMany(PostsTags::class, 'post_id');
     }
 }
