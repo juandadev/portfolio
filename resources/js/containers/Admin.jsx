@@ -57,6 +57,7 @@ class Admin extends Component {
                               </div>
 
                               <div className="controls">
+                                {/* TODO: Crrating the edit and delete functions */}
                                 <Button variant="primary">Editar</Button>
 
                                 <Button variant="danger">Eliminar</Button>
