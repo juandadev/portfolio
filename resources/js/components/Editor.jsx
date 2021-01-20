@@ -64,6 +64,8 @@ class Editor extends Component {
   }
 
   handleTags(e) {
+    // TODO: Avoid accents in tags
+    // TODO: Suggestions searching a tag that already exists
     const { tags } = this.state;
     const { value } = e.target;
     const current = tags.length + 1;
@@ -100,6 +102,7 @@ class Editor extends Component {
   }
 
   handleSubmit() {
+    // TODO: Empty values when a post is submitted
     const { title, body, author, tags } = this.state;
 
     const data = {
@@ -122,10 +125,13 @@ class Editor extends Component {
         },
       })
       .then((response) => {
-        const { status, message, data } = response;
+        const { status, message } = response;
 
         if (status === 200) {
           this.setState({
+            title: '',
+            body: '',
+            tags: [],
             alert: true,
             status: 'success',
             message,
@@ -200,6 +206,7 @@ class Editor extends Component {
                     type="text"
                     name="title"
                     placeholder="Título del post"
+                    value={title}
                     onChange={this.handleChange}
                   />
                 </Form.Group>
@@ -250,7 +257,7 @@ class Editor extends Component {
                     name="body"
                     rows={20}
                     placeholder="Empieza a escribir aquí"
-                    defaultValue={body}
+                    value={body}
                     onChange={this.handleChange}
                   />
                 </Form.Group>

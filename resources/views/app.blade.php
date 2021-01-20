@@ -33,7 +33,7 @@
 
     </script>
 
-    <title>Juan Daniel Martínez</title>
+    <title>Juan Daniel Martínez, Desarrollador Web</title>
 </head>
 
 <body>
