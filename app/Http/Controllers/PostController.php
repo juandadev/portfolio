@@ -6,10 +6,30 @@ use App\Post;
 use App\PostsTags;
 use App\Tag;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class PostController extends Controller
 {
     private $status_code = 200;
+
+    public function show(Post $post)
+    {
+        return $post;
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        $posts = Post::orderBy('created_at')->get();
+        $posts_tags = PostsTags::orderBy('created_at')->get();
+        $tags = Tag::orderBy('created_at')->get();
+
+        return [$posts, $posts_tags, $tags];
+    }
 
     /**
      * Store a newly created resource in storage.

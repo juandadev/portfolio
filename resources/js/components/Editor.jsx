@@ -321,11 +321,11 @@ class Editor extends Component {
         <Navbar fixed="bottom">
           <Container>
             <Row>
-              <Col xs={2}>
+              <Col xs={3}>
                 <Button onClick={this.handleSubmit}>Subir post</Button>
               </Col>
 
-              <Col xs={10}>
+              <Col xs={9}>
                 {isLoading ? (
                   <ProgressBar animated label={`%${uploadProgress}`} now={uploadProgress} />
                 ) : (

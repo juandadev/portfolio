@@ -1,25 +1,42 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { initPosts } from '../actions';
 
 import Home from '../containers/Home';
 import Admin from '../containers/Admin';
 import Login from '../containers/Login';
 import Register from '../containers/Register';
 
-const Router = () => (
-  <BrowserRouter>
-    <Switch>
-      {/* Auth */}
-      <Route path="/register" component={Register} />
+const Router = (props) => {
+  const { initPosts } = props;
 
-      <Route path="/login" component={Login} />
+  fetch('/api/post')
+    .then((response) => response.json())
+    .then((data) => initPosts(data));
 
-      {/* Admin */}
-      <Route path="/admin" component={Admin} />
+  return (
+    <BrowserRouter>
+      <Switch>
+        {/* Auth */}
+        <Route path="/register" component={Register} />
 
-      <Route exact path="/" component={Home} />
-    </Switch>
-  </BrowserRouter>
-);
+        <Route path="/login" component={Login} />
 
-export default Router;
+        {/* Admin */}
+        <Route path="/admin" component={Admin} />
+
+        <Route exact path="/" component={Home} />
+      </Switch>
+    </BrowserRouter>
+  );
+};
+
+Router.propTypes = {
+  initPosts: PropTypes.any.isRequired,
+};
+
+const mapDispatchToProps = { initPosts };
+
+export default connect(null, mapDispatchToProps)(Router);

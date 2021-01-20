@@ -12,6 +12,10 @@ Route::post('login', [AccessTokenController::class, 'issueToken'])
 Route::get('user/{email}', 'UserController@userDetail');
 
 // Posts
+Route::get('post', 'PostController@index');
+
+Route::get('post/{post}', 'PostController@show');
+
 Route::post('post', 'PostController@store');
 
 Route::put('post/{post}', 'PostController@update');

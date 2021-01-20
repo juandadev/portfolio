@@ -2,6 +2,30 @@
   padding-bottom: 5rem;
 }
 
+.admin .controls .btn {
+  margin-top: 0;
+  padding: 0.2rem 0.8rem;
+}
+
+.admin .controls .btn-primary {
+  margin-right: 1rem;
+}
+
+.admin .card-posts-view {
+  margin-bottom: 0.5rem;
+}
+
+.admin .viewPost-title,
+.admin .card-posts-view .badge {
+  font-weight: 500;
+  margin-right: 0.5rem;
+  user-select: none;
+}
+
+.admin .card-posts-view .card-body {
+  padding: 0.5rem 1rem;
+}
+
 .admin .btn {
   margin-top: 1rem;
   font-size: 1rem;

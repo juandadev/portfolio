@@ -9,9 +9,7 @@ import initialState from '../initialState';
 
 const store = createStore(reducer, initialState);
 
-function App() {
-  return <Router />;
-}
+const App = () => <Router />;
 
 export default App;
 
