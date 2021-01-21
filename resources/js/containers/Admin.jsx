@@ -24,7 +24,7 @@ class Admin extends Component {
 
           <main className="admin">
             <Container>
-              <Tab.Container id="left-tabs-example" defaultActiveKey="view">
+              <Tab.Container id="left-tabs-example" defaultActiveKey="new">
                 <Row>
                   <Col sm={3}>
                     <Nav variant="pills" className="flex-column">

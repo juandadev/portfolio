@@ -1,5 +1,9 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable react/jsx-one-expression-per-line */
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import axios from 'axios';
 
 import {
@@ -16,6 +20,7 @@ import {
   ProgressBar,
   Row,
   Col,
+  Collapse,
 } from 'react-bootstrap';
 import { Remarkable } from 'remarkable';
 
@@ -39,6 +44,8 @@ class Editor extends Component {
       author: 'Juan Daniel Martínez',
       uploadProgress: 0,
       isLoading: false,
+      open: false,
+      options: [],
     };
 
     this.md = new Remarkable();
@@ -48,15 +55,25 @@ class Editor extends Component {
     this.handleTags = this.handleTags.bind(this);
     this.deleteTags = this.deleteTags.bind(this);
     this.handleValidation = this.handleValidation.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
 
   handleChange(e) {
     const { value, name } = e.target;
+    const { tags } = this.props;
     const data = {};
 
     data[name] = value;
 
     this.setState(data);
+
+    if (name === 'tagValue') {
+      const options = tags.filter((tag) => tag.name.includes(value));
+
+      this.setState({
+        options: options.slice(0, 5),
+      });
+    }
 
     setTimeout(() => {
       this.handleValidation();
@@ -81,6 +98,7 @@ class Editor extends Component {
         ],
         tagValue: '',
         tagStatus: true,
+        open: false,
       });
     } else {
       this.setState({ tagStatus: false });
@@ -89,6 +107,23 @@ class Editor extends Component {
     if (e.key !== 'Enter' || value !== '') {
       this.setState({ tagStatus: true });
     }
+  }
+
+  handleClick(value) {
+    const { tags } = this.state;
+    const current = tags.length + 1;
+
+    this.setState({
+      tags: [
+        ...tags,
+        {
+          id: current,
+          name: value.toLowerCase(),
+        },
+      ],
+      tagValue: '',
+      tagStatus: true,
+    });
   }
 
   handleValidation() {
@@ -102,7 +137,6 @@ class Editor extends Component {
   }
 
   handleSubmit() {
-    // TODO: Empty values when a post is submitted
     const { title, body, author, tags } = this.state;
 
     const data = {
@@ -147,8 +181,6 @@ class Editor extends Component {
         }
       })
       .catch((error) => {
-        console.error(error);
-
         this.setState({
           alert: true,
           status: 'danger',
@@ -189,6 +221,8 @@ class Editor extends Component {
       preview,
       uploadProgress,
       isLoading,
+      open,
+      options,
     } = this.state;
 
     return (
@@ -224,8 +258,36 @@ class Editor extends Component {
                     aria-describedby="basic-addon1"
                     onKeyPress={this.handleTags}
                     onChange={this.handleChange}
+                    onFocus={() => this.setState({ open: true })}
+                    onBlur={() => {
+                      setTimeout(() => {
+                        this.setState({ open: false });
+                      }, 200);
+                    }}
                     value={tagValue}
+                    aria-controls="example-collapse-text"
+                    aria-expanded={open}
+                    autoComplete="off"
                   />
+
+                  <Collapse in={open}>
+                    {options ? (
+                      <div id="example-collapse-text" className="dropdown-menu">
+                        {options.map((option) => (
+                          // eslint-disable-next-line react/jsx-indent
+                          <div
+                            key={`autocomplete-tag-${option.id}`}
+                            className="dropdown-item"
+                            onClick={() => this.handleClick(option.name)}
+                          >
+                            {option.name}
+                          </div>
+                        ))}
+                      </div>
+                    ) : (
+                      ''
+                    )}
+                  </Collapse>
                 </InputGroup>
 
                 {tagStatus ? (
@@ -340,4 +402,12 @@ class Editor extends Component {
   }
 }
 
-export default Editor;
+Editor.propTypes = {
+  tags: PropTypes.array.isRequired,
+};
+
+const mapDispatchToProps = (state) => ({
+  tags: state.tags,
+});
+
+export default connect(mapDispatchToProps, null)(Editor);
