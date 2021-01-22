@@ -39,7 +39,6 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        // TODO: Check if we can store posts without tags and the restrictions on update and delete
         $tags = $request->tags;
 
         if ($tags) {
@@ -55,7 +54,7 @@ class PostController extends Controller
             }
         } else {
             return response()->json([
-                "status" => 400,
+                "status" => "failed",
                 "success" => false,
                 "message" => "Hubo un error con las etiquetas, revísalo antes de continuar",
             ]);

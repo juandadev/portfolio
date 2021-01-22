@@ -206,7 +206,7 @@ class Editor extends Component {
           },
         })
         .then((response) => {
-          const { status, message } = response;
+          const { status, message } = response.data;
 
           if (status === 200) {
             this.setState({
@@ -218,11 +218,11 @@ class Editor extends Component {
               message,
               isLoading: false,
             });
-          } else {
+          } else if (status === 'failed') {
             this.setState({
               alert: true,
               status: 'warning',
-              message: message.toString(),
+              message,
               isLoading: false,
             });
           }
