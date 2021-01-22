@@ -19,10 +19,14 @@ class Admin extends Component {
     this.state = {
       id: 0,
       title: '',
+      body: '',
+      postTags: [],
       show: false,
       alert: false,
       status: 'success',
       message: '',
+      tab: 'view',
+      edit: { disabled: 'disabled' },
     };
 
     this.handleClose = this.handleClose.bind(this);
@@ -67,7 +71,7 @@ class Admin extends Component {
   }
 
   render() {
-    const { show, title, alert, message, status } = this.state;
+    const { show, title, alert, message, status, tab, edit, body, postTags } = this.state;
     const { isLoggedIn, posts, poststags, tags } = this.props;
 
     if (isLoggedIn) {
@@ -77,16 +81,36 @@ class Admin extends Component {
 
           <main className="admin">
             <Container>
-              <Tab.Container id="left-tabs-example" defaultActiveKey="view">
+              <Tab.Container id="left-tabs-example" defaultActiveKey="view" activeKey={tab}>
                 <Row>
                   <Col sm={3}>
                     <Nav variant="pills" className="flex-column">
                       <Nav.Item>
-                        <Nav.Link eventKey="view">Ver entradas</Nav.Link>
+                        <Nav.Link
+                          eventKey="view"
+                          onClick={() =>
+                            this.setState({ tab: 'view', edit: { disabled: 'disabled' } })
+                          }
+                        >
+                          Ver posts
+                        </Nav.Link>
                       </Nav.Item>
 
                       <Nav.Item>
-                        <Nav.Link eventKey="new">Nueva entrada</Nav.Link>
+                        <Nav.Link
+                          eventKey="new"
+                          onClick={() =>
+                            this.setState({ tab: 'new', edit: { disabled: 'disabled' } })
+                          }
+                        >
+                          Nuevo post
+                        </Nav.Link>
+                      </Nav.Item>
+
+                      <Nav.Item>
+                        <Nav.Link eventKey="edit" {...edit}>
+                          Editar post
+                        </Nav.Link>
                       </Nav.Item>
                     </Nav>
                   </Col>
@@ -132,7 +156,26 @@ class Admin extends Component {
 
                               <div className="controls">
                                 {/* TODO: Creating the edit and delete functions */}
-                                <Button variant="primary">Editar</Button>
+                                <Button
+                                  variant="primary"
+                                  onClick={() =>
+                                    this.setState({
+                                      title: post.title,
+                                      body: post.body,
+                                      postTags: [
+                                        ...poststags
+                                          .filter((postTag) => postTag.post_id === post.id)
+                                          .map((tag) =>
+                                            tags.filter((tagName) => tagName.id === tag.tag_id),
+                                          ),
+                                      ],
+                                      edit: { disabled: '' },
+                                      tab: 'edit',
+                                    })
+                                  }
+                                >
+                                  Editar
+                                </Button>
 
                                 <Button
                                   variant="danger"
@@ -175,7 +218,20 @@ class Admin extends Component {
                       </Tab.Pane>
 
                       <Tab.Pane eventKey="new">
-                        <Editor />
+                        <Editor cardTitle="Nuevo post" />
+                      </Tab.Pane>
+
+                      <Tab.Pane eventKey="edit">
+                        {tab === 'edit' ? (
+                          <Editor
+                            cardTitle="Editar post"
+                            setTitle={title}
+                            setBody={body}
+                            setTags={postTags}
+                          />
+                        ) : (
+                          ''
+                        )}
                       </Tab.Pane>
                     </Tab.Content>
                   </Col>

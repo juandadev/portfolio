@@ -56,6 +56,16 @@ class Editor extends Component {
     this.handleClick = this.handleClick.bind(this);
   }
 
+  componentDidMount() {
+    const { setTitle, setTags, setBody } = this.props;
+
+    this.setState({
+      title: setTitle,
+      tags: setTags,
+      body: setBody,
+    });
+  }
+
   handleChange(e) {
     const { value, name } = e.target;
     const { tags } = this.props;
@@ -83,17 +93,19 @@ class Editor extends Component {
     const { tags } = this.state;
     const { value } = e.target;
     const isValid = this.handleValidation('tag', value);
-    const current = tags.length === 0 ? 1 : tags[tags.length - 1].id + 1;
+    const current = tags.length === 0 ? 1 : tags[tags.length - 1][0].id + 1;
 
     if (isValid) {
       if (e.key === 'Enter' && value !== '') {
         this.setState({
           tags: [
             ...tags,
-            {
-              id: current,
-              name: value.toLowerCase(),
-            },
+            [
+              {
+                id: current,
+                name: value.toLowerCase(),
+              },
+            ],
           ],
           tagValue: '',
           tagStatus: true,
@@ -113,16 +125,18 @@ class Editor extends Component {
   handleClick(value) {
     const { tags } = this.state;
     const isValid = this.handleValidation('tag', value);
-    const current = tags.length === 0 ? 1 : tags[tags.length - 1].id + 1;
+    const current = tags.length === 0 ? 1 : tags[tags.length - 1][0].id + 1;
 
     if (isValid) {
       this.setState({
         tags: [
           ...tags,
-          {
-            id: current,
-            name: value.toLowerCase(),
-          },
+          [
+            {
+              id: current,
+              name: value.toLowerCase(),
+            },
+          ],
         ],
         tagValue: '',
         tagStatus: true,
@@ -172,7 +186,7 @@ class Editor extends Component {
           return true;
         }
 
-        constExists = tags.filter((tag) => tag.name === value);
+        constExists = tags.filter((tag) => tag[0].name === value);
 
         return constExists.length === 0;
 
@@ -247,7 +261,7 @@ class Editor extends Component {
   deleteTags(key) {
     const { tags } = this.state;
 
-    const newTags = tags.filter((item) => item.id !== key);
+    const newTags = tags.filter((item) => item[0].id !== key);
 
     this.setState({
       tags: [...newTags],
@@ -271,10 +285,11 @@ class Editor extends Component {
       isLoading,
       options,
     } = this.state;
+    const { cardTitle } = this.props;
 
     return (
       <Card className="editor">
-        <Card.Header>Nuevo post</Card.Header>
+        <Card.Header>{cardTitle}</Card.Header>
 
         <Card.Body>
           <Tabs defaultActiveKey="post" id="uncontrolled-tab-example">
@@ -340,13 +355,13 @@ class Editor extends Component {
                 <Form.Group>
                   {tags.map((item) => (
                     <Badge
-                      variant={tagHover === item.id ? 'danger' : 'secondary'}
-                      key={`tag-${item.id}`}
-                      onClick={() => this.deleteTags(item.id)}
-                      onMouseEnter={() => this.setState({ tagHover: item.id })}
+                      variant={tagHover === item[0].id ? 'danger' : 'secondary'}
+                      key={`tag-${item[0].id}`}
+                      onClick={() => this.deleteTags(item[0].id)}
+                      onMouseEnter={() => this.setState({ tagHover: item[0].id })}
                       onMouseLeave={() => this.setState({ tagHover: 0 })}
                     >
-                      #{item.name}
+                      #{item[0].name}
                     </Badge>
                   ))}
                 </Form.Group>
@@ -392,10 +407,10 @@ class Editor extends Component {
                 <div className="tags">
                   {tags.map((item) => (
                     <Badge
-                      variant={tagHover === item.id ? 'danger' : 'secondary'}
-                      key={`prevTag-${item.id}`}
+                      variant={tagHover === item[0].id ? 'danger' : 'secondary'}
+                      key={`prevTag-${item[0].id}`}
                     >
-                      #{item.name}
+                      #{item[0].name}
                     </Badge>
                   ))}
                 </div>
@@ -446,6 +461,16 @@ class Editor extends Component {
 
 Editor.propTypes = {
   tags: PropTypes.array.isRequired,
+  setTitle: PropTypes.string,
+  setTags: PropTypes.array,
+  setBody: PropTypes.string,
+  cardTitle: PropTypes.string.isRequired,
+};
+
+Editor.defaultProps = {
+  setTitle: '',
+  setTags: [],
+  setBody: '',
 };
 
 const mapDispatchToProps = (state) => ({
