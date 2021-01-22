@@ -125,7 +125,7 @@ class PostController extends Controller
         return response()->json([
             "status" => $this->status_code,
             "success" => true,
-            "message" => "Si quieres eliminar otro post elígelo dentro de la lista",
+            "message" => "El post $post->name ha sido borrado con éxito de la base de datos.",
             "data" => $post
         ]);
     }
