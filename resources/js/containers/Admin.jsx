@@ -51,7 +51,7 @@ class Admin extends Component {
                                   .filter((postTag) => postTag.post_id === post.id)
                                   .map((tag) => (
                                     <Badge variant="secondary" key={`viewPost-tag-${tag.id}`}>
-                                      {tags.filter((tagName) => tagName.id === tag.id)[0].name}
+                                      {tags.filter((tagName) => tagName.id === tag.tag_id)[0].name}
                                     </Badge>
                                   ))}
                               </div>
@@ -86,9 +86,9 @@ class Admin extends Component {
 
 Admin.propTypes = {
   isLoggedIn: PropTypes.bool.isRequired,
-  posts: PropTypes.any.isRequired,
-  poststags: PropTypes.any.isRequired,
-  tags: PropTypes.any.isRequired,
+  posts: PropTypes.array.isRequired,
+  poststags: PropTypes.array.isRequired,
+  tags: PropTypes.array.isRequired,
 };
 
 const mapStateToProps = (state) => ({

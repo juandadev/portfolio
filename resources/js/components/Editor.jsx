@@ -20,7 +20,6 @@ import {
   ProgressBar,
   Row,
   Col,
-  Collapse,
 } from 'react-bootstrap';
 import { Remarkable } from 'remarkable';
 
@@ -44,7 +43,6 @@ class Editor extends Component {
       author: 'Juan Daniel Martínez',
       uploadProgress: 0,
       isLoading: false,
-      open: false,
       options: [],
     };
 
@@ -76,18 +74,48 @@ class Editor extends Component {
     }
 
     setTimeout(() => {
-      this.handleValidation();
+      this.handleValidation('preview');
     }, 100);
   }
 
   handleTags(e) {
     // TODO: Avoid accents in tags
-    // TODO: Suggestions searching a tag that already exists
     const { tags } = this.state;
     const { value } = e.target;
-    const current = tags.length + 1;
+    const isValid = this.handleValidation('tag', value);
+    const current = tags.length === 0 ? 1 : tags[tags.length - 1].id + 1;
 
-    if (e.key === 'Enter' && value !== '') {
+    if (isValid) {
+      if (e.key === 'Enter' && value !== '') {
+        this.setState({
+          tags: [
+            ...tags,
+            {
+              id: current,
+              name: value.toLowerCase(),
+            },
+          ],
+          tagValue: '',
+          tagStatus: true,
+        });
+      } else {
+        this.setState({ tagStatus: false });
+      }
+
+      if (e.key !== 'Enter' || value !== '') {
+        this.setState({ tagStatus: true });
+      }
+    } else {
+      this.setState({ tagStatus: false });
+    }
+  }
+
+  handleClick(value) {
+    const { tags } = this.state;
+    const isValid = this.handleValidation('tag', value);
+    const current = tags.length === 0 ? 1 : tags[tags.length - 1].id + 1;
+
+    if (isValid) {
       this.setState({
         tags: [
           ...tags,
@@ -98,96 +126,116 @@ class Editor extends Component {
         ],
         tagValue: '',
         tagStatus: true,
-        open: false,
       });
     } else {
       this.setState({ tagStatus: false });
     }
-
-    if (e.key !== 'Enter' || value !== '') {
-      this.setState({ tagStatus: true });
-    }
   }
 
-  handleClick(value) {
-    const { tags } = this.state;
-    const current = tags.length + 1;
+  handleValidation(type, value = '') {
+    const { title, body, author, tags } = this.state;
+    let constExists;
 
-    this.setState({
-      tags: [
-        ...tags,
-        {
-          id: current,
-          name: value.toLowerCase(),
-        },
-      ],
-      tagValue: '',
-      tagStatus: true,
-    });
-  }
+    switch (type) {
+      case 'preview':
+        if (title === '' || body === '' || author === '') {
+          this.setState({ preview: { disabled: 'disabled' } });
+        } else {
+          this.setState({ preview: { disabled: '' } });
+        }
 
-  handleValidation() {
-    const { title, body } = this.state;
+        return true;
 
-    if (title === '' || body === '') {
-      this.setState({ preview: { disabled: 'disabled' } });
-    } else {
-      this.setState({ preview: { disabled: '' } });
+      case 'post':
+        if (title === '') {
+          this.setState({ alert: true, status: 'danger', message: 'Faltan campos por rellenar' });
+
+          return false;
+        }
+
+        if (body === '') {
+          this.setState({ alert: true, status: 'danger', message: 'Faltan campos por rellenar' });
+
+          return false;
+        }
+
+        if (author === '') {
+          this.setState({ alert: true, status: 'danger', message: 'Faltan campos por rellenar' });
+
+          return false;
+        }
+
+        return true;
+
+      case 'tag':
+        if (tags.length === 0) {
+          return true;
+        }
+
+        constExists = tags.filter((tag) => tag.name === value);
+
+        return constExists.length === 0;
+
+      default:
+        return true;
     }
   }
 
   handleSubmit() {
     const { title, body, author, tags } = this.state;
+    const isValid = this.handleValidation('post');
 
-    const data = {
-      title,
-      body,
-      status: 'active',
-      author: author.toLowerCase(),
-      tags,
-    };
+    if (isValid) {
+      const data = {
+        title,
+        body,
+        status: 'active',
+        author: author.toLowerCase(),
+        tags,
+      };
 
-    axios
-      .post('/api/post', data, {
-        onUploadProgress: (e) => {
-          const progress = Math.round((e.loaded / e.total) * 100);
+      axios
+        .post('/api/post', data, {
+          onUploadProgress: (e) => {
+            const progress = Math.round((e.loaded / e.total) * 100);
 
+            this.setState({
+              uploadProgress: progress,
+              isLoading: true,
+            });
+          },
+        })
+        .then((response) => {
+          const { status, message } = response;
+
+          if (status === 200) {
+            this.setState({
+              title: '',
+              body: '',
+              tags: [],
+              alert: true,
+              status: 'success',
+              message,
+              isLoading: false,
+            });
+          } else {
+            this.setState({
+              alert: true,
+              status: 'warning',
+              message: message.toString(),
+              isLoading: false,
+            });
+          }
+        })
+        .catch((error) => {
           this.setState({
-            uploadProgress: progress,
-            isLoading: true,
-          });
-        },
-      })
-      .then((response) => {
-        const { status, message } = response;
-
-        if (status === 200) {
-          this.setState({
-            title: '',
-            body: '',
-            tags: [],
             alert: true,
-            status: 'success',
-            message,
+            status: 'danger',
+            message: error.message,
             isLoading: false,
           });
-        } else {
-          this.setState({
-            alert: true,
-            status: 'warning',
-            message: message.toString(),
-            isLoading: false,
-          });
-        }
-      })
-      .catch((error) => {
-        this.setState({
-          alert: true,
-          status: 'danger',
-          message: error.message,
-          isLoading: false,
         });
-      });
+    }
   }
 
   getRawMarkup() {
@@ -221,7 +269,6 @@ class Editor extends Component {
       preview,
       uploadProgress,
       isLoading,
-      open,
       options,
     } = this.state;
 
@@ -232,13 +279,14 @@ class Editor extends Component {
         <Card.Body>
           <Tabs defaultActiveKey="post" id="uncontrolled-tab-example">
             <Tab eventKey="post" title="Editor">
-              <Form onSubmit={(e) => e.preventDefault()}>
+              <Form onSubmit={(e) => e.preventDefault()} autoComplete="off">
                 <Form.Group controlId="title">
                   <Form.Label>Título</Form.Label>
 
                   <Form.Control
                     type="text"
                     name="title"
+                    className={title ? 'is-valid' : 'is-invalid'}
                     placeholder="Título del post"
                     value={title}
                     onChange={this.handleChange}
@@ -258,37 +306,30 @@ class Editor extends Component {
                     aria-describedby="basic-addon1"
                     onKeyPress={this.handleTags}
                     onChange={this.handleChange}
-                    onFocus={() => this.setState({ open: true })}
-                    onBlur={() => {
-                      setTimeout(() => {
-                        this.setState({ open: false });
-                      }, 200);
-                    }}
                     value={tagValue}
-                    aria-controls="example-collapse-text"
-                    aria-expanded={open}
-                    autoComplete="off"
                   />
-
-                  <Collapse in={open}>
-                    {options ? (
-                      <div id="example-collapse-text" className="dropdown-menu">
-                        {options.map((option) => (
-                          // eslint-disable-next-line react/jsx-indent
-                          <div
-                            key={`autocomplete-tag-${option.id}`}
-                            className="dropdown-item"
-                            onClick={() => this.handleClick(option.name)}
-                          >
-                            {option.name}
-                          </div>
-                        ))}
-                      </div>
-                    ) : (
-                      ''
-                    )}
-                  </Collapse>
                 </InputGroup>
+
+                <div id="example-collapse-text">
+                  {options.length !== 0 ? (
+                    <Form.Text className="text-muted">Sugerencias populares:</Form.Text>
+                  ) : (
+                    ''
+                  )}
+
+                  {options
+                    ? options.map((option) => (
+                        // eslint-disable-next-line react/jsx-indent
+                        <Badge
+                          variant="success"
+                          key={`autocomplete-tag-${option.id}`}
+                          onClick={() => this.handleClick(option.name)}
+                        >
+                          {option.name}
+                        </Badge>
+                      ))
+                    : ''}
+                </div>
 
                 {tagStatus ? (
                   ''
@@ -314,7 +355,7 @@ class Editor extends Component {
                   <Form.Label>Contenido</Form.Label>
 
                   <Form.Control
-                    className="editor-txt"
+                    className={`editor-txt ${body ? 'is-valid' : 'is-invalid'}`}
                     as="textarea"
                     name="body"
                     rows={20}
@@ -330,6 +371,7 @@ class Editor extends Component {
                   </InputGroup.Prepend>
 
                   <Form.Control
+                    className={author ? 'is-valid' : 'is-invalid'}
                     placeholder="Autor del post"
                     name="author"
                     aria-label="author"
