@@ -295,8 +295,10 @@ class Editor extends Component {
           <Tabs defaultActiveKey="post" id="uncontrolled-tab-example">
             <Tab eventKey="post" title="Editor">
               <Form onSubmit={(e) => e.preventDefault()} autoComplete="off">
-                <Form.Group controlId="title">
-                  <Form.Label>Título</Form.Label>
+                <InputGroup className="mb-3">
+                  <InputGroup.Prepend>
+                    <InputGroup.Text id="basic-addon1">Título</InputGroup.Text>
+                  </InputGroup.Prepend>
 
                   <Form.Control
                     type="text"
@@ -306,7 +308,7 @@ class Editor extends Component {
                     value={title}
                     onChange={this.handleChange}
                   />
-                </Form.Group>
+                </InputGroup>
 
                 <InputGroup className="mb-3">
                   <InputGroup.Prepend>
