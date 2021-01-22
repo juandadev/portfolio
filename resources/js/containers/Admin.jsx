@@ -77,6 +77,7 @@ class Admin extends Component {
     if (isLoggedIn) {
       return (
         <>
+          {/* TODO: Create all CRUD operations with redux */}
           <Header />
 
           <main className="admin">
