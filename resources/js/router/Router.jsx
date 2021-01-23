@@ -8,6 +8,7 @@ import Home from '../containers/Home';
 import Admin from '../containers/Admin';
 import Login from '../containers/Login';
 import Register from '../containers/Register';
+import Post from '../containers/Post';
 
 const Router = (props) => {
   const { initPosts } = props;
@@ -26,6 +27,10 @@ const Router = (props) => {
 
         {/* Admin */}
         <Route path="/admin" component={Admin} />
+
+        <Route path="/blog/:slug" component={Post} />
+
+        <Route path="/blog" />
 
         <Route exact path="/" component={Home} />
       </Switch>

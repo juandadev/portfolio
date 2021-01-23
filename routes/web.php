@@ -22,6 +22,10 @@ Route::get('/admin', function () {
     return view('app');
 });
 
+Route::get('/blog/{post:slug}', function () {
+    return view('app');
+});
+
 // Auth
 // Auth::routes();
 Route::get('/login', function () {

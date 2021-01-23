@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable react/jsx-curly-newline */
 /* eslint-disable react/jsx-one-expression-per-line */
 import React, { Component } from 'react';
@@ -144,7 +146,12 @@ class Admin extends Component {
                           <Card key={`viewPost-${post.id}`} className="card-posts-view">
                             <Card.Body className="d-flex align-items-center justify-content-between">
                               <div className="viewPost-info d-flex align-items-center">
-                                <p className="viewPost-title">{post.title}</p>
+                                <p
+                                  className="viewPost-title"
+                                  onClick={() => (window.location.href = `/blog/${post.slug}`)}
+                                >
+                                  {post.title}
+                                </p>
 
                                 {poststags
                                   .filter((postTag) => postTag.post_id === post.id)

@@ -41,6 +41,7 @@ class PostController extends Controller
     public function store(Request $request)
     {
         $tags = $request->tags;
+        $slug = str_replace(" ", "-", strtolower($request->title));
 
         if (count($tags) != 0) {
             for ($i = 0; $i < count($tags); $i++) {
@@ -65,7 +66,8 @@ class PostController extends Controller
             'title' => $request->title,
             'body' => $request->body,
             'status' => $request->status,
-            'author' => $request->author
+            'author' => $request->author,
+            'slug' => $slug
         ]);
 
         $postCreated = Post::orderBy('created_at', 'desc')
@@ -105,6 +107,7 @@ class PostController extends Controller
     {
         $tags = $request->tags;
         $postId = $post->id;
+        $slug = str_replace(" ", "-", strtolower($request->title));
         $posts_tags = PostsTags::where('post_id', $postId)->get();
 
         for ($i = 0; $i < count($posts_tags); $i++) {
@@ -145,7 +148,8 @@ class PostController extends Controller
             'title' => $request->title,
             'body' => $request->body,
             'status' => $request->status,
-            'author' => $request->author
+            'author' => $request->author,
+            'slug' => $slug
         ]);
 
         return response()->json([
