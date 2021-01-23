@@ -487,8 +487,8 @@ Editor.defaultProps = {
   setBody: '',
 };
 
-const mapDispatchToProps = (state) => ({
+const mapStateToProps = (state) => ({
   tags: state.tags,
 });
 
-export default connect(mapDispatchToProps, null)(Editor);
+export default connect(mapStateToProps, null)(Editor);

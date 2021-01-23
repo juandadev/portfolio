@@ -33,6 +33,7 @@ const Header = (props) => {
   };
 
   return (
+    // TODO: Need to fix the nav links matching the URL
     <header className="header">
       <Navbar expand="lg" fixed="top">
         <Container>

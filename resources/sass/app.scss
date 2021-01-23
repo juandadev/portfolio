@@ -168,10 +168,16 @@ p {
   margin-bottom: 0;
   color: $secondary-text;
   font-size: 0.8rem;
+  text-transform: capitalize;
 }
 
 .post .tags {
   margin-bottom: 2rem;
+}
+
+.post .tags .badge {
+  margin-right: 0.5rem;
+  font-weight: 500;
 }
 
 .editor-txt {
