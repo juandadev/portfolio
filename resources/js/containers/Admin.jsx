@@ -71,7 +71,7 @@ class Admin extends Component {
   }
 
   render() {
-    const { show, title, alert, message, status, tab, edit, body, postTags } = this.state;
+    const { show, title, alert, message, status, tab, edit, body, postTags, id } = this.state;
     const { isLoggedIn, posts, poststags, tags } = this.props;
 
     if (isLoggedIn) {
@@ -161,6 +161,7 @@ class Admin extends Component {
                                   variant="primary"
                                   onClick={() =>
                                     this.setState({
+                                      id: post.id,
                                       title: post.title,
                                       body: post.body,
                                       postTags: [
@@ -219,7 +220,7 @@ class Admin extends Component {
                       </Tab.Pane>
 
                       <Tab.Pane eventKey="new">
-                        <Editor cardTitle="Nuevo post" />
+                        <Editor cardTitle="Nuevo post" path="/api/post" method="POST" />
                       </Tab.Pane>
 
                       <Tab.Pane eventKey="edit">
@@ -229,6 +230,8 @@ class Admin extends Component {
                             setTitle={title}
                             setBody={body}
                             setTags={postTags}
+                            path={`/api/post/${id}`}
+                            method="PUT"
                           />
                         ) : (
                           ''

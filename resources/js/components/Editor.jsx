@@ -197,6 +197,7 @@ class Editor extends Component {
 
   handleSubmit() {
     const { title, body, author, tags } = this.state;
+    const { path, method } = this.props;
     const isValid = this.handleValidation('post');
 
     if (isValid) {
@@ -206,19 +207,22 @@ class Editor extends Component {
         status: 'active',
         author: author.toLowerCase(),
         tags,
+        _method: method,
       };
 
-      axios
-        .post('/api/post', data, {
-          onUploadProgress: (e) => {
-            const progress = Math.round((e.loaded / e.total) * 100);
+      axios({
+        method: 'POST',
+        url: path,
+        data,
+        onUploadProgress: (e) => {
+          const progress = Math.round((e.loaded / e.total) * 100);
 
-            this.setState({
-              uploadProgress: progress,
-              isLoading: true,
-            });
-          },
-        })
+          this.setState({
+            uploadProgress: progress,
+            isLoading: true,
+          });
+        },
+      })
         .then((response) => {
           const { status, message } = response.data;
 
@@ -232,6 +236,10 @@ class Editor extends Component {
               message,
               isLoading: false,
             });
+
+            if (method === 'PUT') {
+              window.location.href = '/admin';
+            }
           } else if (status === 'failed') {
             this.setState({
               alert: true,
@@ -285,7 +293,7 @@ class Editor extends Component {
       isLoading,
       options,
     } = this.state;
-    const { cardTitle } = this.props;
+    const { cardTitle, method } = this.props;
 
     return (
       <Card className="editor">
@@ -443,7 +451,9 @@ class Editor extends Component {
           <Container>
             <Row>
               <Col xs={3}>
-                <Button onClick={this.handleSubmit}>Subir post</Button>
+                <Button onClick={this.handleSubmit}>
+                  {method === 'PUT' ? 'Editar post' : 'Subir post'}
+                </Button>
               </Col>
 
               <Col xs={9}>
@@ -467,6 +477,8 @@ Editor.propTypes = {
   setTags: PropTypes.array,
   setBody: PropTypes.string,
   cardTitle: PropTypes.string.isRequired,
+  path: PropTypes.string.isRequired,
+  method: PropTypes.string.isRequired,
 };
 
 Editor.defaultProps = {

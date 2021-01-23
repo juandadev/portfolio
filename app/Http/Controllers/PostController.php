@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Post;
 use App\PostsTags;
 use App\Tag;
+use Faker\Provider\Lorem;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -41,15 +42,15 @@ class PostController extends Controller
     {
         $tags = $request->tags;
 
-        if ($tags) {
+        if (count($tags) != 0) {
             for ($i = 0; $i < count($tags); $i++) {
                 $tag = $tags[$i];
 
-                $isCreated = Tag::where('name', $tag['name'])
+                $isCreated = Tag::where('name', $tag[0]['name'])
                     ->first();
 
                 if (!$isCreated) {
-                    Tag::create($tag);
+                    Tag::create($tag[0]);
                 }
             }
         } else {
@@ -74,7 +75,7 @@ class PostController extends Controller
         for ($i = 0; $i < count($tags); $i++) {
             $tag = $tags[$i];
 
-            $searchTag = Tag::where('name', $tag['name'])
+            $searchTag = Tag::where('name', $tag[0]['name'])
                 ->pluck('id')
                 ->first();
 
@@ -102,7 +103,50 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
-        $post->update($request->all());
+        $tags = $request->tags;
+        $postId = $post->id;
+        $posts_tags = PostsTags::where('post_id', $postId)->get();
+
+        for ($i = 0; $i < count($posts_tags); $i++) {
+            $post_tag = $posts_tags[$i];
+
+            $post_tag->delete();
+        }
+
+        if ($tags) {
+            for ($i = 0; $i < count($tags); $i++) {
+                $tag = $tags[$i];
+
+                $isCreated = Tag::where('name', $tag[0]['name'])
+                    ->first();
+
+                if (!$isCreated) {
+                    Tag::create($tag[0]);
+                }
+
+                $searchTag = Tag::where('name', $tag[0]['name'])
+                    ->pluck('id')
+                    ->first();
+
+                PostsTags::create([
+                    'post_id' => $postId,
+                    'tag_id' => $searchTag
+                ]);
+            }
+        } else {
+            return response()->json([
+                "status" => "failed",
+                "success" => false,
+                "message" => "Hubo un error con las etiquetas, revísalo antes de continuar",
+            ]);
+        }
+
+        $post->update([
+            'title' => $request->title,
+            'body' => $request->body,
+            'status' => $request->status,
+            'author' => $request->author
+        ]);
 
         return response()->json([
             "status" => $this->status_code,
