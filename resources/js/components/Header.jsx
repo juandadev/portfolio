@@ -33,7 +33,6 @@ const Header = (props) => {
   };
 
   return (
-    // TODO: Need to fix the nav links matching the URL
     <header className="header">
       <Navbar expand="lg" fixed="top">
         <Container>
@@ -70,11 +69,11 @@ const Header = (props) => {
 
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="ml-auto mr-auto">
-              <NavLink to="/" activeClassName="active" className="nav-link">
+              <NavLink exact to="/" activeClassName="active" className="nav-link">
                 Inicio
               </NavLink>
 
-              <NavLink to="/blog" activeClassName="active" className="nav-link">
+              <NavLink strict to="/blog/" activeClassName="active" className="nav-link">
                 Blog
               </NavLink>
 

@@ -83,7 +83,6 @@ class Admin extends Component {
     if (isLoggedIn) {
       return (
         <>
-          {/* TODO: Create all CRUD operations with redux */}
           <Header />
 
           <main className="admin">
@@ -167,7 +166,6 @@ class Admin extends Component {
                               </div>
 
                               <div className="controls">
-                                {/* TODO: Creating the edit and delete functions */}
                                 <Button
                                   variant="primary"
                                   onClick={() =>

@@ -1,5 +1,4 @@
 const reducer = (state, action) => {
-  // TODO: Pending to do the crud functions with redux
   switch (action.type) {
     case 'LOG_OUT':
       return action.payload;
