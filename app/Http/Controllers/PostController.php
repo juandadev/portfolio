@@ -42,6 +42,7 @@ class PostController extends Controller
     {
         $tags = $request->tags;
         $slug = str_replace(" ", "-", strtolower($request->title));
+        $tagsCreated = [];
 
         if (count($tags) != 0) {
             for ($i = 0; $i < count($tags); $i++) {
@@ -51,7 +52,8 @@ class PostController extends Controller
                     ->first();
 
                 if (!$isCreated) {
-                    Tag::create($tag[0]);
+                    $tagCreated = Tag::create($tag[0]);
+                    array_push($tagsCreated, $tagCreated);
                 }
             }
         } else {
@@ -71,7 +73,6 @@ class PostController extends Controller
         ]);
 
         $postCreated = Post::orderBy('created_at', 'desc')
-            ->pluck('id')
             ->first();
 
         for ($i = 0; $i < count($tags); $i++) {
@@ -82,17 +83,20 @@ class PostController extends Controller
                 ->first();
 
             PostsTags::create([
-                'post_id' => $postCreated,
+                'post_id' => $postCreated->id,
                 'tag_id' => $searchTag
             ]);
         }
 
+        $posts_tags = PostsTags::where('post_id', $postCreated->id)->get();
 
         return response()->json([
             "status" => $this->status_code,
             "success" => true,
             "message" => "En un momento te redirigiremos al post",
-            "data" => $postCreated
+            "post" => $postCreated,
+            "postsTags" => $posts_tags,
+            "tags" => $tagsCreated
         ]);
     }
 
@@ -174,7 +178,7 @@ class PostController extends Controller
             "status" => $this->status_code,
             "success" => true,
             "message" => "El post $post->name ha sido borrado con éxito de la base de datos.",
-            "data" => $post
+            "post" => $post,
         ]);
     }
 }

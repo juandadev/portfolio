@@ -5,6 +5,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import axios from 'axios';
+import { createPost } from '../actions';
 
 import {
   Card,
@@ -197,7 +198,7 @@ class Editor extends Component {
 
   handleSubmit() {
     const { title, body, author, tags } = this.state;
-    const { path, method } = this.props;
+    const { path, method, createPost } = this.props;
     const isValid = this.handleValidation('post');
 
     if (isValid) {
@@ -224,7 +225,7 @@ class Editor extends Component {
         },
       })
         .then((response) => {
-          const { status, message } = response.data;
+          const { status, message, post, postsTags, tags } = response.data;
 
           if (status === 200) {
             this.setState({
@@ -239,6 +240,9 @@ class Editor extends Component {
 
             if (method === 'PUT') {
               window.location.href = '/admin';
+            } else {
+              console.log(post, postsTags, tags);
+              createPost([post, postsTags, tags]);
             }
           } else if (status === 'failed') {
             this.setState({
@@ -491,4 +495,6 @@ const mapStateToProps = (state) => ({
   tags: state.tags,
 });
 
-export default connect(mapStateToProps, null)(Editor);
+const mapDispatchToProps = { createPost };
+
+export default connect(mapStateToProps, mapDispatchToProps)(Editor);

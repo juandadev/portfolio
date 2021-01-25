@@ -6,6 +6,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { PropTypes } from 'prop-types';
 import axios from 'axios';
+import { deletePost } from '../actions';
 
 import { Container, Row, Col, Tab, Button, Nav, Badge, Card, Modal, Alert } from 'react-bootstrap';
 import { Redirect } from 'react-router-dom';
@@ -49,6 +50,7 @@ class Admin extends Component {
 
   handleDelete() {
     const { id } = this.state;
+    const { deletePost } = this.props;
 
     axios({
       method: 'POST',
@@ -56,7 +58,7 @@ class Admin extends Component {
       data: { _method: 'DELETE' },
     })
       .then((response) => {
-        const { status, message } = response.data;
+        const { status, message, post } = response.data;
 
         if (status === 200) {
           this.setState({
@@ -65,6 +67,8 @@ class Admin extends Component {
             status: 'success',
             message,
           });
+
+          deletePost(post.id);
         }
       })
       .catch((error) =>
@@ -122,7 +126,7 @@ class Admin extends Component {
                     <Tab.Content>
                       <Alert show={alert} variant={status}>
                         <Alert.Heading>
-                          {status === 'succes'
+                          {status === 'success'
                             ? '¡Post eliminado con éxito!'
                             : '¡Hubo un error al eliminar el post!'}
                         </Alert.Heading>
@@ -272,4 +276,6 @@ const mapStateToProps = (state) => ({
   tags: state.tags,
 });
 
-export default connect(mapStateToProps, null)(Admin);
+const mapDispatchToProps = { deletePost };
+
+export default connect(mapStateToProps, mapDispatchToProps)(Admin);
