@@ -32,22 +32,10 @@ const Contact = () => (
         </Col>
       </Row>
 
-      <Row className="contact__card__social d-flex flex-column align-items-center justify-content-center">
-        <h3 className="contact__card__social--title h3">Mantente conectado</h3>
-
-        <p className="contact__card__social--address text">Chihuahua, México</p>
-
-        <a href="mailto:contacto@juandamartinez.com" className="contact__card__social--email">
-          contacto@juandamartinez.com
-        </a>
-
-        <p className="contact__card__social--phone">(+52) 1 627 122 5229</p>
-      </Row>
-
       <Row className="contact__card__prof">
         <Col className="d-flex justify-content-center">
           <a
-            href="http://bit.ly/github-juanda"
+            href="http://bit.ly/juanda-github"
             className="contact__card__prof--github d-flex justify-content-center align-items-center"
           >
             <svg
@@ -66,7 +54,7 @@ const Contact = () => (
           </a>
 
           <a
-            href="http://bit.ly/linkedin-juanda"
+            href="http://bit.ly/juanda-linkedin"
             className="contact__card__prof--linkedin d-flex justify-content-center align-items-center"
           >
             <svg
