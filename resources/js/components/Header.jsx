@@ -67,7 +67,7 @@ const Header = () => (
               </svg>
             </Nav.Link>
 
-            <Nav.Link href="http://bit.ly/twitter-juandadev">
+            <Nav.Link href="http://bit.ly/juanda-twitter">
               <svg
                 width={24}
                 height={24}
@@ -83,7 +83,7 @@ const Header = () => (
               </svg>
             </Nav.Link>
 
-            <Nav.Link href="http://bit.ly/insta-juandadev">
+            <Nav.Link href="http://bit.ly/juanda-instagram">
               <svg
                 width={23}
                 height={24}

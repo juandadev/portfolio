@@ -19,8 +19,8 @@ const Projects = () => {
       langs: ['CSS', 'javascript', 'laravel'],
       desc: '',
       image: compudramImg,
-      webLink: 'http://bit.ly/project-compudram',
-      repoLink: 'https://github.com/Juandamartn/compudram-system',
+      webLink: 'http://bit.ly/project-compudram-system',
+      repoLink: 'https://github.com/juandadev/compudram-system',
       color: 'rgba(0,146,230,0.07)',
     },
     {
@@ -30,7 +30,7 @@ const Projects = () => {
       desc: '',
       image: cuervoImg,
       webLink: 'http://bit.ly/project-cuervonut',
-      repoLink: 'https://github.com/Juandamartn/cuervo.mx',
+      repoLink: 'https://github.com/juandadev/cuervo.mx',
       color: 'rgba(166,60,60,0.07)',
     },
     {
@@ -49,8 +49,8 @@ const Projects = () => {
       langs: ['bootstrap', 'react', 'laravel'],
       desc: '',
       image: portfolioImg,
-      webLink: 'https://juandamartinez.com/',
-      repoLink: 'https://github.com/Juandamartn/portfolio',
+      webLink: 'https://juanda.dev/',
+      repoLink: 'https://github.com/juandadev/portfolio',
       color: 'rgba(0,56,168,0.07)',
     },
     {
@@ -59,8 +59,8 @@ const Projects = () => {
       langs: ['CSS', 'javascript', 'API'],
       desc: '',
       image: countriesImg,
-      webLink: 'http://bit.ly/project-countries',
-      repoLink: 'https://github.com/Juandamartn/rest-countries-webpage',
+      webLink: 'http://bit.ly/project-rest-countries',
+      repoLink: 'https://github.com/juandadev/rest-countries-webpage',
       color: '#f2f2f2',
     },
     {
@@ -69,8 +69,8 @@ const Projects = () => {
       langs: ['CSS', 'javascript'],
       desc: '',
       image: jobsImg,
-      webLink: 'http://bit.ly/project-job-listing',
-      repoLink: 'https://github.com/Juandamartn/static-job-listing',
+      webLink: 'http://bit.ly/project-jobs',
+      repoLink: 'https://github.com/juandadev/static-job-listing',
       color: 'rgba(239,250,250,0.7)',
     },
   ];
