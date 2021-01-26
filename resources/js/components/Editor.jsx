@@ -90,7 +90,6 @@ class Editor extends Component {
   }
 
   handleTags(e) {
-    // TODO: Avoid accents in tags
     const { tags } = this.state;
     const { value } = e.target;
     const isValid = this.handleValidation('tag', value);

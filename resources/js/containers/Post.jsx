@@ -12,7 +12,6 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 
 import '../../sass/Post.scss';
-import { create } from 'lodash';
 
 const Post = (props) => {
   const md = new Remarkable();
@@ -39,6 +38,7 @@ const Post = (props) => {
   }
 
   return (
+    // TODO: Agregar imagen de portada a los posts, color de fondo y contador de visitas.
     <div className="post-view">
       <Header />
 
