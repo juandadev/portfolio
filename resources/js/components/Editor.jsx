@@ -31,6 +31,7 @@ class Editor extends Component {
     this.state = {
       title: '',
       cover: {},
+      coverPreview: '',
       color: '',
       body: '',
       tags: [],
@@ -59,17 +60,18 @@ class Editor extends Component {
   }
 
   componentDidMount() {
-    const { setTitle, setTags, setBody } = this.props;
+    const { setTitle, setCover, setTags, setBody } = this.props;
 
     this.setState({
       title: setTitle,
+      coverPreview: setCover,
       tags: setTags,
       body: setBody,
     });
   }
 
   handleChange(e) {
-    const { value, name } = e.target;
+    const { value, name, files } = e.target;
     const { tags } = this.props;
     const data = {};
 
@@ -83,6 +85,8 @@ class Editor extends Component {
       this.setState({
         options: options.slice(0, 5),
       });
+    } else if (name === 'cover') {
+      this.setState({ coverPreview: URL.createObjectURL(files[0]) });
     }
 
     setTimeout(() => {
@@ -148,7 +152,7 @@ class Editor extends Component {
   }
 
   handleValidation(type, value = '') {
-    const { title, body, author, tags } = this.state;
+    const { title, cover, body, author, tags } = this.state;
     let constExists;
 
     switch (type) {
@@ -163,19 +167,51 @@ class Editor extends Component {
 
       case 'post':
         if (title === '') {
-          this.setState({ alert: true, status: 'danger', message: 'Faltan campos por rellenar' });
+          this.setState({
+            alert: true,
+            status: 'danger',
+            message: 'Necesitas poner un título al post',
+          });
+
+          return false;
+        }
+
+        if (Object.keys(cover).length === 0) {
+          this.setState({
+            alert: true,
+            status: 'danger',
+            message: 'Necesitas subir una foto de portada',
+          });
 
           return false;
         }
 
         if (body === '') {
-          this.setState({ alert: true, status: 'danger', message: 'Faltan campos por rellenar' });
+          this.setState({
+            alert: true,
+            status: 'danger',
+            message: 'Necesitar escribir algo en el post',
+          });
+
+          return false;
+        }
+
+        if (tags.length === 0) {
+          this.setState({
+            alert: true,
+            status: 'danger',
+            message: 'Necesitas agregar etiquetas al post',
+          });
 
           return false;
         }
 
         if (author === '') {
-          this.setState({ alert: true, status: 'danger', message: 'Faltan campos por rellenar' });
+          this.setState({
+            alert: true,
+            status: 'danger',
+            message: 'Necesitas especificar el autor',
+          });
 
           return false;
         }
@@ -300,6 +336,8 @@ class Editor extends Component {
     const {
       body,
       title,
+      cover,
+      coverPreview,
       tags,
       author,
       tagValue,
@@ -337,6 +375,30 @@ class Editor extends Component {
                     onChange={this.handleChange}
                   />
                 </InputGroup>
+
+                <InputGroup className="mb-3">
+                  <InputGroup.Prepend>
+                    <InputGroup.Text id="basic-addon1">Portada</InputGroup.Text>
+                  </InputGroup.Prepend>
+
+                  <Form.File
+                    id="cover"
+                    name="cover"
+                    label="Sube una imagen de portada"
+                    custom
+                    onChange={this.handleChange}
+                  />
+                </InputGroup>
+
+                {coverPreview ? (
+                  <InputGroup className="mb-3">
+                    <div className="cover-preview d-flex justify-content-center">
+                      <img src={coverPreview} alt="Cover preview" />
+                    </div>
+                  </InputGroup>
+                ) : (
+                  ''
+                )}
 
                 <InputGroup className="mb-3">
                   <InputGroup.Prepend>
@@ -494,6 +556,7 @@ class Editor extends Component {
 Editor.propTypes = {
   tags: PropTypes.array.isRequired,
   setTitle: PropTypes.string,
+  setCover: PropTypes.string,
   setTags: PropTypes.array,
   setBody: PropTypes.string,
   cardTitle: PropTypes.string.isRequired,
@@ -504,6 +567,7 @@ Editor.propTypes = {
 
 Editor.defaultProps = {
   setTitle: '',
+  setCover: '',
   setTags: [],
   setBody: '',
 };

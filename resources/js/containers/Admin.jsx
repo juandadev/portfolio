@@ -22,6 +22,7 @@ class Admin extends Component {
     this.state = {
       id: 0,
       title: '',
+      cover: '',
       body: '',
       postTags: [],
       show: false,
@@ -77,7 +78,19 @@ class Admin extends Component {
   }
 
   render() {
-    const { show, title, alert, message, status, tab, edit, body, postTags, id } = this.state;
+    const {
+      show,
+      title,
+      cover,
+      alert,
+      message,
+      status,
+      tab,
+      edit,
+      body,
+      postTags,
+      id,
+    } = this.state;
     const { isLoggedIn, posts, poststags, tags } = this.props;
 
     if (isLoggedIn) {
@@ -172,6 +185,7 @@ class Admin extends Component {
                                     this.setState({
                                       id: post.id,
                                       title: post.title,
+                                      cover: post.cover,
                                       body: post.body,
                                       postTags: [
                                         ...poststags
@@ -237,6 +251,7 @@ class Admin extends Component {
                           <Editor
                             cardTitle="Editar post"
                             setTitle={title}
+                            setCover={cover}
                             setBody={body}
                             setTags={postTags}
                             path={`/api/post/${id}`}
