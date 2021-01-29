@@ -18,7 +18,10 @@ class CreatePostsTable extends Migration
             $table->string('title');
             $table->string('slug')->unique();
             $table->text('body');
-            $table->enum('status', ['active', 'archived', 'draft']);
+            $table->enum('status', ['active', 'disabled', 'archived', 'draft'])->default('active');
+            $table->string('cover');
+            $table->string('color');
+            $table->integer('views')->default(0);
             $table->string('author');
             $table->timestamps();
         });

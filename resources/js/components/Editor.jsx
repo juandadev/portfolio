@@ -5,8 +5,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import axios from 'axios';
-import { createPost } from '../actions';
-
+import { Remarkable } from 'remarkable';
 import {
   Card,
   Button,
@@ -22,8 +21,7 @@ import {
   Row,
   Col,
 } from 'react-bootstrap';
-import { Remarkable } from 'remarkable';
-
+import { createPost } from '../actions';
 import '../../sass/Editor.scss';
 
 class Editor extends Component {
@@ -32,6 +30,8 @@ class Editor extends Component {
 
     this.state = {
       title: '',
+      cover: {},
+      color: '',
       body: '',
       tags: [],
       tagValue: '',
@@ -55,6 +55,7 @@ class Editor extends Component {
     this.deleteTags = this.deleteTags.bind(this);
     this.handleValidation = this.handleValidation.bind(this);
     this.handleClick = this.handleClick.bind(this);
+    this.handleFile = this.handleFile.bind(this);
   }
 
   componentDidMount() {
@@ -195,25 +196,41 @@ class Editor extends Component {
     }
   }
 
+  handleFile(e) {
+    const { files } = e.target;
+
+    this.setState({ cover: files[0] });
+  }
+
   handleSubmit() {
-    const { title, body, author, tags } = this.state;
+    const { title, cover, body, author, tags } = this.state;
     const { path, method, createPost } = this.props;
     const isValid = this.handleValidation('post');
 
     if (isValid) {
-      const data = {
-        title,
-        body,
-        status: 'active',
-        author: author.toLowerCase(),
-        tags,
-        _method: method,
-      };
+      const formData = new FormData();
+
+      formData.append('title', title);
+      formData.append('cover', cover);
+      formData.append('body', body);
+      formData.append('author', author);
+      formData.append('tags', tags);
+      formData.append('_method', method);
+
+      // const data = {
+      //   title,
+      //   body,
+      //   status: 'active',
+      //   author: author.toLowerCase(),
+      //   tags,
+      //   _method: method,
+      // };
 
       axios({
         method: 'POST',
         url: path,
-        data,
+        formData,
+        headers: { 'Content-Type': 'multipart/form-data' },
         onUploadProgress: (e) => {
           const progress = Math.round((e.loaded / e.total) * 100);
 
@@ -240,7 +257,6 @@ class Editor extends Component {
             if (method === 'PUT') {
               window.location.href = '/admin';
             } else {
-              console.log(post, postsTags, tags);
               createPost([post, postsTags, tags]);
             }
           } else if (status === 'failed') {
@@ -280,6 +296,7 @@ class Editor extends Component {
   }
 
   render() {
+    // TODO: Create functions to disable posts, save them in draft or archive them
     const {
       body,
       title,
@@ -433,7 +450,7 @@ class Editor extends Component {
             </Tab>
           </Tabs>
 
-          <Alert show={alert} variant={status}>
+          <Alert show={alert} variant={status} className="position-absolute fixed-top">
             <Alert.Heading>
               {status === 'success' ? '¡Post subido con éxito!' : '¡Error al subir el post!'}
             </Alert.Heading>
@@ -482,6 +499,7 @@ Editor.propTypes = {
   cardTitle: PropTypes.string.isRequired,
   path: PropTypes.string.isRequired,
   method: PropTypes.string.isRequired,
+  createPost: PropTypes.any.isRequired,
 };
 
 Editor.defaultProps = {
