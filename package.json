@@ -28,7 +28,6 @@
     "sass-loader": "^8.0.0"
   },
   "dependencies": {
-    "@jaames/iro": "^5.3.1",
     "axios": "^0.21.1",
     "bootstrap": "^4.5.3",
     "jquery": "^3.2",
@@ -37,6 +36,7 @@
     "prop-types": "^15.7.2",
     "react": "^16.2.0",
     "react-bootstrap": "^1.4.0",
+    "react-color": "^2.19.3",
     "react-dom": "^16.2.0",
     "react-gtm-module": "^2.0.11",
     "react-redux": "^7.2.2",

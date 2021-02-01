@@ -6,6 +6,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import axios from 'axios';
 import { Remarkable } from 'remarkable';
+import { BlockPicker } from 'react-color';
 import {
   Card,
   Button,
@@ -32,7 +33,8 @@ class Editor extends Component {
       title: '',
       cover: {},
       coverPreview: '',
-      color: '',
+      color: '#007bff',
+      displayPicker: false,
       body: '',
       tags: [],
       tagValue: '',
@@ -92,6 +94,8 @@ class Editor extends Component {
     setTimeout(() => {
       this.handleValidation('preview');
     }, 100);
+
+    return true;
   }
 
   handleTags(e) {
@@ -336,8 +340,9 @@ class Editor extends Component {
     const {
       body,
       title,
-      cover,
       coverPreview,
+      color,
+      displayPicker,
       tags,
       author,
       tagValue,
@@ -389,6 +394,47 @@ class Editor extends Component {
                     onChange={this.handleChange}
                   />
                 </InputGroup>
+
+                {/* TODO: Need to add the color value into submit request */}
+                <InputGroup className="mb-3">
+                  <InputGroup.Prepend>
+                    <InputGroup.Text id="basic-addon1">Color de fondo</InputGroup.Text>
+                  </InputGroup.Prepend>
+
+                  <Form.Control
+                    type="text"
+                    name="color"
+                    style={{ color }}
+                    placeholder="Escoge un color de fondo"
+                    value={color}
+                    onClick={() => this.setState({ displayPicker: !displayPicker })}
+                    readOnly
+                  />
+                </InputGroup>
+
+                {displayPicker ? (
+                  <BlockPicker
+                    color={color}
+                    colors={[
+                      '#007bff',
+                      '#6610f2',
+                      '#6f42c1',
+                      '#e83e8c',
+                      '#dc3545',
+                      '#fd7e14',
+                      '#ffc107',
+                      '#28a745',
+                      '#17a2b8',
+                      '#6c757d',
+                      '#343a40',
+                    ]}
+                    onChangeComplete={(color) =>
+                      this.setState({ color: color.hex, displayPicker: !displayPicker })
+                    }
+                  />
+                ) : (
+                  ''
+                )}
 
                 {coverPreview ? (
                   <InputGroup className="mb-3">

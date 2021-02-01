@@ -34,3 +34,8 @@
 .editor .cover-preview img {
   height: 100%;
 }
+
+.editor .block-picker {
+  position: absolute !important;
+  z-index: 2;
+}

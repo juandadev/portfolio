@@ -6,10 +6,10 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { PropTypes } from 'prop-types';
 import axios from 'axios';
-import { deletePost } from '../actions';
 
 import { Container, Row, Col, Tab, Button, Nav, Badge, Card, Modal, Alert } from 'react-bootstrap';
 import { Redirect } from 'react-router-dom';
+import { deletePost } from '../actions';
 import Header from '../components/Header';
 import Editor from '../components/Editor';
 
