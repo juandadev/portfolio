@@ -33,7 +33,7 @@ class Editor extends Component {
       title: '',
       cover: {},
       coverPreview: '',
-      color: '#007bff',
+      color: '',
       displayPicker: false,
       body: '',
       tags: [],
@@ -62,18 +62,19 @@ class Editor extends Component {
   }
 
   componentDidMount() {
-    const { setTitle, setCover, setTags, setBody } = this.props;
+    const { setTitle, setCover, setColor, setTags, setBody } = this.props;
 
     this.setState({
       title: setTitle,
       coverPreview: setCover,
+      color: setColor,
       tags: setTags,
       body: setBody,
     });
   }
 
   handleChange(e) {
-    const { value, name, files } = e.target;
+    const { value, name } = e.target;
     const { tags } = this.props;
     const data = {};
 
@@ -87,15 +88,11 @@ class Editor extends Component {
       this.setState({
         options: options.slice(0, 5),
       });
-    } else if (name === 'cover') {
-      this.setState({ coverPreview: URL.createObjectURL(files[0]) });
     }
 
     setTimeout(() => {
       this.handleValidation('preview');
     }, 100);
-
-    return true;
   }
 
   handleTags(e) {
@@ -156,7 +153,7 @@ class Editor extends Component {
   }
 
   handleValidation(type, value = '') {
-    const { title, cover, body, author, tags } = this.state;
+    const { title, color, body, author, tags } = this.state;
     let constExists;
 
     switch (type) {
@@ -180,11 +177,11 @@ class Editor extends Component {
           return false;
         }
 
-        if (Object.keys(cover).length === 0) {
+        if (color === '') {
           this.setState({
             alert: true,
             status: 'danger',
-            message: 'Necesitas subir una foto de portada',
+            message: 'Necesitas elegir un color de fondo',
           });
 
           return false;
@@ -239,11 +236,11 @@ class Editor extends Component {
   handleFile(e) {
     const { files } = e.target;
 
-    this.setState({ cover: files[0] });
+    this.setState({ cover: files[0], coverPreview: URL.createObjectURL(files[0]) });
   }
 
   handleSubmit() {
-    const { title, cover, body, author, tags } = this.state;
+    const { title, cover, color, body, author, tags } = this.state;
     const { path, method, createPost } = this.props;
     const isValid = this.handleValidation('post');
 
@@ -252,24 +249,16 @@ class Editor extends Component {
 
       formData.append('title', title);
       formData.append('cover', cover);
+      formData.append('color', color);
       formData.append('body', body);
       formData.append('author', author);
-      formData.append('tags', tags);
+      formData.append('tags', JSON.stringify(tags));
       formData.append('_method', method);
-
-      // const data = {
-      //   title,
-      //   body,
-      //   status: 'active',
-      //   author: author.toLowerCase(),
-      //   tags,
-      //   _method: method,
-      // };
 
       axios({
         method: 'POST',
         url: path,
-        formData,
+        data: formData,
         headers: { 'Content-Type': 'multipart/form-data' },
         onUploadProgress: (e) => {
           const progress = Math.round((e.loaded / e.total) * 100);
@@ -286,6 +275,8 @@ class Editor extends Component {
           if (status === 200) {
             this.setState({
               title: '',
+              coverPreview: '',
+              color: '',
               body: '',
               tags: [],
               alert: true,
@@ -391,11 +382,20 @@ class Editor extends Component {
                     name="cover"
                     label="Sube una imagen de portada"
                     custom
-                    onChange={this.handleChange}
+                    onChange={this.handleFile}
                   />
                 </InputGroup>
 
-                {/* TODO: Need to add the color value into submit request */}
+                {coverPreview ? (
+                  <InputGroup className="mb-3">
+                    <div className="cover-preview d-flex justify-content-center">
+                      <img src={coverPreview} alt="Cover preview" />
+                    </div>
+                  </InputGroup>
+                ) : (
+                  ''
+                )}
+
                 <InputGroup className="mb-3">
                   <InputGroup.Prepend>
                     <InputGroup.Text id="basic-addon1">Color de fondo</InputGroup.Text>
@@ -404,6 +404,7 @@ class Editor extends Component {
                   <Form.Control
                     type="text"
                     name="color"
+                    className={color ? 'is-valid' : 'is-invalid'}
                     style={{ color }}
                     placeholder="Escoge un color de fondo"
                     value={color}
@@ -428,20 +429,11 @@ class Editor extends Component {
                       '#6c757d',
                       '#343a40',
                     ]}
-                    onChangeComplete={(color) =>
-                      this.setState({ color: color.hex, displayPicker: !displayPicker })
+                    onChangeComplete={
+                      (color) => this.setState({ color: color.hex, displayPicker: !displayPicker })
+                      // eslint-disable-next-line react/jsx-curly-newline
                     }
                   />
-                ) : (
-                  ''
-                )}
-
-                {coverPreview ? (
-                  <InputGroup className="mb-3">
-                    <div className="cover-preview d-flex justify-content-center">
-                      <img src={coverPreview} alt="Cover preview" />
-                    </div>
-                  </InputGroup>
                 ) : (
                   ''
                 )}
@@ -603,6 +595,7 @@ Editor.propTypes = {
   tags: PropTypes.array.isRequired,
   setTitle: PropTypes.string,
   setCover: PropTypes.string,
+  setColor: PropTypes.string,
   setTags: PropTypes.array,
   setBody: PropTypes.string,
   cardTitle: PropTypes.string.isRequired,
@@ -614,6 +607,7 @@ Editor.propTypes = {
 Editor.defaultProps = {
   setTitle: '',
   setCover: '',
+  setColor: '',
   setTags: [],
   setBody: '',
 };

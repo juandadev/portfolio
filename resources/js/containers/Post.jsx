@@ -19,15 +19,19 @@ const Post = (props) => {
   const { tags, poststags } = props;
   const [id, setId] = useState(0);
   const [title, setTitle] = useState('');
+  const [cover, setCover] = useState('');
+  const [color, setColor] = useState('');
   const [body, setBody] = useState('');
   const [author, setAuthor] = useState('');
   const [date, setDate] = useState('');
 
   axios.get(`/api/blog/${slug}`).then((response) => {
-    const { id, title, body, author, created_at } = response.data;
+    const { id, title, cover, color, body, author, created_at } = response.data;
 
     setId(id);
     setTitle(title);
+    setCover(cover);
+    setColor(color);
     setBody(body);
     setAuthor(author);
     setDate(created_at.slice(0, 10));
@@ -38,7 +42,6 @@ const Post = (props) => {
   }
 
   return (
-    // TODO: Agregar imagen de portada a los posts, color de fondo y contador de visitas.
     <div className="post-view">
       <Header />
 
@@ -46,10 +49,14 @@ const Post = (props) => {
         <Row>
           <Col>
             <div className="post">
-              <h1 className="post-title">{title}</h1>
+              <h1 className="post-title" style={{ color }}>
+                {title}
+              </h1>
+
+              <img src={`/storage/${cover}`} alt="Post cover" style={{ width: '100%' }} />
 
               <p className="author">
-                Por {author} - {date.replace(/-/g, '/')}
+                Por {author} | {date.replace(/-/g, '/')}
               </p>
 
               <div className="tags">

@@ -40,7 +40,7 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        $tags = $request->tags;
+        $tags = json_decode($request->tags);
         $slug = str_replace(" ", "-", strtolower($request->title));
         $tagsCreated = [];
 
@@ -48,7 +48,7 @@ class PostController extends Controller
             for ($i = 0; $i < count($tags); $i++) {
                 $tag = $tags[$i];
 
-                $isCreated = Tag::where('name', $tag[0]['name'])
+                $isCreated = Tag::where('name', $tag[0]->name)
                     ->first();
 
                 if (!$isCreated) {
@@ -66,10 +66,11 @@ class PostController extends Controller
 
         Post::create([
             'title' => $request->title,
+            'slug' => $slug,
             'body' => $request->body,
-            'status' => $request->status,
+            'cover' => $request->cover,
+            'color' => $request->color,
             'author' => $request->author,
-            'slug' => $slug
         ]);
 
         $postCreated = Post::orderBy('created_at', 'desc')
@@ -78,7 +79,7 @@ class PostController extends Controller
         for ($i = 0; $i < count($tags); $i++) {
             $tag = $tags[$i];
 
-            $searchTag = Tag::where('name', $tag[0]['name'])
+            $searchTag = Tag::where('name', $tag[0]->name)
                 ->pluck('id')
                 ->first();
 
@@ -89,6 +90,11 @@ class PostController extends Controller
         }
 
         $posts_tags = PostsTags::where('post_id', $postCreated->id)->get();
+
+        if ($request->file('cover')) {
+            $postCreated->cover = $request->file('cover')->store('posts', 'public');
+            $postCreated->save();
+        }
 
         return response()->json([
             "status" => $this->status_code,
