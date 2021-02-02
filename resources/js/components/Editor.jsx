@@ -372,6 +372,10 @@ class Editor extends Component {
                   />
                 </InputGroup>
 
+                <Form.Text className="text-muted">
+                  El tamaño óptimo para la imagen es de 920 x 465 px
+                </Form.Text>
+
                 <InputGroup className="mb-3">
                   <InputGroup.Prepend>
                     <InputGroup.Text id="basic-addon1">Portada</InputGroup.Text>

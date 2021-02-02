@@ -59,7 +59,7 @@ const Post = (props) => {
             </div>
 
             <h1 className="post-head__title">{title}</h1>
-
+            {/* TODO: Parse date to dd/mm/aaaa format */}
             <p className="post-head__author">
               Por {author} | {date.replace(/-/g, '/')}
             </p>
