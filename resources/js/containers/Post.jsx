@@ -46,30 +46,38 @@ const Post = (props) => {
       <Header color={color} />
 
       <Container>
-        <Row>
+        <Row className="post-head">
           <Col>
-            <div className="post">
-              <h1 className="post-title" style={{ color }}>
-                {title}
-              </h1>
-
-              <img src={`/storage/${cover}`} alt="Post cover" style={{ width: '100%' }} />
-
-              <p className="author">
-                Por {author} | {date.replace(/-/g, '/')}
-              </p>
-
-              <div className="tags">
+            <div className="post-head__tags">
+              <p>
                 {poststags
                   .filter((postTag) => postTag.post_id === id)
-                  .map((tag) => (
-                    <Badge variant="secondary" key={`viewPost-tag-${tag.id}`}>
-                      {tags.filter((tagName) => tagName.id === tag.tag_id)[0].name}
-                    </Badge>
-                  ))}
-              </div>
+                  .map(
+                    (tag) => `#${tags.filter((tagName) => tagName.id === tag.tag_id)[0].name}, `,
+                  )}
+              </p>
+            </div>
 
-              <div className="post-view__body post" dangerouslySetInnerHTML={getRawMarkup()} />
+            <h1 className="post-head__title">{title}</h1>
+
+            <p className="post-head__author">
+              Por {author} | {date.replace(/-/g, '/')}
+            </p>
+          </Col>
+        </Row>
+
+        <Row className="post-cover">
+          <Col xs={10}>
+            <img src={`/storage/${cover}`} alt="Post cover" />
+          </Col>
+        </Row>
+
+        <div className="post-bg" style={{ backgroundColor: color }} />
+
+        <Row>
+          <Col>
+            <div className="post-content">
+              <div className="post-content__body" dangerouslySetInnerHTML={getRawMarkup()} />
             </div>
           </Col>
         </Row>
