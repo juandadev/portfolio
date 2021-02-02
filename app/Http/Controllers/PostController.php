@@ -16,6 +16,7 @@ class PostController extends Controller
 
     public function show(Post $post)
     {
+        // TODO: Need to do a view counter on each request
         return $post;
     }
 

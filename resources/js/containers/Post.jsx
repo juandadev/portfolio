@@ -43,7 +43,7 @@ const Post = (props) => {
 
   return (
     <div className="post-view">
-      <Header />
+      <Header color={color} />
 
       <Container>
         <Row>
