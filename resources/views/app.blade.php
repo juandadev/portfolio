@@ -39,6 +39,9 @@
 <body>
     <div id="app"></div>
 
+    <div id="fb-root"></div>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/es_ES/sdk.js#xfbml=1&version=v9.0"
+        nonce="OFjxN8KN"></script>
     <script src="{{ asset('js/app.js') }}" defer></script>
 </body>
 

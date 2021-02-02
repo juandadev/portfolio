@@ -81,6 +81,17 @@ const Post = (props) => {
             </div>
           </Col>
         </Row>
+
+        <Row className="post-comments">
+          <Col>
+            <div
+              className="fb-comments"
+              data-href={`https://juanda.dev/blog/${slug}`}
+              data-width="100%"
+              data-numposts={5}
+            />
+          </Col>
+        </Row>
       </Container>
 
       <Footer />
