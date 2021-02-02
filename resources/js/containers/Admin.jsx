@@ -23,6 +23,7 @@ class Admin extends Component {
       id: 0,
       title: '',
       cover: '',
+      color: '',
       body: '',
       postTags: [],
       show: false,
@@ -82,6 +83,7 @@ class Admin extends Component {
       show,
       title,
       cover,
+      color,
       alert,
       message,
       status,
@@ -186,6 +188,7 @@ class Admin extends Component {
                                       id: post.id,
                                       title: post.title,
                                       cover: post.cover,
+                                      color: post.color,
                                       body: post.body,
                                       postTags: [
                                         ...poststags
@@ -251,7 +254,8 @@ class Admin extends Component {
                           <Editor
                             cardTitle="Editar post"
                             setTitle={title}
-                            setCover={cover}
+                            setCover={`/storage/${cover}`}
+                            setColor={color}
                             setBody={body}
                             setTags={postTags}
                             path={`/api/post/${id}`}

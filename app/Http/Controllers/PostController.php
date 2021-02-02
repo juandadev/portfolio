@@ -8,6 +8,7 @@ use App\Tag;
 use Faker\Provider\Lorem;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 class PostController extends Controller
 {
@@ -52,7 +53,9 @@ class PostController extends Controller
                     ->first();
 
                 if (!$isCreated) {
-                    $tagCreated = Tag::create($tag[0]);
+                    $tagCreated = Tag::create([
+                        'name' => $tag[0]->name
+                    ]);
                     array_push($tagsCreated, $tagCreated);
                 }
             }
@@ -115,7 +118,7 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
-        $tags = $request->tags;
+        $tags = json_decode($request->tags);
         $postId = $post->id;
         $slug = str_replace(" ", "-", strtolower($request->title));
         $posts_tags = PostsTags::where('post_id', $postId)->get();
@@ -130,14 +133,16 @@ class PostController extends Controller
             for ($i = 0; $i < count($tags); $i++) {
                 $tag = $tags[$i];
 
-                $isCreated = Tag::where('name', $tag[0]['name'])
+                $isCreated = Tag::where('name', $tag[0]->name)
                     ->first();
 
                 if (!$isCreated) {
-                    Tag::create($tag[0]);
+                    Tag::create([
+                        'name' => $tag[0]->name
+                    ]);
                 }
 
-                $searchTag = Tag::where('name', $tag[0]['name'])
+                $searchTag = Tag::where('name', $tag[0]->name)
                     ->pluck('id')
                     ->first();
 
@@ -157,10 +162,16 @@ class PostController extends Controller
         $post->update([
             'title' => $request->title,
             'body' => $request->body,
-            'status' => $request->status,
+            'color' => $request->color,
             'author' => $request->author,
             'slug' => $slug
         ]);
+
+        if ($request->file('cover')) {
+            Storage::disk('public')->delete($post->cover);
+            $post->cover = $request->file('cover')->store('posts', 'public');
+            $post->save();
+        }
 
         return response()->json([
             "status" => $this->status_code,
@@ -179,6 +190,10 @@ class PostController extends Controller
     public function destroy(Post $post)
     {
         $post->delete();
+
+        if ($post->cover) {
+            Storage::disk('public')->delete($post->cover);
+        }
 
         return response()->json([
             "status" => $this->status_code,
