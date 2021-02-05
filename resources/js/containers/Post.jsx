@@ -1,7 +1,7 @@
 /* eslint-disable react/jsx-curly-newline */
 /* eslint-disable camelcase */
 /* eslint-disable react/jsx-one-expression-per-line */
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import { Remarkable } from 'remarkable';
@@ -38,6 +38,10 @@ const Post = (props) => {
     setBody(body);
     setAuthor(author);
     setDate(created_at.slice(0, 10));
+  });
+
+  useEffect(() => {
+    document.title = `${title} | Juan Daniel Martínez`;
   });
 
   const getRawMarkup = () => ({ __html: md.render(body) });

@@ -22,6 +22,10 @@ Route::get('/admin', function () {
     return view('app');
 });
 
+Route::get('/blog', function () {
+    return view('app');
+});
+
 Route::get('/blog/{post:slug}', function () {
     return view('app');
 });

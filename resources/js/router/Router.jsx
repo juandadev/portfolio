@@ -9,6 +9,7 @@ import Admin from '../containers/Admin';
 import Login from '../containers/Login';
 import Register from '../containers/Register';
 import Post from '../containers/Post';
+import Blog from '../containers/Blog';
 
 const Router = (props) => {
   const { initPosts } = props;
@@ -30,7 +31,7 @@ const Router = (props) => {
 
         <Route path="/blog/:slug" component={Post} />
 
-        <Route path="/blog" />
+        <Route path="/blog" component={Blog} />
 
         <Route exact path="/" component={Home} />
       </Switch>
