@@ -2,6 +2,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import '../../sass/BlogCard.scss';
+
 const BlogCard = (props) => {
   const { type, cover, title, tags, body, created_at } = props;
 

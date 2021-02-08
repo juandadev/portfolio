@@ -1,0 +1,38 @@
+.blog__head .h1,
+.blog__head .text {
+  text-align: center;
+}
+
+.blog__head .text {
+  margin-bottom: 1rem;
+}
+
+.blog__head--search input {
+  margin-bottom: 1rem;
+  padding: 0.5rem 2rem;
+  width: 100%;
+  max-width: 366px;
+  min-width: 290px;
+  outline: none;
+  background: url('../svg/search.svg');
+  background-repeat: no-repeat;
+  background-size: 15px;
+  background-position-x: 97%;
+  background-position-y: center;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 0.5rem;
+  -webkit-border-radius: 0.5rem;
+  -moz-border-radius: 0.5rem;
+  -ms-border-radius: 0.5rem;
+  -o-border-radius: 0.5rem;
+}
+
+.blog__head--search input::placeholder {
+  color: rgba(0, 0, 0, 0.2);
+}
+
+@media screen and (max-width: 991px) {
+  .blog__head .h1 {
+    font-size: 3rem;
+  }
+}
