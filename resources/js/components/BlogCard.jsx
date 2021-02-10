@@ -26,18 +26,18 @@ const BlogCard = (props) => {
         />
       </div>
 
-      <div className="blog-card__info">
-        <h3 className="blog-card__info--title">{title}</h3>
+      <div className="blog-card--gradient" />
 
-        <p className="blog-card__info--tags">{tags.map((tag) => `#${tag.name}, `)}</p>
+      <div className="blog-card__info d-flex flex-column justify-content-between">
+        <div className="blog-card__info__head">
+          <h3 className="blog-card__info__head--title">{title}</h3>
 
-        {type === 'desktop-popular' || type === 'desktop-recents' ? (
-          <p className="blog-card__info--desc">
-            {type === 'desktop-popular' ? `${body.slice(0, 440)}...` : `${body.slice(0, 220)}...`}
-          </p>
-        ) : (
-          ''
-        )}
+          <p className="blog-card__info__head--tags">{tags.map((tag) => `#${tag.name}, `)}</p>
+        </div>
+
+        <p className="blog-card__info--desc">
+          {type === 'desktop-popular' ? `${body.slice(0, 440)}...` : `${body.slice(0, 530)}...`}
+        </p>
 
         <p className="blog-card__info--date">{parseDate(created_at)}</p>
       </div>

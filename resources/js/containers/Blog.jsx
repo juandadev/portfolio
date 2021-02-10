@@ -65,21 +65,22 @@ class Blog extends Component {
               <p className="text">Aquí es donde comparto un poco de mi conocimiento</p>
 
               <div className="blog__head--search d-flex justify-content-center">
-                <div className="deleteSearch-icon"></div>
-                <svg
-                  width={15}
-                  height={15}
-                  viewBox="0 0 15 15"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    fillRule="evenodd"
-                    clipRule="evenodd"
-                    d="M0 7.5C0 3.35786 3.35786 0 7.5 0C11.6421 0 15 3.35786 15 7.5C15 11.6421 11.6421 15 7.5 15C3.35786 15 0 11.6421 0 7.5ZM10.1465 10.8536L7.50004 8.20714L4.85359 10.8536L4.14648 10.1465L6.79293 7.50004L4.14648 4.85359L4.85359 4.14648L7.50004 6.79293L10.1465 4.14648L10.8536 4.85359L8.20714 7.50004L10.8536 10.1465L10.1465 10.8536Z"
-                    fill="black"
-                  />
-                </svg>
+                <div className="deleteSearch-icon">
+                  <svg
+                    width={15}
+                    height={15}
+                    viewBox="0 0 15 15"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      clipRule="evenodd"
+                      d="M0 7.5C0 3.35786 3.35786 0 7.5 0C11.6421 0 15 3.35786 15 7.5C15 11.6421 11.6421 15 7.5 15C3.35786 15 0 11.6421 0 7.5ZM10.1465 10.8536L7.50004 8.20714L4.85359 10.8536L4.14648 10.1465L6.79293 7.50004L4.14648 4.85359L4.85359 4.14648L7.50004 6.79293L10.1465 4.14648L10.8536 4.85359L8.20714 7.50004L10.8536 10.1465L10.1465 10.8536Z"
+                      fill="rgba(0, 0, 0, 0.6)"
+                    />
+                  </svg>
+                </div>
 
                 <input
                   type="text"
@@ -145,7 +146,7 @@ class Blog extends Component {
               <div className="blog__featured__container">
                 {featuredPostsList.length !== 0 ? (
                   <Card
-                    type="desktop-popular"
+                    type="popular"
                     title={featuredPostsList[0].title.toString()}
                     cover={featuredPostsList[0].cover.toString()}
                     tags={poststags

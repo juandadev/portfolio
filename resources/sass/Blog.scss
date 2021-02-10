@@ -1,3 +1,7 @@
+.blog .row {
+  margin-bottom: 2rem;
+}
+
 .blog__head .h1,
 .blog__head .text {
   text-align: center;
@@ -7,8 +11,21 @@
   margin-bottom: 1rem;
 }
 
+.blog__head--search {
+  position: relative;
+  margin-bottom: 1.5rem;
+}
+
+.blog__head--search .deleteSearch-icon {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0.5rem;
+  margin: auto;
+  height: fit-content;
+}
+
 .blog__head--search input {
-  margin-bottom: 1rem;
   padding: 0.5rem 2rem;
   width: 100%;
   max-width: 366px;
@@ -34,5 +51,11 @@
 @media screen and (max-width: 991px) {
   .blog__head .h1 {
     font-size: 3rem;
+  }
+
+  .blog__tags .h2,
+  .blog__featured .h2 {
+    margin-bottom: 1rem;
+    font-size: 2rem;
   }
 }
