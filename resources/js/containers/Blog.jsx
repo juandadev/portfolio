@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-indent */
 /* eslint-disable react/no-array-index-key */
 import React, { Component } from 'react';
 import axios from 'axios';
@@ -140,9 +141,11 @@ class Blog extends Component {
           </Row>
 
           <Row className="blog__featured">
-            <Col>
+            <Col xs={12}>
               <h2 className="h2">Destacados</h2>
+            </Col>
 
+            <Col lg={12} sm={6} xs={12}>
               <div className="blog__featured__container">
                 {featuredPostsList.length !== 0 ? (
                   <Card
@@ -162,6 +165,58 @@ class Blog extends Component {
                 )}
               </div>
             </Col>
+
+            {featuredPostsList.length !== 0
+              ? featuredPostsList.slice(1, 4).map((featuredPost) => (
+                  <Col key={`featured-post-${featuredPost.id}`} lg={4} sm={6} xs={12}>
+                    <Card
+                      type="featured"
+                      title={featuredPost.title}
+                      cover={featuredPost.cover}
+                      tags={poststags
+                        .filter((postTag) => postTag.post_id === featuredPost.id)
+                        .map((tag) => ({
+                          name: tags.filter((tagName) => tagName.id === tag.tag_id)[0].name,
+                        }))}
+                      body={featuredPost.body}
+                      created_at={featuredPost.created_at}
+                    />
+                  </Col>
+                ))
+              : ''}
+          </Row>
+
+          <Row className="blog__recent">
+            <Col xs={12}>
+              <h2 className="h2">Recientes</h2>
+            </Col>
+
+            {posts.length !== 0
+              ? posts
+                  .filter(
+                    (post) =>
+                      post.id !== featuredPostsList[0].id &&
+                      post.id !== featuredPostsList[1].id &&
+                      post.id !== featuredPostsList[2].id &&
+                      post.id !== featuredPostsList[3].id,
+                  )
+                  .map((recentPost) => (
+                    <Col key={`recent-post-${recentPost.id}`} lg={4}>
+                      <Card
+                        type="recent"
+                        title={recentPost.title}
+                        cover={recentPost.cover}
+                        tags={poststags
+                          .filter((postTag) => postTag.post_id === recentPost.id)
+                          .map((tag) => ({
+                            name: tags.filter((tagName) => tagName.id === tag.tag_id)[0].name,
+                          }))}
+                        body={recentPost.body}
+                        created_at={recentPost.created_at}
+                      />
+                    </Col>
+                  ))
+              : ''}
           </Row>
         </Container>
       </div>

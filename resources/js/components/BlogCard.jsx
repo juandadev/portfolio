@@ -36,7 +36,7 @@ const BlogCard = (props) => {
         </div>
 
         <p className="blog-card__info--desc">
-          {type === 'desktop-popular' ? `${body.slice(0, 440)}...` : `${body.slice(0, 530)}...`}
+          {type === 'popular' ? `${body.slice(0, 530)}...` : `${body.slice(0, 150)}...`}
         </p>
 
         <p className="blog-card__info--date">{parseDate(created_at)}</p>

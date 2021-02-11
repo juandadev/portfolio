@@ -1,4 +1,8 @@
 .blog .row {
+  margin-bottom: 4rem;
+}
+
+.blog .row .h2 {
   margin-bottom: 2rem;
 }
 
@@ -48,7 +52,15 @@
   color: rgba(0, 0, 0, 0.2);
 }
 
+.blog__featured__container {
+  margin-bottom: 2rem;
+}
+
 @media screen and (max-width: 991px) {
+  .blog .row {
+    margin-bottom: 2rem;
+  }
+
   .blog__head .h1 {
     font-size: 3rem;
   }
