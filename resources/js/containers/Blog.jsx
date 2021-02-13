@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable react/jsx-indent */
 /* eslint-disable react/no-array-index-key */
 import React, { Component } from 'react';
@@ -77,8 +79,11 @@ class Blog extends Component {
 
               <p className="text">También me puedes encontrar en:</p>
 
-              <div className="blog__head__social">
-                <div className="blog__head__social--dev">
+              <div className="blog__head__social d-flex justify-content-center">
+                <div
+                  className="blog__head__social--dev"
+                  onClick={() => window.open('https://dev.to/juanda_dev', '_blank')}
+                >
                   <svg
                     width={40}
                     height={40}
@@ -93,7 +98,10 @@ class Blog extends Component {
                   </svg>
                 </div>
 
-                <div className="blog__head__social--medium">
+                <div
+                  className="blog__head__social--medium"
+                  onClick={() => window.open('https://medium.com/@juandamartn', '_blank')}
+                >
                   <svg
                     width={40}
                     height={40}
@@ -142,6 +150,7 @@ class Blog extends Component {
                       }))}
                     body={featuredPostsList[0].body.toString()}
                     created_at={featuredPostsList[0].created_at.toString()}
+                    slug={featuredPostsList[0].slug}
                   />
                 ) : (
                   ''
@@ -163,6 +172,7 @@ class Blog extends Component {
                         }))}
                       body={featuredPost.body}
                       created_at={featuredPost.created_at}
+                      slug={featuredPost.slug}
                     />
                   </Col>
                 ))
@@ -196,6 +206,7 @@ class Blog extends Component {
                           }))}
                         body={recentPost.body}
                         created_at={recentPost.created_at}
+                        slug={recentPost.slug}
                       />
                     </Col>
                   ))

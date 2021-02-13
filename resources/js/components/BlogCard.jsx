@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import '../../sass/BlogCard.scss';
 
 const BlogCard = (props) => {
-  const { type, cover, title, tags, body, created_at } = props;
+  const { type, cover, title, tags, body, created_at, slug } = props;
 
   const parseDate = (created_at) => {
     const date = new Date(created_at);
@@ -17,7 +17,10 @@ const BlogCard = (props) => {
   };
 
   return (
-    <div className={`blog-card card-${type}`}>
+    <div
+      className={`blog-card card-${type}`}
+      onClick={() => (window.location.href = `/blog/${slug}`)}
+    >
       <div className="blog-card__cover">
         <img
           src={`/storage/${cover}`}
@@ -52,6 +55,7 @@ BlogCard.propTypes = {
   tags: PropTypes.array.isRequired,
   body: PropTypes.string.isRequired,
   created_at: PropTypes.string.isRequired,
+  slug: PropTypes.string.isRequired,
 };
 
 export default BlogCard;
