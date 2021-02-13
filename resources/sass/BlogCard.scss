@@ -179,4 +179,28 @@
   .blog-card.card-featured .blog-card__info--desc {
     display: none;
   }
+
+  .blog-card.card-recent {
+    flex-direction: row;
+  }
+
+  .blog-card.card-recent .blog-card--gradient {
+    display: none;
+  }
+
+  .blog-card.card-recent .blog-card__cover {
+    margin-bottom: 0;
+    width: 100px;
+    min-width: 100px;
+    height: 100px;
+  }
+
+  .blog-card.card-recent .blog-card__info__head--title,
+  .blog-card.card-recent .blog-card__info__head--tags {
+    margin-bottom: 0;
+  }
+
+  .blog-card.card-recent .blog-card__info--desc {
+    display: none;
+  }
 }
