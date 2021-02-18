@@ -14,6 +14,8 @@ Route::get('user/{email}', 'UserController@userDetail');
 // Posts
 Route::get('post', 'PostController@index');
 
+Route::post('blog/search', 'PostController@search');
+
 Route::get('blog/{post:slug}', 'PostController@show');
 
 Route::post('post', 'PostController@store');

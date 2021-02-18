@@ -5,7 +5,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
-import { Container, Row, Col, Badge } from 'react-bootstrap';
+import { Container, Row, Col } from 'react-bootstrap';
 import Header from '../components/Header';
 import Card from '../components/BlogCard';
 
@@ -125,7 +125,13 @@ class Blog extends Component {
 
               <div className="blog__tags__container">
                 {tagCountList.map((tag, index) => (
-                  <Badge key={`popular-tag-${index}`} variant="secondary">{`#${tag.name}`}</Badge>
+                  <a
+                    href={`/blog/search?isTag=true&searchParam=${tag.name}`}
+                    className="badge badge-secondary"
+                    key={`popular-tag-${index}`}
+                  >
+                    {`#${tag.name}`}
+                  </a>
                 ))}
               </div>
             </Col>

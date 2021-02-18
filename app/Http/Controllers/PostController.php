@@ -203,4 +203,25 @@ class PostController extends Controller
             "post" => $post,
         ]);
     }
+
+    public function search(Request $request)
+    {
+        $isTag = $request->isTag;
+        $searchParam = $request->searchParam;
+
+        if ($isTag) {
+            $searchTag = Tag::where('name', $searchParam)
+                ->first();
+
+            $searchPostsTags = PostsTags::where('tag_id', $searchTag->id)
+                ->get();
+
+            return $searchPostsTags;
+        } else {
+            $searchPosts = Post::where('title', 'like', "%$searchParam%")
+                ->get();
+
+            return $searchPosts;
+        }
+    }
 }

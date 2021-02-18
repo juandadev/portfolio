@@ -26,6 +26,10 @@ Route::get('/blog', function () {
     return view('app');
 });
 
+Route::get('/blog/search', function () {
+    return view('app');
+});
+
 Route::get('/blog/{post:slug}', function () {
     return view('app');
 });

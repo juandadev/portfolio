@@ -10,6 +10,7 @@ import Login from '../containers/Login';
 import Register from '../containers/Register';
 import Post from '../containers/Post';
 import Blog from '../containers/Blog';
+import Search from '../containers/Search';
 
 const Router = (props) => {
   const { initPosts } = props;
@@ -28,6 +29,8 @@ const Router = (props) => {
 
         {/* Admin */}
         <Route path="/admin" component={Admin} />
+
+        <Route path="/blog/search" component={Search} />
 
         <Route path="/blog/:slug" component={Post} />
 
