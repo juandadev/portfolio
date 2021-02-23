@@ -8,6 +8,7 @@ import axios from 'axios';
 import { Container, Row, Col } from 'react-bootstrap';
 import Header from '../components/Header';
 import Card from '../components/BlogCard';
+import Search from '../components/SearchInput';
 
 import '../../sass/Blog.scss';
 
@@ -31,16 +32,6 @@ class Blog extends Component {
       .get('/api/post')
       .then((response) => this.initializeData(response.data))
       .catch((error) => console.error(error.message));
-  }
-
-  handleSearch(e) {
-    const { value } = e.target;
-
-    if (e.key == 'Enter') {
-      window.location.href = `/blog/search?isTag=${value[0] == '#'}&searchParam=${
-        value[0] == '#' ? value.slice(1, value.length).toLowerCase() : value.toLowerCase()
-      }`;
-    }
   }
 
   initializeData(data) {
@@ -77,16 +68,7 @@ class Blog extends Component {
 
               <p className="text">Aquí es donde comparto un poco de mi conocimiento</p>
 
-              <div className="blog__head--search d-flex justify-content-center">
-                <input
-                  type="text"
-                  name="postSearch"
-                  id="postSearch"
-                  placeholder="Busca por post o #etiqueta"
-                  autoComplete="off"
-                  onKeyPress={this.handleSearch}
-                />
-              </div>
+              <Search />
 
               <p className="text">También me puedes encontrar en:</p>
 

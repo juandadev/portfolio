@@ -17,34 +17,6 @@
   margin-bottom: 1rem;
 }
 
-.blog__head--search {
-  position: relative;
-  margin-bottom: 1.5rem;
-}
-
-.blog__head--search input {
-  padding: 0.5rem 2rem 0.5rem 0.5rem;
-  width: 100%;
-  max-width: 366px;
-  min-width: 290px;
-  outline: none;
-  background: url('../svg/search.svg');
-  background-repeat: no-repeat;
-  background-size: 15px;
-  background-position-x: 97%;
-  background-position-y: center;
-  border: 1px solid rgba(0, 0, 0, 0.2);
-  border-radius: 0.5rem;
-  -webkit-border-radius: 0.5rem;
-  -moz-border-radius: 0.5rem;
-  -ms-border-radius: 0.5rem;
-  -o-border-radius: 0.5rem;
-}
-
-.blog__head--search input::placeholder {
-  color: rgba(0, 0, 0, 0.2);
-}
-
 .blog__head__social--dev,
 .blog__head__social--medium {
   cursor: pointer;

@@ -9,6 +9,7 @@ import { Container, Col, Row } from 'react-bootstrap';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import Card from '../components/BlogCard';
+import SearchInput from '../components/SearchInput';
 
 import '../../sass/Search.scss';
 
@@ -34,7 +35,11 @@ function Search(props) {
       <Container>
         <Row>
           <Col>
-            <h1 className="h2">{`Buscar: ${isTag ? '#' : ''}${searchParam}`}</h1>
+            <SearchInput />
+
+            <p className="text text-center">
+              {`Resultados de la búsqueda: ${isTag ? '#' : ''}${searchParam}`}
+            </p>
           </Col>
         </Row>
 
