@@ -33,6 +33,16 @@ class Blog extends Component {
       .catch((error) => console.error(error.message));
   }
 
+  handleSearch(e) {
+    const { value } = e.target;
+
+    if (e.key == 'Enter') {
+      window.location.href = `/blog/search?isTag=${value[0] == '#'}&searchParam=${
+        value[0] == '#' ? value.slice(1, value.length).toLowerCase() : value.toLowerCase()
+      }`;
+    }
+  }
+
   initializeData(data) {
     const tagCountList = data[2]
       .slice(0, 10)
@@ -74,6 +84,7 @@ class Blog extends Component {
                   id="postSearch"
                   placeholder="Busca por post o #etiqueta"
                   autoComplete="off"
+                  onKeyPress={this.handleSearch}
                 />
               </div>
 
@@ -200,7 +211,7 @@ class Blog extends Component {
                       post.id !== featuredPostsList[3].id,
                   )
                   .map((recentPost) => (
-                    <Col key={`recent-post-${recentPost.id}`} lg={4}>
+                    <Col key={`recent-post-${recentPost.id}`} lg={4} sm={6} xs={12}>
                       <Card
                         type="recent"
                         title={recentPost.title}

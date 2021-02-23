@@ -208,6 +208,7 @@ class PostController extends Controller
     {
         $isTag = $request->isTag;
         $searchParam = $request->searchParam;
+        $searchPosts = [];
 
         if ($isTag) {
             $searchTag = Tag::where('name', $searchParam)
@@ -216,12 +217,16 @@ class PostController extends Controller
             $searchPostsTags = PostsTags::where('tag_id', $searchTag->id)
                 ->get();
 
-            return $searchPostsTags;
+            for ($i = 0; $i < count($searchPostsTags); $i++) {
+                $searchResult = Post::where('id', $searchPostsTags[$i]->post_id)->first();
+
+                array_push($searchPosts, $searchResult);
+            }
         } else {
             $searchPosts = Post::where('title', 'like', "%$searchParam%")
                 ->get();
-
-            return $searchPosts;
         }
+
+        return $searchPosts;
     }
 }
