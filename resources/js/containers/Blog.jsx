@@ -93,7 +93,7 @@ class Blog extends Component {
 
                 <div
                   className="blog__head__social--medium"
-                  onClick={() => window.open('https://medium.com/@juandamartn', '_blank')}
+                  onClick={() => window.open('https://medium.com/@juandadev', '_blank')}
                 >
                   <svg
                     width={40}
@@ -117,15 +117,21 @@ class Blog extends Component {
               <h2 className="h2">Temas populares</h2>
 
               <div className="blog__tags__container">
-                {tagCountList.map((tag, index) => (
-                  <a
-                    href={`/blog/search?isTag=true&searchParam=${tag.name}`}
-                    className="badge badge-secondary"
-                    key={`popular-tag-${index}`}
-                  >
-                    {`#${tag.name}`}
-                  </a>
-                ))}
+                {tagCountList.length === 0
+                  ? [...Array(10)].map((e, i) => (
+                      <div key={`loading-badge-${i}`} className="badge badge-loading">
+                        LoremIps
+                      </div>
+                    ))
+                  : tagCountList.map((tag, index) => (
+                      <a
+                        href={`/blog/search?isTag=true&searchParam=${tag.name}`}
+                        className="badge badge-secondary"
+                        key={`popular-tag-${index}`}
+                      >
+                        {`#${tag.name}`}
+                      </a>
+                    ))}
               </div>
             </Col>
           </Row>
@@ -137,7 +143,17 @@ class Blog extends Component {
 
             <Col lg={12} sm={6} xs={12}>
               <div className="blog__featured__container">
-                {featuredPostsList.length !== 0 ? (
+                {featuredPostsList.length === 0 ? (
+                  <Card
+                    type="popular loading"
+                    title="Lorem ipsum dolor sit amet"
+                    cover="posts/cover-loading.png"
+                    tags={['lorem', 'ipsum', 'dolor']}
+                    body="Lorem ipsum dolor sit amet consecetur amade mer do mori lorem ipsum dolor sit amet consecetur amadem er do mod"
+                    created_at="Lorem ipsum"
+                    slug="lorem"
+                  />
+                ) : (
                   <Card
                     type="popular"
                     title={featuredPostsList[0].title.toString()}
@@ -151,14 +167,25 @@ class Blog extends Component {
                     created_at={featuredPostsList[0].created_at.toString()}
                     slug={featuredPostsList[0].slug}
                   />
-                ) : (
-                  ''
                 )}
               </div>
             </Col>
 
-            {featuredPostsList.length !== 0
-              ? featuredPostsList.slice(1, 4).map((featuredPost) => (
+            {featuredPostsList.length === 0
+              ? [...Array(3)].map((e, i) => (
+                  <Col key={`featured-loading-${i}`} lg={4} sm={6} xs={12}>
+                    <Card
+                      type="featured loading"
+                      title="Lorem ipsum dolor sit amet"
+                      cover="posts/cover-loading.png"
+                      tags={['lorem', 'ipsum', 'dolor']}
+                      body="Lorem ipsum dolor sit amet consecetur amade mer do mori lorem ipsum dolor sit amet consecetur amadem er do mod"
+                      created_at="Lorem ipsum"
+                      slug="lorem"
+                    />
+                  </Col>
+                ))
+              : featuredPostsList.slice(1, 4).map((featuredPost) => (
                   <Col key={`featured-post-${featuredPost.id}`} lg={4} sm={6} xs={12}>
                     <Card
                       type="featured"
@@ -174,8 +201,7 @@ class Blog extends Component {
                       slug={featuredPost.slug}
                     />
                   </Col>
-                ))
-              : ''}
+                ))}
           </Row>
 
           <Row className="blog__recent">
@@ -183,8 +209,21 @@ class Blog extends Component {
               <h2 className="h2">Recientes</h2>
             </Col>
 
-            {posts.length !== 0
-              ? posts
+            {posts.length === 0
+              ? [...Array(3)].map((e, i) => (
+                  <Col key={`recent-loading-${i}`} lg={4} sm={6} xs={12}>
+                    <Card
+                      type="recent loading"
+                      title="Lorem ipsum dolor sit amet"
+                      cover="posts/cover-loading.png"
+                      tags={['lorem', 'ipsum', 'dolor']}
+                      body="Lorem ipsum dolor sit amet consecetur amade mer do mori lorem ipsum dolor sit amet consecetur amadem er do mod"
+                      created_at="Lorem ipsum"
+                      slug="lorem"
+                    />
+                  </Col>
+                ))
+              : posts
                   .filter(
                     (post) =>
                       post.id !== featuredPostsList[0].id &&
@@ -208,8 +247,7 @@ class Blog extends Component {
                         slug={recentPost.slug}
                       />
                     </Col>
-                  ))
-              : ''}
+                  ))}
           </Row>
         </Container>
       </div>

@@ -1,3 +1,5 @@
+@import 'animations';
+
 .blog-card {
   position: relative;
   display: flex;
@@ -8,6 +10,29 @@
 
 .blog-card--gradient {
   display: none;
+}
+
+.blog-card.loading {
+  cursor: default;
+}
+
+.blog-card.loading .blog-card__cover,
+.blog-card.loading .blog-card__info__head--title,
+.blog-card.loading .blog-card__info__head--tags,
+.blog-card.loading .blog-card__info--date,
+.blog-card.loading .blog-card__info--desc {
+  width: fit-content;
+  color: #c9c9c9 !important;
+  background-color: #c9c9c9;
+  border-radius: 0.25rem;
+  -webkit-border-radius: 0.25rem;
+  -moz-border-radius: 0.25rem;
+  -ms-border-radius: 0.25rem;
+  -o-border-radius: 0.25rem;
+  animation-name: fadeBackground;
+  animation-duration: 1s;
+  animation-direction: alternate;
+  animation-iteration-count: infinite;
 }
 
 .blog-card.card-popular .blog-card__cover {
@@ -109,6 +134,10 @@
   .blog__featured__container,
   .blog-card.card-featured {
     margin-bottom: 1rem !important;
+  }
+
+  .blog-card.loading .blog-card--gradient {
+    background: linear-gradient(180deg, transparent 0%, transparent);
   }
 
   .blog-card--gradient {

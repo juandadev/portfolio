@@ -19,7 +19,7 @@ const BlogCard = (props) => {
   return (
     <div
       className={`blog-card card-${type}`}
-      onClick={() => (window.location.href = `/blog/${slug}`)}
+      onClick={() => (type.includes('loading') ? '' : (window.location.href = `/blog/${slug}`))}
     >
       <div className="blog-card__cover">
         <img

@@ -20,7 +20,7 @@ function SearchInput() {
         type="text"
         name="postSearch"
         id="postSearch"
-        placeholder="Busca por post o #etiqueta"
+        placeholder="Busca por título o #etiqueta"
         autoComplete="off"
         onKeyPress={handleSearch}
       />

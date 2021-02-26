@@ -44,29 +44,37 @@ function Search(props) {
         </Row>
 
         <Row>
-          {searchResult.length !== 0 ? (
-            searchResult.map((post) => (
-              <Col key={`search-post-${post.id}`} lg={4} sm={6} xs={12}>
-                <Card
-                  type="recent"
-                  title={post.title}
-                  cover={post.cover}
-                  tags={poststags
-                    .filter((postTag) => postTag.post_id === post.id)
-                    .map((tag) => ({
-                      name: tags.filter((tagName) => tagName.id === tag.tag_id)[0].name,
-                    }))}
-                  body={post.body}
-                  created_at={post.created_at}
-                  slug={post.slug}
-                />
-              </Col>
-            ))
-          ) : (
-            <Col>
-              <p className="h3">No se encontraron resultados :c</p>
-            </Col>
-          )}
+          {searchResult.length !== 0
+            ? searchResult.map((post) => (
+                <Col key={`search-post-${post.id}`} lg={4} sm={6} xs={12}>
+                  <Card
+                    type="recent"
+                    title={post.title}
+                    cover={post.cover}
+                    tags={poststags
+                      .filter((postTag) => postTag.post_id === post.id)
+                      .map((tag) => ({
+                        name: tags.filter((tagName) => tagName.id === tag.tag_id)[0].name,
+                      }))}
+                    body={post.body}
+                    created_at={post.created_at}
+                    slug={post.slug}
+                  />
+                </Col>
+              ))
+            : [...Array(3)].map((e, i) => (
+                <Col key={`search-loading-${i}`} lg={4} sm={6} xs={12}>
+                  <Card
+                    type="recent loading"
+                    title="Lorem ipsum dolor sit amet"
+                    cover="posts/cover-loading.png"
+                    tags={['lorem', 'ipsum', 'dolor']}
+                    body="Lorem ipsum dolor sit amet consecetur amade mer do mori lorem ipsum dolor sit amet consecetur amadem er do mod"
+                    created_at="Lorem ipsum"
+                    slug="lorem"
+                  />
+                </Col>
+              ))}
         </Row>
       </Container>
 
