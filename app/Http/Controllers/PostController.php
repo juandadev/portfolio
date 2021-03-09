@@ -16,7 +16,9 @@ class PostController extends Controller
 
     public function show(Post $post)
     {
-        // TODO: Need to do a view counter on each request
+        // FIXME: This method calls multiple times on each request instead of once
+        $post->increment('views');
+
         return $post;
     }
 
