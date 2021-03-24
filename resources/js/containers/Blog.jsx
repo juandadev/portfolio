@@ -43,7 +43,7 @@ class Blog extends Component {
       }))
       .sort((a, b) => b.count - a.count);
 
-    const featuredPostsList = data[0].slice(0, 4).sort((a, b) => b.views - a.views);
+    const featuredPostsList = data[0].sort((a, b) => b.views - a.views).slice(0, 4);
 
     this.setState({
       posts: data[0],
