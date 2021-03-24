@@ -28,21 +28,25 @@ const Post = (props) => {
   const [hover, setHover] = useState(false);
   const [toolTipText, setToolTipText] = useState('');
 
-  axios.get(`/api/blog/${slug}`).then((response) => {
-    const { id, title, cover, color, body, author, created_at } = response.data;
+  const fetchPost = () => {
+    axios.get(`/api/blog/${slug}`).then((response) => {
+      const { id, title, cover, color, body, author, created_at } = response.data;
 
-    setId(id);
-    setTitle(title);
-    setCover(cover);
-    setColor(color);
-    setBody(body);
-    setAuthor(author);
-    setDate(created_at.slice(0, 10));
-  });
+      setId(id);
+      setTitle(title);
+      setCover(cover);
+      setColor(color);
+      setBody(body);
+      setAuthor(author);
+      setDate(created_at.slice(0, 10));
+    });
+  };
 
   useEffect(() => {
     document.title = `${title} | Juan Daniel Martínez`;
-  });
+
+    fetchPost();
+  }, []);
 
   const getRawMarkup = () => ({ __html: md.render(body) });
 
