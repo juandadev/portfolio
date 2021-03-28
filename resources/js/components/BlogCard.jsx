@@ -1,6 +1,7 @@
 /* eslint-disable camelcase */
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 import '../../sass/BlogCard.scss';
 
@@ -17,9 +18,9 @@ const BlogCard = (props) => {
   };
 
   return (
-    <div
+    <Link
+      to={type.includes('loading') ? '#' : `/blog/${slug}`}
       className={`blog-card card-${type}`}
-      onClick={() => (type.includes('loading') ? '' : (window.location.href = `/blog/${slug}`))}
     >
       <div className="blog-card__cover">
         <img
@@ -44,7 +45,7 @@ const BlogCard = (props) => {
 
         <p className="blog-card__info--date">{parseDate(created_at)}</p>
       </div>
-    </div>
+    </Link>
   );
 };
 

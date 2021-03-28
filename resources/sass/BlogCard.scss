@@ -6,6 +6,7 @@
   width: 100%;
   user-select: none;
   cursor: pointer;
+  text-decoration: none !important;
 }
 
 .blog-card--gradient {
@@ -14,6 +15,10 @@
 
 .blog-card.loading {
   cursor: default;
+}
+
+.blog-card .blog-card__info {
+  color: #000000;
 }
 
 .blog-card.loading .blog-card__cover,

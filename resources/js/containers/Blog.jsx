@@ -6,6 +6,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 
 import { Container, Row, Col } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import Header from '../components/Header';
 import Card from '../components/BlogCard';
 import Search from '../components/SearchInput';
@@ -36,12 +37,12 @@ class Blog extends Component {
 
   initializeData(data) {
     const tagCountList = data[2]
-      .slice(0, 10)
       .map((tag) => ({
         name: tag.name,
         count: data[1].reduce((acc, postTag) => (postTag.tag_id === tag.id ? acc + 1 : acc), 0),
       }))
-      .sort((a, b) => b.count - a.count);
+      .sort((a, b) => b.count - a.count)
+      .slice(0, 10);
 
     const featuredPostsList = data[0].sort((a, b) => b.views - a.views).slice(0, 4);
 
@@ -73,9 +74,11 @@ class Blog extends Component {
               <p className="text">También me puedes encontrar en:</p>
 
               <div className="blog__head__social d-flex justify-content-center">
-                <div
+                <a
+                  href="https://dev.to/juanda_dev"
+                  target="_blank"
+                  rel="noreferrer"
                   className="blog__head__social--dev"
-                  onClick={() => window.open('https://dev.to/juanda_dev', '_blank')}
                 >
                   <svg
                     width={40}
@@ -89,11 +92,13 @@ class Blog extends Component {
                       fill="black"
                     />
                   </svg>
-                </div>
+                </a>
 
-                <div
+                <a
+                  href="https://medium.com/@juandadev"
+                  target="_blank"
+                  rel="noreferrer"
                   className="blog__head__social--medium"
-                  onClick={() => window.open('https://medium.com/@juandadev', '_blank')}
                 >
                   <svg
                     width={40}
@@ -107,7 +112,7 @@ class Blog extends Component {
                       fill="black"
                     />
                   </svg>
-                </div>
+                </a>
               </div>
             </Col>
           </Row>
@@ -124,13 +129,13 @@ class Blog extends Component {
                       </div>
                     ))
                   : tagCountList.map((tag, index) => (
-                      <a
-                        href={`/blog/search?isTag=true&searchParam=${tag.name}`}
+                      <Link
+                        to={`/blog/search?isTag=true&searchParam=${tag.name}`}
                         className="badge badge-secondary"
                         key={`popular-tag-${index}`}
                       >
                         {`#${tag.name}`}
-                      </a>
+                      </Link>
                     ))}
               </div>
             </Col>

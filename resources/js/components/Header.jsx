@@ -93,9 +93,13 @@ class Header extends Component {
 
                 {isLoggedIn ? (
                   <NavDropdown title="Administrador" id="basic-nav-dropdown">
-                    <NavDropdown.Item href="/admin">Panel</NavDropdown.Item>
+                    <NavLink exact to="/admin" className="dropdown-item">
+                      Panel
+                    </NavLink>
 
-                    <NavDropdown.Item href="/change-pwd">Cambiar contraseña</NavDropdown.Item>
+                    <NavLink exact to="/change-pwd" className="dropdown-item">
+                      Cambiar contraseña
+                    </NavLink>
 
                     <NavDropdown.Divider />
 
