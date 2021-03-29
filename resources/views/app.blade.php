@@ -32,6 +32,7 @@
         gtag('config', 'G-Q02WK9X3GG');
 
     </script>
+    <script data-ad-client="ca-pub-4772100722803395" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 
     <title>Juan Daniel Martínez, Desarrollador Web</title>
 </head>
