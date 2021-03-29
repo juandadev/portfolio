@@ -17,6 +17,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap" rel="stylesheet">
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-Q02WK9X3GG"></script>
@@ -33,12 +34,15 @@
     </script>
     <script data-ad-client="ca-pub-4772100722803395" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 
-    <title>Juan Daniel Martínez</title>
+    <title>Juan Daniel Martínez, Desarrollador Web</title>
 </head>
 
 <body>
     <div id="app"></div>
 
+    <div id="fb-root"></div>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/es_ES/sdk.js#xfbml=1&version=v9.0"
+        nonce="OFjxN8KN"></script>
     <script src="{{ asset('js/app.js') }}" defer></script>
 </body>
 

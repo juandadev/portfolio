@@ -30,7 +30,12 @@ const Hero = () => (
           </Button>
         </Col>
 
-        <Col lg={6} xs={12} className="hero__img d-flex align-items-center justify-content-center">
+        <Col
+          lg={6}
+          xs={12}
+          className="hero__img d-flex align-items-center justify-content-center"
+          onDoubleClick={() => (window.location.href = '/login')}
+        >
           <img src={heroIllustration} alt="Hero illustration" />
         </Col>
       </Row>

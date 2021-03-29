@@ -1,0 +1,68 @@
+.admin .container {
+  padding-bottom: 5rem;
+}
+
+.admin .controls .btn {
+  margin-top: 0;
+  padding: 0.2rem 0.8rem;
+}
+
+.admin .controls .btn-primary {
+  margin-right: 1rem;
+}
+
+.admin .card-posts-view {
+  margin-bottom: 0.5rem;
+}
+
+.admin .viewPost-title {
+  cursor: pointer;
+}
+
+.admin .viewPost-title,
+.admin .card-posts-view .badge {
+  font-weight: 500;
+  margin-right: 0.5rem;
+  user-select: none;
+}
+
+.admin .card-posts-view .card-body {
+  padding: 0.5rem 1rem;
+}
+
+.modal-content .btn {
+  margin-top: 0;
+  padding: 0.2rem 0.8rem;
+}
+
+.admin .btn,
+.modal-content .btn {
+  margin-top: 1rem;
+  font-size: 1rem;
+  border-radius: 0.25rem;
+  -webkit-border-radius: 0.25rem;
+  -moz-border-radius: 0.25rem;
+  -ms-border-radius: 0.25rem;
+  -o-border-radius: 0.25rem;
+  box-shadow: none;
+}
+
+.admin .btn-primary {
+  color: #fff !important;
+  background-color: #007bff !important;
+  border-color: #007bff !important;
+}
+
+.admin .btn-primary:hover {
+  opacity: 0.7;
+  box-shadow: none;
+  transform: translateY(0px);
+  -webkit-transform: translateY(0px);
+  -moz-transform: translateY(0px);
+  -ms-transform: translateY(0px);
+  -o-transform: translateY(0px);
+}
+
+.admin .tab-pane {
+  margin-top: 2rem;
+}

@@ -1,0 +1,86 @@
+@import 'variables';
+@import 'animations';
+
+.blog .row {
+  margin-bottom: 4rem;
+}
+
+.blog .row .h2 {
+  margin-bottom: 2rem;
+}
+
+.blog__head .h1,
+.blog__head .text {
+  text-align: center;
+}
+
+.blog__head .text {
+  margin-bottom: 1rem;
+}
+
+.blog__head__social--dev,
+.blog__head__social--medium {
+  cursor: pointer;
+  transition: box-shadow 0.3s ease-in-out;
+  -webkit-transition: box-shadow 0.3s ease-in-out;
+  -moz-transition: box-shadow 0.3s ease-in-out;
+  -ms-transition: box-shadow 0.3s ease-in-out;
+  -o-transition: box-shadow 0.3s ease-in-out;
+}
+
+.blog__head__social--dev:hover,
+.blog__head__social--medium:hover {
+  box-shadow: 0px 0px 15px 2px rgba(0, 0, 0, 0.3);
+}
+
+.blog__head__social--dev {
+  margin-right: 2rem;
+}
+
+.blog__featured__container {
+  margin-bottom: 2rem;
+}
+
+.blog__tags__container .badge {
+  padding: 0.5rem 1rem;
+  margin-right: 0.5rem;
+  margin-bottom: 0.5rem;
+  background: $btn-color;
+  font-size: 1rem;
+  font-weight: 400;
+  cursor: pointer;
+  transition: box-shadow 0.3s ease-in-out;
+  -webkit-transition: box-shadow 0.3s ease-in-out;
+  -moz-transition: box-shadow 0.3s ease-in-out;
+  -ms-transition: box-shadow 0.3s ease-in-out;
+  -o-transition: box-shadow 0.3s ease-in-out;
+}
+
+.blog__tags__container .badge:hover {
+  box-shadow: 0px 0px 15px 2px rgba(0, 0, 0, 0.2);
+}
+
+.badge-loading {
+  background: #c9c9c9 !important;
+  color: #c9c9c9;
+  animation-name: fadeBackground;
+  animation-duration: 1s;
+  animation-direction: alternate;
+  animation-iteration-count: infinite;
+}
+
+@media screen and (max-width: 991px) {
+  .blog .row {
+    margin-bottom: 2rem;
+  }
+
+  .blog__head .h1 {
+    font-size: 3rem;
+  }
+
+  .blog__tags .h2,
+  .blog__featured .h2 {
+    margin-bottom: 1rem;
+    font-size: 2rem;
+  }
+}

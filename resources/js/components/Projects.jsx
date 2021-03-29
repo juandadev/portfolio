@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 
 import { Container, Row, Col, Carousel } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 import compudramImg from '../../img/projects/compudram.png';
 import cuervoImg from '../../img/projects/cuervonutrition.png';
@@ -98,24 +99,22 @@ const Projects = () => {
           <Col>
             <Carousel activeIndex={index} onSelect={handleSelect}>
               {projects.map((item) => (
-                <Carousel.Item
-                  key={item.id}
-                  style={{ background: item.color }}
-                  onClick={() => (window.location.href = item.webLink)}
-                >
-                  <img
-                    src={item.image}
-                    alt="Project mockup"
-                    className="projects__container--img d-block w-100"
-                  />
+                <Carousel.Item key={item.id} style={{ background: item.color }}>
+                  <a href={item.webLink} target="_blank" rel="noreferrer">
+                    <img
+                      src={item.image}
+                      alt="Project mockup"
+                      className="projects__container--img d-block w-100"
+                    />
 
-                  <Carousel.Caption>
-                    <h3 className="projects__container--title h3">{item.title}</h3>
+                    <Carousel.Caption>
+                      <h3 className="projects__container--title h3">{item.title}</h3>
 
-                    <p className="projects__container--text text text-capitalize">
-                      {item.langs.map((langs) => `${langs.toString()}, `)}
-                    </p>
-                  </Carousel.Caption>
+                      <p className="projects__container--text text text-capitalize">
+                        {item.langs.map((langs) => `${langs.toString()}, `)}
+                      </p>
+                    </Carousel.Caption>
+                  </a>
                 </Carousel.Item>
               ))}
             </Carousel>

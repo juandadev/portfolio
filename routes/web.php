@@ -18,6 +18,28 @@ Route::get('/', function () {
     return view('app');
 });
 
-Auth::routes();
+Route::get('/admin', function () {
+    return view('app');
+});
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/blog', function () {
+    return view('app');
+});
+
+Route::get('/blog/search', function () {
+    return view('app');
+});
+
+Route::get('/blog/{post:slug}', function () {
+    return view('app');
+});
+
+// Auth
+// Auth::routes();
+Route::get('/login', function () {
+    return view('app');
+});
+
+Route::get('/register', function () {
+    return view('app');
+});
