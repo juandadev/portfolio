@@ -16,8 +16,8 @@ const Contact = () => (
           <p className="contact__card__info--title h2">¿Te gustó?</p>
 
           <p className="contact__card__info--text text">
-            Juntos podemos hacer cosas similares e incluso más grandiosas para ese proyecto que
-            tienes en mente.
+            Tan solo estamos al alcance de un clic, contáctate conmigo si quieres que colaboremos en
+            algún proyecto <span className="emoji">🤩</span>
           </p>
         </Col>
 

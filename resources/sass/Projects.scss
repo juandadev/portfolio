@@ -24,6 +24,61 @@
   bottom: unset;
 }
 
+.carousel {
+  &-item {
+    .buttons {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 1rem;
+      margin: auto;
+
+      .btn {
+        width: fit-content;
+        font-size: 16px;
+        box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.3);
+
+        &:hover {
+          transform: translateY(-0.5rem);
+          -webkit-transform: translateY(-0.5rem);
+          -moz-transform: translateY(-0.5rem);
+          -ms-transform: translateY(-0.5rem);
+          -o-transform: translateY(-0.5rem);
+        }
+
+        &-projects {
+          color: #ffffff;
+        }
+
+        &-github {
+          margin-left: 1rem;
+          padding: 0;
+          width: 51px;
+          height: 51px;
+          border-radius: 100%;
+          -webkit-border-radius: 100%;
+          -moz-border-radius: 100%;
+          -ms-border-radius: 100%;
+          -o-border-radius: 100%;
+
+          img {
+            width: 40%;
+          }
+        }
+        transition: transform 0.3s ease-in-out;
+        -webkit-transition: transform 0.3s ease-in-out;
+        -moz-transition: transform 0.3s ease-in-out;
+        -ms-transition: transform 0.3s ease-in-out;
+        -o-transition: transform 0.3s ease-in-out;
+      }
+    }
+  }
+}
+
+.projects__container--text.text-capitalize {
+  color: #00000059;
+}
+
 @media screen and (max-width: 991px) {
   .projects__container--img {
     height: 500px;
