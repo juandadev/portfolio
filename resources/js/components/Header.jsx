@@ -87,9 +87,9 @@ class Header extends Component {
                   Inicio
                 </NavLink>
 
-                <NavLink strict to="/blog/" activeClassName="active" className="nav-link">
+                {/* <NavLink strict to="/blog/" activeClassName="active" className="nav-link">
                   Blog
-                </NavLink>
+                </NavLink> */}
 
                 {isLoggedIn ? (
                   <NavDropdown title="Administrador" id="basic-nav-dropdown">
