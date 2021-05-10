@@ -11,6 +11,7 @@ import Register from '../containers/Register';
 import Post from '../containers/Post';
 import Blog from '../containers/Blog';
 import Search from '../containers/Search';
+import NotFound from '../containers/NotFound';
 
 const Router = (props) => {
   const { initPosts } = props;
@@ -30,13 +31,15 @@ const Router = (props) => {
         {/* Admin */}
         <Route path="/admin" component={Admin} />
 
-        <Route path="/blog/search" component={Search} />
+        {/* <Route path="/blog/search" component={Search} /> */}
 
-        <Route path="/blog/:slug" component={Post} />
+        {/* <Route path="/blog/:slug" component={Post} /> */}
 
-        <Route path="/blog" component={Blog} />
+        {/* <Route path="/blog" component={Blog} /> */}
 
         <Route exact path="/" component={Home} />
+
+        <Route component={NotFound} />
       </Switch>
     </BrowserRouter>
   );
