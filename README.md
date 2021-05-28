@@ -16,6 +16,7 @@
 
 <p align="center">
   <a href="#description">Description</a> •
+  <a href="#demo">Demo</a> •
   <a href="#credits">Credits</a> •
   <a href="#support">Support</a>
 </p>
@@ -30,15 +31,21 @@ In the future, I'll be adding more stuff to this page just for fun or showing th
 
 Please, enjoy this project that I'm doing with love 💚
 
+## Demo
+
+[Juanda Dev](https://juanda.dev)
+
 ## Credits
 
 This software was built with the following open source packages:
 
-- [React.js](https://reactjs.org/)
-- [React Router](https://reactrouter.com/)
-- [React Redux](https://react-redux.js.org/)
-- [React Bootstrap](https://react-bootstrap.github.io/)
-- [Laravel](https://laravel.com/)
+- [React.js 16.2](https://reactjs.org/) • Building the UI
+- [React Router 5.2](https://reactrouter.com/) • Managing the routing system
+- [React Redux 7.2](https://react-redux.js.org/) • Managing global state for the blog page
+- [React Bootstrap 1.4](https://react-bootstrap.github.io/) • Handling the UI layout
+- [Laravel 7](https://laravel.com/) • Building the entire backend and database system
+
+With the supervision of [Erik Ochoa](https://twitter.com/Elyager), Academic Coach at [Platzi Master](https://platzi.com/master/)
 
 ## Support
 
@@ -49,6 +56,8 @@ This software was built with the following open source packages:
 - [When2Meet Clone](https://github.com/juandadev/when2meet-clone) - An event planner for crowds
 - [Flamewars](https://github.com/thomasnrggo/flamewars) - A real time chat for voting events
 
+> Juan Daniel Martínez &nbsp;&middot;&nbsp;
 > [juanda.dev](https://juanda.dev) &nbsp;&middot;&nbsp;
+> Frontend Developer &nbsp;&middot;&nbsp;
 > GitHub [@juandadev](https://github.com/juandadev) &nbsp;&middot;&nbsp;
 > Twitter [@juanda*dev*](https://twitter.com/juanda_dev_)
